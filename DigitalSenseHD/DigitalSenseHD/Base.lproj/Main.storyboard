@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gt5-CV-XB1">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="678" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZMo-1H-Bzj" customClass="SmellView">
+                                <rect key="frame" x="5" y="919" width="79" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="苹果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UhK-WF-cQF">
+                                        <rect key="frame" x="0.0" y="83" width="79" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FruitDefaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="FhX-p1-g7f">
+                                        <rect key="frame" x="12" y="17" width="54" height="56"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="UhK-WF-cQF" secondAttribute="bottom" id="J61-ye-WTG"/>
+                                    <constraint firstItem="UhK-WF-cQF" firstAttribute="leading" secondItem="ZMo-1H-Bzj" secondAttribute="leading" id="Rrk-VE-mW9"/>
+                                    <constraint firstItem="UhK-WF-cQF" firstAttribute="top" secondItem="FhX-p1-g7f" secondAttribute="bottom" constant="10" id="SOe-M8-SJy"/>
+                                    <constraint firstItem="FhX-p1-g7f" firstAttribute="leading" secondItem="ZMo-1H-Bzj" secondAttribute="leading" constant="12" id="XCI-BF-MWt"/>
+                                    <constraint firstItem="FhX-p1-g7f" firstAttribute="centerX" secondItem="ZMo-1H-Bzj" secondAttribute="centerX" id="XQ6-47-rlm"/>
+                                    <constraint firstAttribute="height" constant="100" id="ZKs-cw-x38"/>
+                                    <constraint firstAttribute="trailing" secondItem="UhK-WF-cQF" secondAttribute="trailing" id="dYo-rc-P7Y"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="lblSmellName" destination="UhK-WF-cQF" id="cRc-Ja-jNZ"/>
+                                    <outlet property="smellImageView" destination="FhX-p1-g7f" id="Eo1-GP-QK6"/>
+                                </connections>
+                            </view>
+                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sxg-TU-yb1" customClass="SmellView">
+                                <rect key="frame" x="173" y="919" width="79" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="苹果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bm6-6Y-OcZ">
+                                        <rect key="frame" x="0.0" y="83" width="79" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FruitDefaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="6hi-HD-Uwv">
+                                        <rect key="frame" x="12" y="17" width="54" height="56"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="17W-yB-Wvo"/>
+                                    <constraint firstAttribute="trailing" secondItem="bm6-6Y-OcZ" secondAttribute="trailing" id="EDH-wn-jd9"/>
+                                    <constraint firstItem="6hi-HD-Uwv" firstAttribute="centerX" secondItem="sxg-TU-yb1" secondAttribute="centerX" id="KoV-II-0IK"/>
+                                    <constraint firstItem="bm6-6Y-OcZ" firstAttribute="top" secondItem="6hi-HD-Uwv" secondAttribute="bottom" constant="10" id="OVX-YY-x7E"/>
+                                    <constraint firstAttribute="bottom" secondItem="bm6-6Y-OcZ" secondAttribute="bottom" id="SIP-Hh-P5G"/>
+                                    <constraint firstItem="bm6-6Y-OcZ" firstAttribute="leading" secondItem="sxg-TU-yb1" secondAttribute="leading" id="UZT-lj-Pz0"/>
+                                    <constraint firstItem="6hi-HD-Uwv" firstAttribute="leading" secondItem="sxg-TU-yb1" secondAttribute="leading" constant="12" id="y3t-Tr-LlD"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="lblSmellName" destination="bm6-6Y-OcZ" id="w5i-Fa-fmo"/>
+                                    <outlet property="smellImageView" destination="6hi-HD-Uwv" id="YyV-cB-BRp"/>
+                                </connections>
+                            </view>
+                            <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJS-4M-3EA" customClass="SmellView">
+                                <rect key="frame" x="257" y="919" width="80" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="苹果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvQ-eZ-ifI">
+                                        <rect key="frame" x="0.0" y="83" width="80" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FruitDefaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="Yyc-YF-5Ub">
+                                        <rect key="frame" x="12" y="17" width="56" height="56"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Yyc-YF-5Ub" firstAttribute="centerX" secondItem="uJS-4M-3EA" secondAttribute="centerX" id="BKc-vK-UQK"/>
+                                    <constraint firstAttribute="bottom" secondItem="SvQ-eZ-ifI" secondAttribute="bottom" id="Den-Ph-LJe"/>
+                                    <constraint firstAttribute="trailing" secondItem="SvQ-eZ-ifI" secondAttribute="trailing" id="DxE-8d-bs9"/>
+                                    <constraint firstItem="SvQ-eZ-ifI" firstAttribute="top" secondItem="Yyc-YF-5Ub" secondAttribute="bottom" constant="10" id="NTQ-FC-HJw"/>
+                                    <constraint firstItem="SvQ-eZ-ifI" firstAttribute="leading" secondItem="uJS-4M-3EA" secondAttribute="leading" id="Yei-Xw-uom"/>
+                                    <constraint firstAttribute="height" constant="100" id="iD1-fn-WWh"/>
+                                    <constraint firstItem="Yyc-YF-5Ub" firstAttribute="leading" secondItem="uJS-4M-3EA" secondAttribute="leading" constant="12" id="oiq-Tf-cXa"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="lblSmellName" destination="SvQ-eZ-ifI" id="lIe-J2-kfF"/>
+                                    <outlet property="smellImageView" destination="Yyc-YF-5Ub" id="ZCF-Cu-pPC"/>
+                                </connections>
+                            </view>
+                            <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7o-Kt-stX" customClass="SmellView">
+                                <rect key="frame" x="342" y="919" width="79" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="苹果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHg-Ys-P4O">
+                                        <rect key="frame" x="0.0" y="83" width="79" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FruitDefaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="DPz-ip-aJL">
+                                        <rect key="frame" x="12" y="17" width="55" height="56"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="DPz-ip-aJL" firstAttribute="centerX" secondItem="q7o-Kt-stX" secondAttribute="centerX" id="10s-OM-Hgx"/>
+                                    <constraint firstAttribute="trailing" secondItem="pHg-Ys-P4O" secondAttribute="trailing" id="3Qj-zH-j3T"/>
+                                    <constraint firstAttribute="height" constant="100" id="FMI-He-LDU"/>
+                                    <constraint firstAttribute="bottom" secondItem="pHg-Ys-P4O" secondAttribute="bottom" id="JWv-EX-QME"/>
+                                    <constraint firstItem="pHg-Ys-P4O" firstAttribute="top" secondItem="DPz-ip-aJL" secondAttribute="bottom" constant="10" id="QTg-1x-V3L"/>
+                                    <constraint firstItem="DPz-ip-aJL" firstAttribute="leading" secondItem="q7o-Kt-stX" secondAttribute="leading" constant="12" id="ZrY-aP-uHE"/>
+                                    <constraint firstItem="pHg-Ys-P4O" firstAttribute="leading" secondItem="q7o-Kt-stX" secondAttribute="leading" id="nCW-Bc-gjm"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="lblSmellName" destination="pHg-Ys-P4O" id="Hc7-sj-Irv"/>
+                                    <outlet property="smellImageView" destination="DPz-ip-aJL" id="t4D-dB-zmG"/>
+                                </connections>
+                            </view>
+                            <view tag="6" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7hg-q4-WmS" customClass="SmellView">
+                                <rect key="frame" x="426" y="919" width="79" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="苹果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJB-me-Udl">
+                                        <rect key="frame" x="0.0" y="83" width="79" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FruitDefaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="CJg-fp-ihX">
+                                        <rect key="frame" x="12" y="17" width="55" height="56"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="qJB-me-Udl" secondAttribute="trailing" id="3pX-xw-ine"/>
+                                    <constraint firstItem="qJB-me-Udl" firstAttribute="top" secondItem="CJg-fp-ihX" secondAttribute="bottom" constant="10" id="EBP-ZM-JbS"/>
+                                    <constraint firstItem="CJg-fp-ihX" firstAttribute="centerX" secondItem="7hg-q4-WmS" secondAttribute="centerX" id="EyF-dj-LZL"/>
+                                    <constraint firstItem="qJB-me-Udl" firstAttribute="leading" secondItem="7hg-q4-WmS" secondAttribute="leading" id="GjW-rD-7jo"/>
+                                    <constraint firstItem="CJg-fp-ihX" firstAttribute="leading" secondItem="7hg-q4-WmS" secondAttribute="leading" constant="12" id="fht-bz-K9y"/>
+                                    <constraint firstAttribute="height" constant="100" id="sa5-tU-DMP"/>
+                                    <constraint firstAttribute="bottom" secondItem="qJB-me-Udl" secondAttribute="bottom" id="zBH-ZJ-7wv"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="lblSmellName" destination="qJB-me-Udl" id="Pjq-ui-KiO"/>
+                                    <outlet property="smellImageView" destination="CJg-fp-ihX" id="VfS-b1-hVO"/>
+                                </connections>
+                            </view>
+                            <view tag="8" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSl-2y-jmv" customClass="SmellView">
+                                <rect key="frame" x="594" y="919" width="79" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="苹果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkg-cD-lF6">
+                                        <rect key="frame" x="0.0" y="83" width="79" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FruitDefaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="DIL-S9-Jrm">
+                                        <rect key="frame" x="12" y="17" width="55" height="56"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="2S2-Cr-zad"/>
+                                    <constraint firstItem="qkg-cD-lF6" firstAttribute="leading" secondItem="bSl-2y-jmv" secondAttribute="leading" id="6Ar-JV-iOb"/>
+                                    <constraint firstAttribute="bottom" secondItem="qkg-cD-lF6" secondAttribute="bottom" id="8HR-pj-W57"/>
+                                    <constraint firstItem="DIL-S9-Jrm" firstAttribute="leading" secondItem="bSl-2y-jmv" secondAttribute="leading" constant="12" id="DqM-4s-A2k"/>
+                                    <constraint firstItem="DIL-S9-Jrm" firstAttribute="centerX" secondItem="bSl-2y-jmv" secondAttribute="centerX" id="Ex1-KQ-GnP"/>
+                                    <constraint firstAttribute="trailing" secondItem="qkg-cD-lF6" secondAttribute="trailing" id="I5O-NS-8r2"/>
+                                    <constraint firstItem="qkg-cD-lF6" firstAttribute="top" secondItem="DIL-S9-Jrm" secondAttribute="bottom" constant="10" id="fX2-pb-okr"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="lblSmellName" destination="qkg-cD-lF6" id="7QH-ZL-9R8"/>
+                                    <outlet property="smellImageView" destination="DIL-S9-Jrm" id="Fh0-Ex-FdQ"/>
+                                </connections>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bfe-Ph-jwt">
+                                <rect key="frame" x="0.0" y="64" width="678" height="845"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7IP-MM-4Gd">
+                                    <size key="itemSize" width="154" height="845"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ttS-K6-z95" customClass="SmellView">
+                                <rect key="frame" x="89" y="919" width="79" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="苹果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJN-jP-66H">
+                                        <rect key="frame" x="0.0" y="83" width="79" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FruitDefaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="nBe-Wj-WeO">
+                                        <rect key="frame" x="12" y="17" width="54" height="56"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="uJN-jP-66H" secondAttribute="bottom" id="Aan-T6-D6O"/>
+                                    <constraint firstAttribute="height" constant="100" id="EHN-Pu-oPB"/>
+                                    <constraint firstItem="nBe-Wj-WeO" firstAttribute="leading" secondItem="ttS-K6-z95" secondAttribute="leading" constant="12" id="H4n-WK-lNK"/>
+                                    <constraint firstItem="uJN-jP-66H" firstAttribute="leading" secondItem="ttS-K6-z95" secondAttribute="leading" id="LO4-5U-b1f"/>
+                                    <constraint firstItem="nBe-Wj-WeO" firstAttribute="centerX" secondItem="ttS-K6-z95" secondAttribute="centerX" id="QvT-uQ-fgl"/>
+                                    <constraint firstItem="uJN-jP-66H" firstAttribute="top" secondItem="nBe-Wj-WeO" secondAttribute="bottom" constant="10" id="ZZg-lh-Fjl"/>
+                                    <constraint firstAttribute="trailing" secondItem="uJN-jP-66H" secondAttribute="trailing" id="q3V-bB-58B"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="lblSmellName" destination="uJN-jP-66H" id="FU8-xB-O3E"/>
+                                    <outlet property="smellImageView" destination="nBe-Wj-WeO" id="odW-1e-Tb8"/>
+                                </connections>
+                            </view>
+                            <view tag="7" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ADk-i0-csl" customClass="SmellView">
+                                <rect key="frame" x="510" y="919" width="79" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="苹果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLv-f6-ebk">
+                                        <rect key="frame" x="0.0" y="83" width="79" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FruitDefaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="wWI-bg-x8v">
+                                        <rect key="frame" x="12" y="17" width="54" height="56"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="1cU-Vd-UPD"/>
+                                    <constraint firstAttribute="bottom" secondItem="QLv-f6-ebk" secondAttribute="bottom" id="5Af-iz-IzM"/>
+                                    <constraint firstItem="wWI-bg-x8v" firstAttribute="leading" secondItem="ADk-i0-csl" secondAttribute="leading" constant="12" id="Iq7-pU-1Cw"/>
+                                    <constraint firstItem="QLv-f6-ebk" firstAttribute="top" secondItem="wWI-bg-x8v" secondAttribute="bottom" constant="10" id="YCp-Bq-aht"/>
+                                    <constraint firstAttribute="trailing" secondItem="QLv-f6-ebk" secondAttribute="trailing" id="dhI-f3-zLJ"/>
+                                    <constraint firstItem="wWI-bg-x8v" firstAttribute="centerX" secondItem="ADk-i0-csl" secondAttribute="centerX" id="p50-4q-0t8"/>
+                                    <constraint firstItem="QLv-f6-ebk" firstAttribute="leading" secondItem="ADk-i0-csl" secondAttribute="leading" id="v1l-Zd-mBb"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="lblSmellName" destination="QLv-f6-ebk" id="QII-P3-i2C"/>
+                                    <outlet property="smellImageView" destination="wWI-bg-x8v" id="OhE-jf-syh"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ADk-i0-csl" secondAttribute="bottom" constant="5" id="1VQ-Ji-Mmk"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZMo-1H-Bzj" secondAttribute="bottom" constant="5" id="1p6-FX-Khy"/>
+                            <constraint firstAttribute="trailing" secondItem="bfe-Ph-jwt" secondAttribute="trailing" id="3x4-Rf-CTy"/>
+                            <constraint firstItem="bfe-Ph-jwt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4M0-tS-IZU"/>
+                            <constraint firstItem="uJS-4M-3EA" firstAttribute="width" secondItem="ZMo-1H-Bzj" secondAttribute="width" id="4XC-cN-lN6"/>
+                            <constraint firstItem="uJS-4M-3EA" firstAttribute="leading" secondItem="sxg-TU-yb1" secondAttribute="trailing" constant="5" id="4Xb-9q-xpB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7hg-q4-WmS" secondAttribute="bottom" constant="5" id="7Z0-Jc-hET"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bSl-2y-jmv" secondAttribute="bottom" constant="5" id="9fN-B4-HMv"/>
+                            <constraint firstItem="ZMo-1H-Bzj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="CHY-9x-Rg6"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sxg-TU-yb1" secondAttribute="bottom" constant="5" id="Ekl-b9-HRz"/>
+                            <constraint firstItem="q7o-Kt-stX" firstAttribute="leading" secondItem="uJS-4M-3EA" secondAttribute="trailing" constant="5" id="H1Y-5J-gz8"/>
+                            <constraint firstItem="sxg-TU-yb1" firstAttribute="width" secondItem="ZMo-1H-Bzj" secondAttribute="width" id="H2a-O6-wHQ"/>
+                            <constraint firstItem="7hg-q4-WmS" firstAttribute="leading" secondItem="q7o-Kt-stX" secondAttribute="trailing" constant="5" id="LQe-IR-y7b"/>
+                            <constraint firstItem="ADk-i0-csl" firstAttribute="leading" secondItem="7hg-q4-WmS" secondAttribute="trailing" constant="5" id="NfV-y6-5mm"/>
+                            <constraint firstItem="q7o-Kt-stX" firstAttribute="width" secondItem="ZMo-1H-Bzj" secondAttribute="width" id="Pld-Il-iPF"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="q7o-Kt-stX" secondAttribute="bottom" constant="5" id="QTW-IE-TiE"/>
+                            <constraint firstItem="ADk-i0-csl" firstAttribute="width" secondItem="ZMo-1H-Bzj" secondAttribute="width" id="V0f-mU-T1k"/>
+                            <constraint firstItem="7hg-q4-WmS" firstAttribute="width" secondItem="ZMo-1H-Bzj" secondAttribute="width" id="VPs-u9-lgZ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uJS-4M-3EA" secondAttribute="bottom" constant="5" id="WWl-an-tjY"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ttS-K6-z95" secondAttribute="bottom" constant="5" id="aLF-LJ-OXI"/>
+                            <constraint firstItem="ttS-K6-z95" firstAttribute="leading" secondItem="ZMo-1H-Bzj" secondAttribute="trailing" constant="5" id="bdN-xa-xTe"/>
+                            <constraint firstItem="bfe-Ph-jwt" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="cp0-F5-nTd"/>
+                            <constraint firstItem="bSl-2y-jmv" firstAttribute="width" secondItem="ZMo-1H-Bzj" secondAttribute="width" id="dlX-aX-hxg"/>
+                            <constraint firstItem="bSl-2y-jmv" firstAttribute="leading" secondItem="ADk-i0-csl" secondAttribute="trailing" constant="5" id="gYp-hi-hGc"/>
+                            <constraint firstItem="uJS-4M-3EA" firstAttribute="top" secondItem="bfe-Ph-jwt" secondAttribute="bottom" constant="10" id="hlN-5A-1f9"/>
+                            <constraint firstItem="ttS-K6-z95" firstAttribute="width" secondItem="ZMo-1H-Bzj" secondAttribute="width" id="i3J-tR-BFh"/>
+                            <constraint firstItem="sxg-TU-yb1" firstAttribute="leading" secondItem="ttS-K6-z95" secondAttribute="trailing" constant="5" id="mdy-MD-h4b"/>
+                            <constraint firstAttribute="trailing" secondItem="bSl-2y-jmv" secondAttribute="trailing" constant="5" id="nOy-gL-98b"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="snv-qW-Pqs"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPadPro-1/2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-106" y="399"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6Ta-mt-mNB">
+            <objects>
+                <navigationController id="gt5-CV-XB1" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nXv-L8-tCX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="qhy-xb-gby"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Yh-1r-870" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-748" y="399"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="FruitDefaultImage" width="56" height="56"/>
+    </resources>
+</document>
