@@ -188,8 +188,8 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bfe-Ph-jwt">
                                 <rect key="frame" x="0.0" y="64" width="678" height="845"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7IP-MM-4Gd">
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7IP-MM-4Gd" customClass="CustomLewReorderableLayout">
                                     <size key="itemSize" width="154" height="845"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -288,6 +288,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="snv-qW-Pqs"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPadPro-1/2"/>
+                    <connections>
+                        <outlet property="collectionView" destination="bfe-Ph-jwt" id="iTb-iG-hIl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

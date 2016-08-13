@@ -11,4 +11,5 @@
 @interface Smell : NSObject
 @property(nonatomic, copy) NSString *smellImage;
 @property(nonatomic, copy) NSString *smellName;
+@property(nonatomic, copy) NSString *smellColor;
 @end
