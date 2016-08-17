@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface Smell : NSObject
+@property(nonatomic, copy) NSString *smellRFID;
 @property(nonatomic, copy) NSString *smellImage;
 @property(nonatomic, copy) NSString *smellName;
 @property(nonatomic, copy) NSString *smellColor;

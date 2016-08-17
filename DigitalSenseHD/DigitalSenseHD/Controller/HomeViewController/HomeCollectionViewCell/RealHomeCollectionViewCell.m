@@ -23,7 +23,7 @@
 -(void)setupWithScriptCommand:(ScriptCommand *)command
 {
     [super setupWithScriptCommand:command];
-    [self setBackgroundColor:[UIColor clearColor]];
+    [self setBackgroundColor:[UIColor grayColor]];
     [_realCellView setScriptCommand:command];
 }
 @end

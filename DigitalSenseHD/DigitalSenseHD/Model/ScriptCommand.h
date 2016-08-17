@@ -20,6 +20,7 @@ typedef enum {
 @property(nonatomic, copy) NSString *command;
 @property(nonatomic, copy) NSString *desc;
 @property(nonatomic, copy) NSString *color;
+@property(nonatomic, copy) NSString *smellImage;
 
 @property(nonatomic) ScriptType type;
 

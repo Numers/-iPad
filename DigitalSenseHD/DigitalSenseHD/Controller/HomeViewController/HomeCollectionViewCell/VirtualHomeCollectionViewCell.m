@@ -13,7 +13,7 @@
 -(void)setupWithScriptCommand:(ScriptCommand *)command
 {
     [super setupWithScriptCommand:command];
-    [self setBackgroundColor:[UIColor clearColor]];
+    [self setBackgroundColor:[UIColor colorWithRed:0.372 green:0.788 blue:0.377 alpha:1.000]];
 }
 
 -(void)drawRect:(CGRect)rect
@@ -31,6 +31,10 @@
     CGContextMoveToPoint(context, 0, 0);
     
     CGContextAddLineToPoint(context, 0, self.frame.size.height);
+    
+    CGContextMoveToPoint(context, self.frame.size.width - 0.5, 0);
+    
+    CGContextAddLineToPoint(context, self.frame.size.width - 0.5, self.frame.size.height);
     
     CGContextStrokePath(context);
 }

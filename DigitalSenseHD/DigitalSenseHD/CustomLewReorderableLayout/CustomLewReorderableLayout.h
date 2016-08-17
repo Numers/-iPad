@@ -49,11 +49,15 @@
 
 -(void)collectionView:(UICollectionView *)collectionView TouchLocation:(CGPoint)location didEndTouch:(void (^)(BOOL isPushBack))completion;
 
--(void)collectionView:(UICollectionView *)collectionView PanLocation:(CGPoint)location didChanged:(void (^)(void))completion;
+-(void)collectionView:(UICollectionView *)collectionView PanLocation:(CGPoint)location PanTranslation:(CGPoint)translation didChanged:(void (^)(void))completion;
 
--(void)collectionView:(UICollectionView *)collectionView PanTranslation:(CGPoint)translation didChanged:(void (^)(void))completion;
+-(void)collectionView:(UICollectionView *)collectionView PanLocation:(CGPoint)location PanTranslation:(CGPoint)translation didMoveout:(void (^)(void))completion;
+
+-(void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout longTouchCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
 @end
+
+@class SmellFakeView;
 @interface CustomLewReorderableLayout : UICollectionViewFlowLayout<UIGestureRecognizerDelegate>
 
 @property (nonatomic, weak)id<CustomLewReorderableLayoutDelegate> delegate;
@@ -61,4 +65,6 @@
 @property (nonatomic, strong)UILongPressGestureRecognizer *longPress;
 @property (nonatomic, strong)UIPanGestureRecognizer *panGesture;
 
+-(void)setCellFakeViewOnScreen:(SmellFakeView *)cellFakeViewOnScreen;
+-(void)setCellFakeIndexPath:(NSIndexPath *)indexPath;
 @end

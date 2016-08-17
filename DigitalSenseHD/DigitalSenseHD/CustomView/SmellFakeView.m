@@ -16,6 +16,7 @@
         self.layer.shadowColor = [UIColor blackColor].CGColor;
         self.layer.shadowOffset = CGSizeMake(0, 0);
         self.layer.shadowOpacity = 0;
+        self.layer.shadowColor = [UIColor yellowColor].CGColor;
         self.layer.shadowRadius = 5.0;
         self.layer.shouldRasterize = false;
         
@@ -31,11 +32,11 @@
     return self;
 }
 
-- (void)pushFowardView{
+- (void)pushFowardViewWithScale:(CGFloat)scale completion:(void(^)(BOOL isFinished))completion{
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.center = self.originalCenter;
         self.toBackViewCenter = self.originalCenter;
-        self.transform = CGAffineTransformMakeScale(1.1, 1.1);
+        self.transform = CGAffineTransformMakeScale(scale, scale);
     
         CABasicAnimation *shadowAnimation = [CABasicAnimation animationWithKeyPath:@"shadowOpacity"];
         shadowAnimation.fromValue = @(0);
@@ -44,7 +45,9 @@
         shadowAnimation.fillMode = kCAFillModeForwards;
         [self.layer addAnimation:shadowAnimation forKey:@"applyShadow"];
     } completion:^(BOOL finished) {
-
+        if (completion) {
+            completion(finished);
+        }
     }];
 }
 

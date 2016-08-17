@@ -11,6 +11,6 @@
 @implementation HomeCollectionViewCell
 -(void)setupWithScriptCommand:(ScriptCommand *)command
 {
-    
+    [self setNeedsDisplay];
 }
 @end

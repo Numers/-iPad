@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		11385125FBE8743EF769DFB1 /* libPods-DigitalSenseHD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 154374B62CBFE5C82DBB6315 /* libPods-DigitalSenseHD.a */; };
+		8407720F1D61BFAA00A51654 /* CollectionViewOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407720E1D61BFAA00A51654 /* CollectionViewOperationManager.m */; };
 		841933271D5B252100E8E9EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 841933261D5B252100E8E9EE /* main.m */; };
 		8419332A1D5B252100E8E9EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 841933291D5B252100E8E9EE /* AppDelegate.m */; };
 		841933301D5B252100E8E9EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8419332E1D5B252100E8E9EE /* Main.storyboard */; };
@@ -39,6 +40,8 @@
 		076A9A7E15D65EA9F8D8DA58 /* Pods-DigitalSenseHD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigitalSenseHD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DigitalSenseHD/Pods-DigitalSenseHD.debug.xcconfig"; sourceTree = "<group>"; };
 		08F96D402CAC997922FBB457 /* Pods-DigitalSenseHD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigitalSenseHD.release.xcconfig"; path = "Pods/Target Support Files/Pods-DigitalSenseHD/Pods-DigitalSenseHD.release.xcconfig"; sourceTree = "<group>"; };
 		154374B62CBFE5C82DBB6315 /* libPods-DigitalSenseHD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DigitalSenseHD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8407720D1D61BFAA00A51654 /* CollectionViewOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewOperationManager.h; sourceTree = "<group>"; };
+		8407720E1D61BFAA00A51654 /* CollectionViewOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewOperationManager.m; sourceTree = "<group>"; };
 		841933221D5B252100E8E9EE /* DigitalSenseHD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigitalSenseHD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		841933261D5B252100E8E9EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		841933281D5B252100E8E9EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -111,6 +114,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8407720C1D61BF9200A51654 /* CollectionViewOperationManager */ = {
+			isa = PBXGroup;
+			children = (
+				8407720D1D61BFAA00A51654 /* CollectionViewOperationManager.h */,
+				8407720E1D61BFAA00A51654 /* CollectionViewOperationManager.m */,
+			);
+			path = CollectionViewOperationManager;
+			sourceTree = "<group>";
+		};
 		841933191D5B252100E8E9EE = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +185,7 @@
 		841933401D5B27BC00E8E9EE /* CustomManager */ = {
 			isa = PBXGroup;
 			children = (
+				8407720C1D61BF9200A51654 /* CollectionViewOperationManager */,
 			);
 			path = CustomManager;
 			sourceTree = "<group>";
@@ -453,6 +466,7 @@
 				841933591D5B27BC00E8E9EE /* AppUtils.m in Sources */,
 				8462EB3D1D5D80A100897F92 /* UIColor+HexString.m in Sources */,
 				8462EB351D5D7E8F00897F92 /* RealHomeCollectionViewCell.m in Sources */,
+				8407720F1D61BFAA00A51654 /* CollectionViewOperationManager.m in Sources */,
 				841933331D5B252100E8E9EE /* DigitalSenseHD.xcdatamodeld in Sources */,
 				8462EB411D5DAED700897F92 /* CustomLewReorderableLayout.m in Sources */,
 				84752D921D5F052000127812 /* GraduatedLineView.m in Sources */,
