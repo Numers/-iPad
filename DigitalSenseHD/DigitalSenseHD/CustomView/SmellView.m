@@ -72,7 +72,6 @@
 -(void)setSmell:(Smell *)smell
 {
     [self.smellImageView setImage:[UIImage imageNamed:smell.smellImage]];
-    [self.lblSmellName setText:smell.smellName];
     
     if (_longPress == nil) {
         _longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTouch:)];

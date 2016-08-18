@@ -14,6 +14,7 @@
 
 #import "CustomLewReorderableLayout.h"
 #import "ScriptCommand.h"
+#import "GlobalVar.h"
 
 #import "SpaceHomeCollectionViewCell.h"
 #import "VirtualHomeCollectionViewCell.h"
@@ -21,7 +22,7 @@
 
 #import "CollectionViewOperationManager.h"
 
-#define WidthPerSecond 40.0f
+
 #define SpaceCellIdentify @"SpaceHomeCellIdentify"
 #define VirtualCellIdentify @"VirtualHomeCellIdentify"
 #define RealCellIdentify @"RealHomeCellIdentify"
@@ -29,6 +30,8 @@
 {
     NSArray *smellList;
     
+    NSArray *pageSmellList;
+    NSInteger currentSelectPage;
     NSMutableArray *originCommandList;
     NSMutableArray *commandList;
     SmellFakeView *smellFakeView;
@@ -36,9 +39,13 @@
     GraduatedLineView *lineView;
     
     CollectionViewOperationManager *operationManager;
+    
+    UISwipeGestureRecognizer *swipeGestureRecognizer;
 }
 
 @property(nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property(nonatomic, strong) IBOutlet UILabel *lblTime;
+@property(nonatomic, strong) IBOutlet UIView *bottomBackView;
 @end
 
 @implementation HomeViewController
@@ -46,11 +53,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //fontName:DFPHaiBaoW12   DFWaWaSC-W5  ||  familyName:Wawati SC     DFPHaiBaoW12-GB
+    [self.lblTime setText:@"00:00"];
+    [self.lblTime setFont:[UIFont fontWithName:@"DFPHaiBaoW12-GB" size:32.0f]];
+    [self.lblTime setTextColor:[UIColor whiteColor]];
+    
+    [self.navigationController setNavigationBarHidden:YES];
+    UIImage *backgroundImage = [UIImage imageNamed:@"BackgroundImage"];
+    self.view.layer.contents = (id)backgroundImage.CGImage;
     CustomLewReorderableLayout *layout = (CustomLewReorderableLayout *)[_collectionView collectionViewLayout];
     layout.delegate = self;
     layout.dataSource = self;
     
     [_collectionView setBackgroundColor:[UIColor clearColor]];
+    [_collectionView setContentInset:UIEdgeInsetsMake(0, 10, 0, 10)];
 //    [_collectionView setBackgroundView:[UIView new]];
     lineView = [[GraduatedLineView alloc] init];
     [_collectionView addSubview:lineView];
@@ -62,60 +78,54 @@
     
     Smell *smell1 = [[Smell alloc] init];
     smell1.smellRFID = @"00000001";
-    smell1.smellName = @"香蕉";
-    smell1.smellImage = @"FruitDefaultImage";
+    smell1.smellName = @"苹果";
+    smell1.smellImage = @"AppleImage";
     smell1.smellColor = @"#037F00";
     
     Smell *smell2 = [[Smell alloc] init];
     smell2.smellRFID = @"00000002";
-    smell2.smellName = @"苹果";
-    smell2.smellImage = @"FruitDefaultImage";
+    smell2.smellName = @"香蕉";
+    smell2.smellImage = @"BananaImage";
     smell2.smellColor = @"#000000";
     
     Smell *smell3 = [[Smell alloc] init];
     smell3.smellRFID = @"00000003";
-    smell3.smellName = @"梨";
-    smell3.smellImage = @"FruitDefaultImage";
+    smell3.smellName = @"猕猴桃";
+    smell3.smellImage = @"KiwifruitImage";
     smell3.smellColor = @"#000000";
     
     Smell *smell4 = [[Smell alloc] init];
     smell4.smellRFID = @"00000004";
-    smell4.smellName = @"草莓";
-    smell4.smellImage = @"FruitDefaultImage";
+    smell4.smellName = @"葡萄";
+    smell4.smellImage = @"GrapeImage";
     smell4.smellColor = @"#000000";
     
     Smell *smell5 = [[Smell alloc] init];
     smell5.smellRFID = @"00000005";
-    smell5.smellName = @"菠萝";
-    smell5.smellImage = @"FruitDefaultImage";
+    smell5.smellName = @"草莓";
+    smell5.smellImage = @"StrawberryImage";
     smell5.smellColor = @"#000000";
     
     Smell *smell6 = [[Smell alloc] init];
     smell6.smellRFID = @"00000006";
-    smell6.smellName = @"公路";
-    smell6.smellImage = @"FruitDefaultImage";
+    smell6.smellName = @"西瓜";
+    smell6.smellImage = @"WatermelonImage";
     smell6.smellColor = @"#000000";
     
     Smell *smell7 = [[Smell alloc] init];
     smell7.smellRFID = @"00000007";
-    smell7.smellName = @"黄瓜";
-    smell7.smellImage = @"FruitDefaultImage";
+    smell7.smellName = @"桔子";
+    smell7.smellImage = @"OrangeImage";
     smell7.smellColor = @"#000000";
     
     Smell *smell8 = [[Smell alloc] init];
     smell8.smellRFID = @"00000008";
-    smell8.smellName = @"葡萄"; 
-    smell8.smellImage = @"FruitDefaultImage";
+    smell8.smellName = @"芒果";
+    smell8.smellImage = @"LemonImage";
     smell8.smellColor = @"#000000";
-    smellList = @[smell1,smell2,smell3,smell4,smell5,smell6,smell7,smell8];
+    pageSmellList = @[@[smell1,smell2,smell3,smell4,smell5,smell6,smell7,smell8],@[smell1,smell3,smell2,smell7,smell4,smell5,smell6,smell8]];
     
-    NSInteger i = 1;
-    for (Smell *s in smellList) {
-        SmellView *sv = [self.view viewWithTag:i];
-        sv.delegate = self;
-        [sv setSmell:s];
-        i++;
-    }
+    [self selectSmellListWithIndex:0];
     
     commandList = [NSMutableArray array];
     for (NSInteger i = 0; i < 60; i++) {
@@ -129,6 +139,10 @@
     }
     
     originCommandList = [commandList copy];
+    
+    swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGesture)];
+    swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight | UISwipeGestureRecognizerDirectionLeft;
+    [self.bottomBackView addGestureRecognizer:swipeGestureRecognizer];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -140,7 +154,7 @@
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    [lineView setCenter:CGPointMake((lineView.frame.size.width - 30) / 2.0f, _collectionView.frame.size.height - lineView.frame.size.height / 2)];
+    [lineView setCenter:CGPointMake((lineView.frame.size.width - 20)/ 2.0f, 0)];
     [_collectionView reloadData];
 }
 
@@ -149,6 +163,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma -mark GestureRecognizer
+-(void)swipeGesture
+{
+    [self changeSmellList];
+}
 #pragma -mark privateFunction
 -(void)changeVirtualCommandToRealCommand
 {
@@ -163,6 +182,40 @@
     }
 }
 
+-(void)selectSmellListWithIndex:(NSInteger)index
+{
+    currentSelectPage = index;
+    smellList = [[pageSmellList objectAtIndex:index] copy];
+    
+    NSInteger j = 1;
+    for (j = 1; j <= smellList.count; j++) {
+        SmellView *sv = [self.view viewWithTag:j];
+        if (sv) {
+            sv.delegate = nil;
+            [sv setHidden:YES];
+        }
+    }
+    
+    NSInteger i = 1;
+    for (Smell *s in smellList) {
+        SmellView *sv = [self.view viewWithTag:i];
+        if (sv) {
+            sv.delegate = self;
+            [sv setHidden:NO];
+            [sv setSmell:s];
+        }
+        i++;
+    }
+}
+
+-(void)changeSmellList
+{
+    if (currentSelectPage == 0) {
+        [self selectSmellListWithIndex:1];
+    }else if (currentSelectPage == 1) {
+        [self selectSmellListWithIndex:0];
+    }
+}
 #pragma -mark notification
 -(void)smellFakeViewCenterChanged:(NSNotification *)notify
 {
@@ -247,6 +300,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath
 {
+    ScriptCommand *command = [commandList objectAtIndex:fromIndexPath.item];
+    if (command && command.type != VirtualCommand) {
+        return;
+    }
     if (fromIndexPath.item > toIndexPath.item) {
         if (operationManager) {
             [operationManager moveLeftOperation:toIndexPath];
@@ -308,6 +365,11 @@
 
 -(void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout longTouchCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"长按第%ld行",indexPath.item);
+    ScriptCommand *command = [commandList objectAtIndex:indexPath.item];
+    if (command && command.type != RealCommand) {
+        return;
+    }
     smellFakeView = [[SmellFakeView alloc] initWithView:cell];
     smellFakeView.center = [self.collectionView convertPoint:cell.center toView:self.view];
     smellFakeView.originalCenter = smellFakeView.center;
@@ -334,8 +396,10 @@
     
     SmellView *sv = [self.view viewWithTag:tag];
     smellFakeView = [[SmellFakeView alloc] initWithView:sv];
+    CGPoint fakeViewCenter = [self.view convertPoint:sv.center fromView:self.bottomBackView];
+    smellFakeView.center = fakeViewCenter;
     smellFakeView.smell = smell;
-    smellFakeView.originalCenter = sv.center;
+    smellFakeView.originalCenter = fakeViewCenter;
     [self.view addSubview:smellFakeView];
     [smellFakeView pushFowardViewWithScale:1.1 completion:^(BOOL isFinished) {
         

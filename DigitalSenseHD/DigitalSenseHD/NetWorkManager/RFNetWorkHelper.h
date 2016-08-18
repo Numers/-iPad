@@ -20,7 +20,7 @@ typedef enum{
     WARNTYPE
 }STATUSCODE;
 #define TimeOut 10.0f
-#define SignatureAPPKey @"RNIuYTzjt3oIDT_chVfxiUA.#B*9WYVA"
+#define SignatureAPPKey @"bK73GrbW62tvVd6tNK7K2p2Er66AKQys"
 #define NetWorkConnectFailedDescription @"网络连接失败"
 
 typedef void (^ApiSuccessCallback)(AFHTTPRequestOperation*operation, id responseObject);

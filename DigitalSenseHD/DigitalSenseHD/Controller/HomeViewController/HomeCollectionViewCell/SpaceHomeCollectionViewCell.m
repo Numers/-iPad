@@ -13,7 +13,7 @@
 -(void)setupWithScriptCommand:(ScriptCommand *)command
 {
     [super setupWithScriptCommand:command];
-    [self setBackgroundColor:[UIColor colorWithRed:1.000 green:0.447 blue:0.557 alpha:1.000]];
-//    [self setBackgroundColor:[UIColor clearColor]];
+//    [self setBackgroundColor:[UIColor colorWithRed:1.000 green:0.447 blue:0.557 alpha:1.000]];
+    [self setBackgroundColor:[UIColor clearColor]];
 }
 @end

@@ -29,11 +29,17 @@ static SCNetWorkManager *scNetWorkManager;
         para = [NSMutableDictionary dictionary];
     }
     
+//    NSTimeInterval nowTime = [[NSDate date] timeIntervalSince1970];
+//    NSString *timeStamp = [NSString stringWithFormat:@"%.0f",nowTime];
+//    [para setObject:timeStamp forKey:@"timestamp"];
+//    NSString *signatureString = [AppUtils generateSignatureString:parameters Method:@"POST" URI:uri Key:SignatureAPPKey];
+//    NSString *signature = [AppUtils sha1:signatureString];
+//    [para setObject:signature forKey:@"sign"];
+    
     NSTimeInterval nowTime = [[NSDate date] timeIntervalSince1970];
     NSString *timeStamp = [NSString stringWithFormat:@"%.0f",nowTime];
-    [para setObject:timeStamp forKey:@"timestamp"];
-    NSString *signatureString = [AppUtils generateSignatureString:parameters Method:@"POST" URI:uri Key:SignatureAPPKey];
-    NSString *signature = [AppUtils sha1:signatureString];
+    NSString *signatureString = [NSString stringWithFormat:@"%@%@",timeStamp,SignatureAPPKey];
+    NSString *signature = [AppUtils getMd5_32Bit:signatureString];
     [para setObject:signature forKey:@"sign"];
     
     NSString *url = [NSString stringWithFormat:@"%@%@",API_BASE,uri];
@@ -72,11 +78,17 @@ static SCNetWorkManager *scNetWorkManager;
         para = [NSMutableDictionary dictionary];
     }
     
+//    NSTimeInterval nowTime = [[NSDate date] timeIntervalSince1970];
+//    NSString *timeStamp = [NSString stringWithFormat:@"%.0f",nowTime];
+//    [para setObject:timeStamp forKey:@"timestamp"];
+//    NSString *signatureString = [AppUtils generateSignatureString:parameters Method:@"GET" URI:uri Key:SignatureAPPKey];
+//    NSString *signature = [AppUtils sha1:signatureString];
+//    [para setObject:signature forKey:@"sign"];
+    
     NSTimeInterval nowTime = [[NSDate date] timeIntervalSince1970];
     NSString *timeStamp = [NSString stringWithFormat:@"%.0f",nowTime];
-    [para setObject:timeStamp forKey:@"timestamp"];
-    NSString *signatureString = [AppUtils generateSignatureString:parameters Method:@"GET" URI:uri Key:SignatureAPPKey];
-    NSString *signature = [AppUtils sha1:signatureString];
+    NSString *signatureString = [NSString stringWithFormat:@"%@%@",timeStamp,SignatureAPPKey];
+    NSString *signature = [AppUtils getMd5_32Bit:signatureString];
     [para setObject:signature forKey:@"sign"];
     
     NSString *url = [NSString stringWithFormat:@"%@%@",API_BASE,uri];
@@ -116,11 +128,17 @@ static SCNetWorkManager *scNetWorkManager;
         para = [NSMutableDictionary dictionary];
     }
     
+//    NSTimeInterval nowTime = [[NSDate date] timeIntervalSince1970];
+//    NSString *timeStamp = [NSString stringWithFormat:@"%.0f",nowTime];
+//    [para setObject:timeStamp forKey:@"timestamp"];
+//    NSString *signatureString = [AppUtils generateSignatureString:parameters Method:@"PUT" URI:uri Key:SignatureAPPKey];
+//    NSString *signature = [AppUtils sha1:signatureString];
+//    [para setObject:signature forKey:@"sign"];
+    
     NSTimeInterval nowTime = [[NSDate date] timeIntervalSince1970];
     NSString *timeStamp = [NSString stringWithFormat:@"%.0f",nowTime];
-    [para setObject:timeStamp forKey:@"timestamp"];
-    NSString *signatureString = [AppUtils generateSignatureString:parameters Method:@"PUT" URI:uri Key:SignatureAPPKey];
-    NSString *signature = [AppUtils sha1:signatureString];
+    NSString *signatureString = [NSString stringWithFormat:@"%@%@",timeStamp,SignatureAPPKey];
+    NSString *signature = [AppUtils getMd5_32Bit:signatureString];
     [para setObject:signature forKey:@"sign"];
     
     NSString *url = [NSString stringWithFormat:@"%@%@",API_BASE,uri];

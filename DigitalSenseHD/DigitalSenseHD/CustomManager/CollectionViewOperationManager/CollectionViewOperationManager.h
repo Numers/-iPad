@@ -15,7 +15,8 @@
 @property(nonatomic, strong) NSMutableArray *commandList;
 @property(nonatomic, strong) Smell *insertSmell;
 @property(nonatomic, strong) NSIndexPath *insertIndexPath;
-@property (readwrite, nonatomic, strong) NSLock *lock;
+@property (readwrite, nonatomic, strong) NSRecursiveLock *lock; //函数互斥锁
+@property (readwrite, nonatomic, strong) NSLock *operationLock; //操作互斥锁
 
 -(instancetype)initWithCommandArray:(NSMutableArray *)arr WithInsertIndexPath:(NSIndexPath *)indexPath WithInsertSmell:(Smell *)smell;
 -(void)insertOperation:(NSIndexPath *)indexPath;

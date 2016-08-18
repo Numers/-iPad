@@ -11,4 +11,6 @@
 #define APPID_VALUE @"57328e58"
 #define TIMEOUT_VALUE  @"2000" // 语音timeout连接超时的时间，以ms为单位
 
+#define WidthPerSecond 65.0f
+
 #endif /* GlobalVar_h */

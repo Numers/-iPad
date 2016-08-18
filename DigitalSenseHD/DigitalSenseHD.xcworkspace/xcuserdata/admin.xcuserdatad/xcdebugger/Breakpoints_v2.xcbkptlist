@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493028837.834305"
+            timestampString = "493219590.93326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493028837.834305"
+            timestampString = "493219590.93326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493130809.384946"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "-collectionView:numberOfItemsInSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493130809.384946"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493130809.384946"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomLewReorderableLayout/CustomLewReorderableLayout.m"
-            timestampString = "493130130.230889"
+            timestampString = "493177210.44529"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "717"
-            endingLineNumber = "717"
+            startingLineNumber = "719"
+            endingLineNumber = "719"
             landmarkName = "-initWithCell:"
             landmarkType = "5">
             <Locations>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493130809.384946"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
             landmarkName = "-collectionView:TouchLocation:didEndTouch:"
             landmarkType = "5">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493028837.834305"
+            timestampString = "493219590.93326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493028837.834305"
+            timestampString = "493219590.93326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493028837.834305"
+            timestampString = "493219590.93326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -361,28 +361,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DigitalSenseHD/CustomView/GraduatedLineView.m"
-            timestampString = "492768884.055048"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "-drawRect:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493028837.834305"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "-viewDidLayoutSubviews"
             landmarkType = "5">
          </BreakpointContent>
@@ -394,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493045659.926562"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "-insertOperationCollectionView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -426,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493130809.384946"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -442,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493045659.926562"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "-insertOperationCollectionView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -458,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493045659.926562"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "-insertOperationCollectionView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -474,39 +458,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493016285.152107"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "-insertOperation:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493045659.926562"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "-insertOperationCollectionView:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493045659.926562"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
@@ -522,11 +474,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493045659.926562"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "-insertOperationCollectionView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
+            timestampString = "493189975.402297"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "-insertOperation:"
             landmarkType = "5">
          </BreakpointContent>
@@ -538,11 +506,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493101670.011247"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "-insertOperation:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
+            timestampString = "493189975.402297"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "-insertOperationCollectionView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -554,11 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493119626.637471"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "-smellFakeViewCenterChanged:"
             landmarkType = "5">
          </BreakpointContent>
@@ -586,39 +570,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493045659.926562"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "-insertOperationCollectionView:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493103638.630233"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
-            landmarkName = "-hasEnoughSpaceWithDuration:afterIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493045659.926562"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
@@ -634,44 +586,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493101670.011247"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "-insertOperationCollectionView:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493132868.16868"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "367"
-            endingLineNumber = "367"
-            landmarkName = "-panLocationChanged:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493132868.16868"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "368"
-            endingLineNumber = "368"
-            landmarkName = "-panLocationChanged:"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
+            landmarkName = "-hasEnoughSpaceWithDuration:afterIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -682,43 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493101670.011247"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "-moveLeftOperationCollectionView:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493101670.011247"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "-moveLeftOperationCollectionView:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493101670.011247"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "-insertOperationCollectionView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -730,11 +618,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493101670.011247"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "-insertOperationCollectionView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
+            timestampString = "493220020.630492"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
+            landmarkName = "-panLocationChanged:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
+            timestampString = "493220020.630492"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "432"
+            endingLineNumber = "432"
+            landmarkName = "-panLocationChanged:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
+            timestampString = "493189975.402297"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "-moveLeftOperationCollectionView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -746,11 +682,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493103638.630233"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "-moveLeftOperationCollectionView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
+            timestampString = "493189975.402297"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-moveLeftOperationCollectionView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
+            timestampString = "493189975.402297"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
             landmarkName = "-isNearFromIndexPath:toIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -762,11 +730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493046659.744803"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "-insertOperationCollectionView:"
             landmarkType = "5">
             <Locations>
@@ -810,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493046661.392617"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "-insertOperationCollectionView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -826,11 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493132868.16868"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "375"
-            endingLineNumber = "375"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
             landmarkName = "-panLocationChanged:"
             landmarkType = "5">
          </BreakpointContent>
@@ -842,11 +810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493132868.16868"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
+            startingLineNumber = "444"
+            endingLineNumber = "444"
             landmarkName = "-panLocationChanged:"
             landmarkType = "5">
          </BreakpointContent>
@@ -858,11 +826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493101670.011247"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "-insertOperationCollectionView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -874,11 +842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493092918.886249"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "-insertOperationCollectionView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -890,11 +858,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493101874.723337"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "-moveRightOperaitonCollectionView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -906,11 +874,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493101874.723337"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "-moveRightOperaitonCollectionView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -922,27 +890,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493101874.723337"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
-            landmarkName = "-moveRightOperaitonCollectionView:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493104307.906939"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "-moveLeftOperationCollectionView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -954,11 +906,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493104315.954537"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "-moveRightOperaitonCollectionView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -970,11 +922,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493132868.16868"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "385"
-            endingLineNumber = "385"
+            startingLineNumber = "449"
+            endingLineNumber = "449"
             landmarkName = "-panLocationChanged:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1002,11 +954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493132868.16868"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "297"
-            endingLineNumber = "297"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
             landmarkName = "-collectionView:PanLocation:PanTranslation:didChanged:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1018,11 +970,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493132868.16868"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
+            startingLineNumber = "373"
+            endingLineNumber = "373"
             landmarkName = "-collectionView:layout:longTouchCell:atIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1034,11 +986,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493132868.16868"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
             landmarkName = "-collectionView:layout:longTouchCell:atIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1050,11 +1002,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493119987.52275"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "-moveLeftOperationCollectionView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1066,11 +1018,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493132868.16868"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
+            startingLineNumber = "386"
+            endingLineNumber = "386"
             landmarkName = "-collectionView:layout:longTouchCell:atIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1082,11 +1034,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493130809.384946"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1178,11 +1130,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
-            timestampString = "493126207.937916"
+            timestampString = "493189975.402297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "-moveRightOperaitonCollectionView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1194,11 +1146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493132868.16868"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "382"
+            endingLineNumber = "382"
             landmarkName = "-collectionView:layout:longTouchCell:atIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1242,11 +1194,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493130809.384946"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "-smellFakeViewCenterChanged:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1290,11 +1242,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493130886.700776"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
             landmarkName = "-collectionView:layout:sizeForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1306,12 +1258,380 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
-            timestampString = "493130930.971099"
+            timestampString = "493220020.630492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "-collectionView:layout:sizeForItemAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
+            timestampString = "493189975.402297"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "-moveLeftOperationCollectionView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
+            timestampString = "493189975.402297"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "-moveLeftOperationCollectionView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
+            timestampString = "493188651.172603"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "+operationThread"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[CollectionViewOperationManager operationThread]"
+                  moduleName = "DigitalSenseHD"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/MyCode/%E6%95%B0%E5%AD%97%E5%97%85%E8%A7%89HD/DigitalSenseHD/DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
+                  timestampString = "493188719.445817"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__49+[CollectionViewOperationManager operationThread]_block_invoke"
+                  moduleName = "DigitalSenseHD"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/MyCode/%E6%95%B0%E5%AD%97%E5%97%85%E8%A7%89HD/DigitalSenseHD/DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
+                  timestampString = "493188719.445925"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/CustomManager/CollectionViewOperationManager/CollectionViewOperationManager.m"
+            timestampString = "493189975.402297"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "+operationThreadEntryPoint:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeCollectionViewCell/RealCellView.m"
+            timestampString = "493197498.339178"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-touchesEnded:withEvent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeCollectionViewCell/RealCellView.m"
+            timestampString = "493197621.908795"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "-touchesMoved:withEvent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeCollectionViewCell/RealCellView.m"
+            timestampString = "493197696.945078"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "-touchesMoved:withEvent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeCollectionViewCell/RealCellView.m"
+            timestampString = "493197698.657073"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-touchesMoved:withEvent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeCollectionViewCell/RealCellView.m"
+            timestampString = "493197805.363589"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "-touchesMoved:withEvent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
+            timestampString = "493220020.630492"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "370"
+            endingLineNumber = "370"
+            landmarkName = "-collectionView:layout:longTouchCell:atIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
+            timestampString = "493220020.630492"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
+            landmarkName = "-collectionView:itemAtIndexPath:willMoveToIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
+            timestampString = "493219590.93326"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
+            timestampString = "493219590.93326"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/CustomView/GraduatedLineView.m"
+            timestampString = "493216006.421551"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-drawRect:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/CustomView/GraduatedLineView.m"
+            timestampString = "493215852.546151"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "-drawRect:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
+            timestampString = "493220020.630492"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "-selectSmellListWithIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
+            timestampString = "493220020.630492"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "-selectSmellListWithIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
+            timestampString = "493220020.630492"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "403"
+            endingLineNumber = "403"
+            landmarkName = "-longTouchWithTag:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
+            timestampString = "493220020.630492"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "-swipeGesture"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
+            timestampString = "493220020.630492"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "-changeSmellList"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalSenseHD/Controller/HomeViewController/HomeViewController.m"
+            timestampString = "493220020.630492"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "-selectSmellListWithIndex:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

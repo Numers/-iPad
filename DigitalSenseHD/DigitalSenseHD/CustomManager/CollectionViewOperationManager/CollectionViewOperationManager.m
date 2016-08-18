@@ -21,7 +21,8 @@
         }
         _insertIndexPath = indexPath;
         _insertSmell = smell;
-        self.lock = [[NSLock alloc] init];
+        self.lock = [[NSRecursiveLock alloc] init];
+        self.operationLock = [[NSLock alloc] init];
     }
     return self;
 }
@@ -31,8 +32,9 @@
     static NSThread *_operationThread = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _operationThread = [[NSThread alloc] initWithTarget:self selector:@selector(operationThreadEntryPoint:) object:nil];
-        [_operationThread start];
+//        _operationThread = [[NSThread alloc] initWithTarget:self selector:@selector(operationThreadEntryPoint:) object:nil];
+//        [_operationThread start];
+        _operationThread = [NSThread mainThread];
     });
     return _operationThread;
 }
@@ -43,7 +45,7 @@
         [[NSThread currentThread] setName:@"OperationCollectionViewCell"];
         
         NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-        [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
+        [runLoop addPort:[NSMachPort port] forMode:NSRunLoopCommonModes];
         [runLoop run];
     }
 }
@@ -78,6 +80,7 @@
                     if (_collectionView) {
                 
                         [_collectionView performBatchUpdates:^{
+                            [self.operationLock lock];
                             [self deleteSpaceWithIndex:indexPath.item withCount:virtualCommand.duration];
                             NSMutableArray *deleteIndexPath = [NSMutableArray array];
                             for (NSInteger i = indexPath.item; i < indexPath.item + virtualCommand.duration; i++) {
@@ -90,6 +93,7 @@
                             [_commandList insertObject:virtualCommand atIndex:indexPath.item];
                             [_collectionView insertItemsAtIndexPaths:@[indexPath]];
                             _insertIndexPath = indexPath;
+                            [self.operationLock unlock];
                         } completion:^(BOOL finished) {
                             
                         }];
@@ -140,10 +144,12 @@
                 ScriptCommand *insertCommand = [_commandList objectAtIndex:_insertIndexPath.item];
                 if ([self hasEnoughSpaceWithDuration:insertCommand.duration afterIndexPath:indexPath]) {
                     [_collectionView performBatchUpdates:^{
+                        [self.operationLock lock];
                         [_collectionView moveItemAtIndexPath:_insertIndexPath toIndexPath:indexPath];
                         [_commandList removeObject:insertCommand];
                         [_commandList insertObject:insertCommand atIndex:indexPath.item];
                         _insertIndexPath = indexPath;
+                        [self.operationLock unlock];
                     } completion:^(BOOL finished) {
                         
                     }];
@@ -152,6 +158,7 @@
                 ScriptCommand *insertCommand = [_commandList objectAtIndex:_insertIndexPath.item];
                 if ([self hasEnoughSpaceWithDuration:insertCommand.duration afterIndexPath:indexPath]) {
                     [_collectionView performBatchUpdates:^{
+                        [self.operationLock lock];
                         //
                         [_commandList removeObjectAtIndex:_insertIndexPath.item];
                         [_collectionView deleteItemsAtIndexPaths:@[_insertIndexPath]];
@@ -183,6 +190,7 @@
                         [_commandList insertObject:insertCommand atIndex:indexPath.item];
                         [_collectionView insertItemsAtIndexPaths:@[indexPath]];
                         _insertIndexPath = indexPath;
+                        [self.operationLock unlock];
                     } completion:^(BOOL finished) {
                         
                     }];
@@ -229,10 +237,12 @@
                 ScriptCommand *insertCommand = [_commandList objectAtIndex:_insertIndexPath.item];
                 if ([self hasEnoughSpaceWithDuration:insertCommand.duration beforeIndexPath:indexPath]) {
                     [_collectionView performBatchUpdates:^{
+                        [self.operationLock lock];
                         [_commandList removeObject:insertCommand];
                         [_commandList insertObject:insertCommand atIndex:indexPath.item];
                         [_collectionView moveItemAtIndexPath:_insertIndexPath toIndexPath:indexPath];
                         _insertIndexPath = indexPath;
+                        [self.operationLock unlock];
                     } completion:^(BOOL finished) {
                         
                     }];
@@ -241,6 +251,7 @@
                 ScriptCommand *insertCommand = [_commandList objectAtIndex:_insertIndexPath.item];
                 if ([self hasEnoughSpaceWithDuration:insertCommand.duration beforeIndexPath:indexPath]) {
                     [_collectionView performBatchUpdates:^{
+                        [self.operationLock lock];
                         //
                         [_commandList removeObjectAtIndex:_insertIndexPath.item];
                         [_collectionView deleteItemsAtIndexPaths:@[_insertIndexPath]];
@@ -269,6 +280,7 @@
                         [_collectionView insertItemsAtIndexPaths:@[indexPath]];
                         
                         _insertIndexPath = indexPath;
+                        [self.operationLock unlock];
                     } completion:^(BOOL finished) {
                         
                     }];

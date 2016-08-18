@@ -34,6 +34,8 @@
 		84752D921D5F052000127812 /* GraduatedLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84752D911D5F052000127812 /* GraduatedLineView.m */; };
 		847D2E291D5C59A600DBC24C /* Smell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D2E281D5C59A600DBC24C /* Smell.m */; };
 		847D2E2C1D5C5FBC00DBC24C /* SmellFakeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D2E2B1D5C5FBC00DBC24C /* SmellFakeView.m */; };
+		848820911D65DAE50035BEE1 /* HuaKangHaiBao.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 848820901D65DAE50035BEE1 /* HuaKangHaiBao.ttf */; };
+		848820921D65DC320035BEE1 /* WawaSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8488208F1D65DAB30035BEE1 /* WawaSC-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +93,8 @@
 		847D2E281D5C59A600DBC24C /* Smell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Smell.m; sourceTree = "<group>"; };
 		847D2E2A1D5C5FBC00DBC24C /* SmellFakeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmellFakeView.h; sourceTree = "<group>"; };
 		847D2E2B1D5C5FBC00DBC24C /* SmellFakeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmellFakeView.m; sourceTree = "<group>"; };
+		8488208F1D65DAB30035BEE1 /* WawaSC-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WawaSC-Regular.otf"; sourceTree = "<group>"; };
+		848820901D65DAE50035BEE1 /* HuaKangHaiBao.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HuaKangHaiBao.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,8 @@
 		841933251D5B252100E8E9EE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				848820901D65DAE50035BEE1 /* HuaKangHaiBao.ttf */,
+				8488208F1D65DAB30035BEE1 /* WawaSC-Regular.otf */,
 				841933361D5B252100E8E9EE /* LaunchScreen.storyboard */,
 				841933391D5B252100E8E9EE /* Info.plist */,
 				841933341D5B252100E8E9EE /* Assets.xcassets */,
@@ -386,8 +392,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				848820921D65DC320035BEE1 /* WawaSC-Regular.otf in Resources */,
 				841933381D5B252100E8E9EE /* LaunchScreen.storyboard in Resources */,
 				841933351D5B252100E8E9EE /* Assets.xcassets in Resources */,
+				848820911D65DAE50035BEE1 /* HuaKangHaiBao.ttf in Resources */,
 				841933301D5B252100E8E9EE /* Main.storyboard in Resources */,
 				841933631D5B2E4E00E8E9EE /* load_circle.png in Resources */,
 			);

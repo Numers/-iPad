@@ -16,6 +16,7 @@
 +(NSString *)returnBaseUrl;
 +(NSString *)generateSignatureString:(NSDictionary *)parameters Method:(NSString *)method URI:(NSString *)uri Key:(NSString *)subKey;
 +(NSString*) sha1:(NSString *)text;
++(NSString *)getMd5_32Bit:(NSString *)str;
 
 +(void)showInfo:(NSString *)text;
 + (BOOL)isNullStr:(NSString *)str;

@@ -467,18 +467,20 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
 //                }
                 
                 if ([self.collectionView pointInside:location withEvent:nil]) {
-                    if (self.panTranslation.x < 0) {
-                        [self beginScrollIfNeeded];
-                        [self moveItemIfNeeded];
-                    }else if(self.panTranslation.x > 0){
-                        NSLog(@"向右移动");
-                        if ([_delegate respondsToSelector:@selector(collectionView:PanLocation:PanTranslation:didChanged:)]) {
-                            [_delegate collectionView:self.collectionView PanLocation:location PanTranslation:_panTranslation didChanged:^{
-                                
-                            }];
-                        }
-                        
-                    }
+//                    if (self.panTranslation.x < 0) {
+//                        [self beginScrollIfNeeded];
+//                        [self moveItemIfNeeded];
+//                    }else if(self.panTranslation.x > 0){
+//                        NSLog(@"向右移动");
+//                        if ([_delegate respondsToSelector:@selector(collectionView:PanLocation:PanTranslation:didChanged:)]) {
+//                            [_delegate collectionView:self.collectionView PanLocation:location PanTranslation:_panTranslation didChanged:^{
+//                                
+//                            }];
+//                        }
+//                        
+//                    }
+                    [self beginScrollIfNeeded];
+                    [self moveItemIfNeeded];
                 }else{
                     NSLog(@"跑外面去了");
                     if ([_delegate respondsToSelector:@selector(collectionView:PanLocation:PanTranslation:didMoveout:)]) {
