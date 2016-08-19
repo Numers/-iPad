@@ -22,4 +22,5 @@
 -(void)insertOperation:(NSIndexPath *)indexPath;
 -(void)moveLeftOperation:(NSIndexPath *)indexPath;
 -(void)moveRightOperation:(NSIndexPath *)indexPath;
+-(void)deleteOperation:(NSIndexPath *)indexPath;
 @end

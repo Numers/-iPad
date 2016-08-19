@@ -106,7 +106,7 @@
             if ([_commandList containsObject:virtualCommand]) {
                 NSInteger virtualIndex = [_commandList indexOfObject:virtualCommand];
                 UICollectionViewCell *insertCell = [_collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:virtualIndex inSection:0]];
-                center = insertCell.center;
+                center = CGPointMake(insertCell.center.x, insertCell.frame.size.height * [AppUtils powerFixed:virtualCommand.power]);
             }
         }
     }
@@ -201,7 +201,7 @@
     if ([_commandList containsObject:virtualCommand]) {
         NSInteger virtualIndex = [_commandList indexOfObject:virtualCommand];
         UICollectionViewCell *insertCell = [_collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:virtualIndex inSection:0]];
-        center = insertCell.center;
+        center = CGPointMake(insertCell.center.x, insertCell.frame.size.height * [AppUtils powerFixed:virtualCommand.power]);
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:FakeViewCenterChangedNotify object:nil userInfo:@{@"centerX":@(center.x),@"centerY":@(center.y)}];
     [self.lock unlock];
@@ -291,9 +291,48 @@
     if ([_commandList containsObject:virtualCommand]) {
         NSInteger virtualIndex = [_commandList indexOfObject:virtualCommand];
         UICollectionViewCell *insertCell = [_collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:virtualIndex inSection:0]];
-        center = insertCell.center;
+        center = CGPointMake(insertCell.center.x, insertCell.frame.size.height * [AppUtils powerFixed:virtualCommand.power]);
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:FakeViewCenterChangedNotify object:nil userInfo:@{@"centerX":@(center.x),@"centerY":@(center.y)}];
+    [self.lock unlock];
+}
+
+-(void)deleteOperation:(NSIndexPath *)indexPath
+{
+    [self.lock lock];
+    [self performSelector:@selector(deleteOprationCollectionView:) onThread:[[self class] operationThread] withObject:indexPath waitUntilDone:NO];
+    [self.lock unlock];
+}
+
+-(void)deleteOprationCollectionView:(NSIndexPath *)indexPath
+{
+    [self.lock lock];
+    if (indexPath.item < _commandList.count) {
+        ScriptCommand *virtualCommand  = [_commandList objectAtIndex:indexPath.item];
+        if (virtualCommand.type == VirtualCommand) {
+            [self.collectionView performBatchUpdates:^{
+                [_commandList removeObjectAtIndex:indexPath.item];
+                [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+                
+                NSMutableArray *indexPathArr = [NSMutableArray array];
+                for (NSInteger i = 0; i < virtualCommand.duration; i ++) {
+                    ScriptCommand *command = [[ScriptCommand alloc] init];
+                    command.startRelativeTime = i;
+                    command.duration = 1;
+                    command.smellName = @"间隔";
+                    command.type = SpaceCommand;
+                    command.power = (arc4random() % 100) / 100.0f;
+                    [_commandList addObject:command];
+                    
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:_commandList.count - 1 inSection:0];
+                    [indexPathArr addObject:indexPath];
+                }
+                [self.collectionView insertItemsAtIndexPaths:indexPathArr];
+            } completion:^(BOOL finished) {
+                
+            }];
+        }
+    }
     [self.lock unlock];
 }
 

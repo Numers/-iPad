@@ -8,6 +8,7 @@
 
 #import "CustomLewReorderableLayout.h"
 #import "SmellFakeView.h"
+#import "UIView+Boom.h"
 #import <QuartzCore/QuartzCore.h>
 typedef NS_ENUM(NSUInteger, LewScrollDirction) {
     LewScrollDirctionStay,
@@ -133,8 +134,10 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
 
 - (void)invalidateDisplayLink{
     _continuousScrollDirection = LewScrollDirctionStay;
-    [_displayLink invalidate];
-    _displayLink = nil;
+    if (_displayLink) {
+        [_displayLink invalidate];
+        _displayLink = nil;
+    }
 }
 
 - (void)beginScrollIfNeeded{
@@ -323,6 +326,7 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
     CGPoint startPoint = [self.collectionView convertPoint:_cellFakeView.cellFrame.origin toView:[UIApplication sharedApplication].keyWindow];
     _cellFakeViewOnScreen.cellFrame = CGRectMake(startPoint.x, startPoint.y, _cellFakeView.cellFrame.size.width, _cellFakeView.cellFrame.size.height);
     [_cellFakeViewOnScreen pushBackView:^(BOOL isFinished) {
+        [_cellFakeView removeFromSuperview];
         _cellFakeView = nil;
         [_cellFakeViewOnScreen removeFromSuperview];
         _cellFakeViewOnScreen = nil;
@@ -346,9 +350,13 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
     
     _fakeCellCenter = CGPointZero;
     
+    [_cellFakeView removeFromSuperview];
     _cellFakeView = nil;
-    [_cellFakeViewOnScreen removeFromSuperview];
-    _cellFakeViewOnScreen = nil;
+    
+    [_cellFakeViewOnScreen hiddenView:^(BOOL isFinished) {
+        [_cellFakeViewOnScreen removeFromSuperview];
+        _cellFakeViewOnScreen = nil;
+    }];
     
     [self invalidateLayout];
 }
@@ -369,6 +377,12 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
     
     switch (longPress.state) {
         case UIGestureRecognizerStateBegan:{
+            
+            if ([_delegate respondsToSelector:@selector(collectionView:canLongpressItemAtIndexPath:)]) {
+                if (![_delegate collectionView:self.collectionView canLongpressItemAtIndexPath:indexPath]) {
+                    return;
+                }
+            }
             // will begin drag item
             if ([_delegate respondsToSelector:@selector(collectionView:layout:willBeginDraggingItemAtIndexPath:)]) {
                 [_delegate collectionView:self.collectionView layout:self willBeginDraggingItemAtIndexPath:indexPath];
@@ -410,8 +424,8 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
         case UIGestureRecognizerStateCancelled:
             
         case UIGestureRecognizerStateEnded:{
-            if ([_delegate respondsToSelector:@selector(collectionView:TouchLocation:didEndTouch:)]) {
-                [_delegate collectionView:self.collectionView TouchLocation:location didEndTouch:^(BOOL isPushBack) {
+            if ([_delegate respondsToSelector:@selector(collectionView:TouchLocation: atIndexPath:didEndTouch:)]) {
+                [_delegate collectionView:self.collectionView TouchLocation:location atIndexPath:_cellFakeView.indexPath didEndTouch:^(BOOL isPushBack) {
                     if (isPushBack) {
                         [self cancelDrag: indexPath];
                     }else{
@@ -433,61 +447,33 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
     if (_cellFakeView != nil) {
         switch (pan.state) {
             case UIGestureRecognizerStateChanged:{
-                CGPoint center = _cellFakeView.center;
-                center.x = self.fakeCellCenter.x + self.panTranslation.x;
-                center.y = self.fakeCellCenter.y + self.panTranslation.y;
-                _cellFakeView.center = center;
-                
-                _cellFakeViewOnScreen.center = [self.collectionView convertPoint:_cellFakeView.center toView:[UIApplication sharedApplication].keyWindow];
-                
-                
-//                if ([self.collectionView pointInside:location withEvent:nil]) {
-//                    NSIndexPath *curIndexPath = [self.collectionView indexPathForItemAtPoint:_cellFakeView.center];
-//                    NSIndexPath *originIndexPath = [self.collectionView indexPathForItemAtPoint:_cellFakeView.originalCenter];
-//                    
-//                    NSLog(@"%ld,%ld",curIndexPath.item,originIndexPath.item);
-//                    if (curIndexPath.item <= originIndexPath.item) {
-//                        [self beginScrollIfNeeded];
-//                        [self moveItemIfNeeded];
-//                    }else{
-//                        NSLog(@"向右移动");
-//                        if ([_delegate respondsToSelector:@selector(collectionView:PanLocation:PanTranslation:didChanged:)]) {
-//                            [_delegate collectionView:self.collectionView PanLocation:location PanTranslation:_panTranslation didChanged:^{
-//                                
-//                            }];
-//                        }
-//                    }
-//                }else{
-//                    NSLog(@"跑外面去了");
-//                    if ([_delegate respondsToSelector:@selector(collectionView:PanLocation:PanTranslation:didMoveout:)]) {
-//                        [_delegate collectionView:self.collectionView PanLocation:location PanTranslation:_panTranslation didMoveout:^{
-//                            
-//                        }];
-//                    }
-//                }
-                
-                if ([self.collectionView pointInside:location withEvent:nil]) {
-//                    if (self.panTranslation.x < 0) {
-//                        [self beginScrollIfNeeded];
-//                        [self moveItemIfNeeded];
-//                    }else if(self.panTranslation.x > 0){
-//                        NSLog(@"向右移动");
-//                        if ([_delegate respondsToSelector:@selector(collectionView:PanLocation:PanTranslation:didChanged:)]) {
-//                            [_delegate collectionView:self.collectionView PanLocation:location PanTranslation:_panTranslation didChanged:^{
-//                                
-//                            }];
-//                        }
-//                        
-//                    }
-                    [self beginScrollIfNeeded];
-                    [self moveItemIfNeeded];
-                }else{
-                    NSLog(@"跑外面去了");
-                    if ([_delegate respondsToSelector:@selector(collectionView:PanLocation:PanTranslation:didMoveout:)]) {
-                        [_delegate collectionView:self.collectionView PanLocation:location PanTranslation:_panTranslation didMoveout:^{
-                            
-                        }];
+                if (_cellFakeView && _cellFakeViewOnScreen) {
+                    CGPoint center = _cellFakeView.center;
+                    center.x = self.fakeCellCenter.x + self.panTranslation.x;
+                    center.y = self.fakeCellCenter.y + self.panTranslation.y;
+                    _cellFakeView.center = center;
+                    
+                    _cellFakeViewOnScreen.center = [self.collectionView convertPoint:_cellFakeView.center toView:[UIApplication sharedApplication].keyWindow];
+                    
+                    
+                    if ([self.collectionView pointInside:location withEvent:nil]) {
+                        if ([_delegate respondsToSelector:@selector(collectionView:PanLocation:PanTranslation:didChanged:)]) {
+                            [_delegate collectionView:self.collectionView PanLocation:location PanTranslation:_panTranslation didChanged:^{
+                                
+                            }];
+                        }
+                        [self beginScrollIfNeeded];
+                        [self moveItemIfNeeded];
+                    }else{
+                        NSLog(@"跑外面去了");
+                        [self invalidateDisplayLink];
+                        if ([_delegate respondsToSelector:@selector(collectionView:PanLocation:PanTranslation:didMoveout:)]) {
+                            [_delegate collectionView:self.collectionView PanLocation:location PanTranslation:_panTranslation didMoveout:^{
+                                
+                            }];
+                        }
                     }
+
                 }
             }
                 break;

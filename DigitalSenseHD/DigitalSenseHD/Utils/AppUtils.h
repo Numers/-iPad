@@ -48,4 +48,6 @@
 +(void)showHudProgress:(NSString *)title ForView:(UIView *)view;
 
 +(void)hidenHudProgressForView:(UIView *)view;
+
++(CGFloat)powerFixed:(CGFloat)power;
 @end

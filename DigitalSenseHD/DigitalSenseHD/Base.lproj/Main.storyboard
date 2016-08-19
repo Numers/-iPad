@@ -19,8 +19,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bfe-Ph-jwt">
-                                <rect key="frame" x="200" y="214" width="736" height="978"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="200" y="232" width="736" height="960"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7IP-MM-4Gd" customClass="CustomLewReorderableLayout">
                                     <size key="itemSize" width="154" height="845"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -220,29 +220,38 @@
                                 <state key="normal" image="PlayBtn"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYE-yM-BWJ">
-                                <rect key="frame" x="919" y="64" width="105" height="105"/>
-                                <color key="backgroundColor" red="0.95686274510000002" green="0.78184882180000004" blue="0.64991482290000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="944" y="64" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="105" id="5dS-Du-YKT"/>
+                                    <constraint firstAttribute="width" constant="80" id="5dS-Du-YKT"/>
                                     <constraint firstAttribute="width" secondItem="XYE-yM-BWJ" secondAttribute="height" multiplier="1:1" id="iqj-ij-ZA4"/>
                                 </constraints>
                                 <state key="normal" image="DeleteBtn"/>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="psL-IC-nSK">
+                                <rect key="frame" x="213" y="200" width="711" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="AEA-ZA-xkN"/>
+                                </constraints>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="bfe-Ph-jwt" secondAttribute="trailing" constant="88" id="3x4-Rf-CTy"/>
                             <constraint firstItem="Wxh-4d-IWz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="65" id="40g-ex-qfw"/>
                             <constraint firstItem="bfe-Ph-jwt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="200" id="4M0-tS-IZU"/>
+                            <constraint firstAttribute="trailing" secondItem="psL-IC-nSK" secondAttribute="trailing" constant="100" id="BD4-mR-C9z"/>
+                            <constraint firstItem="psL-IC-nSK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="213" id="D7s-ue-SgC"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="R71-tq-IWa" secondAttribute="bottom" id="DIz-g3-OeQ"/>
                             <constraint firstItem="Wxh-4d-IWz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="58" id="DfU-Cm-jk0"/>
                             <constraint firstItem="HM1-wK-I4R" firstAttribute="centerX" secondItem="fd3-Ee-Dqv" secondAttribute="centerX" id="FfW-Lz-f5d"/>
                             <constraint firstAttribute="trailing" secondItem="R71-tq-IWa" secondAttribute="trailing" id="PPm-kG-u4Q"/>
                             <constraint firstAttribute="trailing" secondItem="XYE-yM-BWJ" secondAttribute="trailing" id="aQl-gV-1tI"/>
-                            <constraint firstItem="bfe-Ph-jwt" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="150" id="cp0-F5-nTd"/>
+                            <constraint firstItem="bfe-Ph-jwt" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="168" id="cp0-F5-nTd"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bfe-Ph-jwt" secondAttribute="bottom" constant="174" id="gpK-bS-10j"/>
                             <constraint firstItem="R71-tq-IWa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="j2q-3q-oH3"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HM1-wK-I4R" secondAttribute="bottom" constant="13" id="uuI-pw-zhk"/>
+                            <constraint firstItem="psL-IC-nSK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="136" id="xPv-Lb-WP4"/>
                             <constraint firstItem="HM1-wK-I4R" firstAttribute="top" secondItem="fd3-Ee-Dqv" secondAttribute="bottom" constant="6" id="z83-r6-UKZ"/>
                             <constraint firstItem="XYE-yM-BWJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="zCh-cm-9im"/>
                             <constraint firstItem="HM1-wK-I4R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zUf-Bs-zLa"/>
@@ -252,6 +261,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPadPro"/>
                     <connections>
                         <outlet property="bottomBackView" destination="R71-tq-IWa" id="l0Y-jw-OIP"/>
+                        <outlet property="btnShareOrDelete" destination="XYE-yM-BWJ" id="flU-Zb-Vrk"/>
                         <outlet property="collectionView" destination="bfe-Ph-jwt" id="iTb-iG-hIl"/>
                         <outlet property="lblTime" destination="Wxh-4d-IWz" id="wqT-by-aWs"/>
                     </connections>

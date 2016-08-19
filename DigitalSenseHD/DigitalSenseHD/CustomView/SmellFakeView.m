@@ -20,8 +20,6 @@
         self.layer.shadowRadius = 5.0;
         self.layer.shouldRasterize = false;
         
-        self.originalFrame = view.frame;
-        
         self.fakeImageView = [[UIImageView alloc] initWithFrame:self.bounds];
         self.fakeImageView.contentMode = UIViewContentModeScaleAspectFill;
         self.fakeImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -54,7 +52,6 @@
 - (void)pushBackView:(void(^)(BOOL isFinished))completion{
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.transform = CGAffineTransformIdentity;
-        self.frame = self.originalFrame;
         self.center = self.toBackViewCenter;
         CABasicAnimation *shadowAnimation = [CABasicAnimation animationWithKeyPath:@"shadowOpacity"];
         shadowAnimation.fromValue = @(0.7);
@@ -66,6 +63,15 @@
         if (completion) {
             completion(finished);
         }
+    }];
+}
+
+-(void)hiddenView:(void (^)(BOOL isFinished))completion
+{
+    [UIView animateWithDuration:0.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.transform = CGAffineTransformMakeScale(0.1, 0.1);
+    } completion:^(BOOL finished) {
+        completion(finished);
     }];
 }
 

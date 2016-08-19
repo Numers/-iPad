@@ -47,13 +47,15 @@
 
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath;
 
--(void)collectionView:(UICollectionView *)collectionView TouchLocation:(CGPoint)location didEndTouch:(void (^)(BOOL isPushBack))completion;
+-(void)collectionView:(UICollectionView *)collectionView TouchLocation:(CGPoint)location atIndexPath:(NSIndexPath *)indexPath didEndTouch:(void (^)(BOOL isPushBack))completion;
 
 -(void)collectionView:(UICollectionView *)collectionView PanLocation:(CGPoint)location PanTranslation:(CGPoint)translation didChanged:(void (^)(void))completion;
 
 -(void)collectionView:(UICollectionView *)collectionView PanLocation:(CGPoint)location PanTranslation:(CGPoint)translation didMoveout:(void (^)(void))completion;
 
 -(void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout longTouchCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+
+-(BOOL)collectionView:(UICollectionView *)collectionView canLongpressItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 

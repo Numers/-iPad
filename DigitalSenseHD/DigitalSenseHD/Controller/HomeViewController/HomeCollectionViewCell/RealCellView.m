@@ -11,13 +11,38 @@
 #import "UIColor+HexString.h"
 #import "GlobalVar.h"
 
+@interface RealCellView()
+{
+    UIImageView *circleImageView;
+    UILabel *lblTime;
+}
+@end
 @implementation RealCellView
+-(instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self.layer setCornerRadius:30.0f];
+        [self.layer setMasksToBounds:YES];
+        circleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PullBtn"]];
+        [self addSubview:circleImageView];
+        
+        lblTime = [[UILabel alloc] init];
+        [lblTime setTextColor:[UIColor whiteColor]];
+        [lblTime setFont:[UIFont systemFontOfSize:13.0f]];
+        [self addSubview:lblTime];
+    }
+    return self;
+}
+
 -(void)setScriptCommand:(ScriptCommand *)command
 {
     if (command.type == RealCommand) {
         currentCommand = command;
-        self.center = CGPointMake(self.center.x, maxHeight * [self powerFixed:command.power]);
+        [lblTime setText:[NSString stringWithFormat:@"%lds",command.duration]];
+        [lblTime sizeToFit];
         [self setBackgroundColor:[UIColor colorFromHexString:command.color]];
+        [self setNeedsDisplay];
     }
 }
 
@@ -26,11 +51,6 @@
     maxHeight = height;
     maxCenterY = aCenterY;
     minCenterY = iCenterY;
-}
-
--(CGFloat)powerFixed:(CGFloat)power
-{
-    return 0.5;
 }
 #pragma -mark TouchEvent
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -59,22 +79,17 @@
             }
         }
         
-    }else{
-        CGFloat centerY = self.center.y - vectorDy;
-        if (centerY < minCenterY || centerY > maxCenterY) {
-            return;
-        }else{
-            self.center = CGPointMake(self.center.x, centerY);
-            currentCommand.power = centerY / maxHeight;
-        }
     }
 }
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    CGFloat fixedPower = [self powerFixed:currentCommand.power];
-    CGFloat centerY = maxHeight * fixedPower;
-    currentCommand.power = fixedPower;
-    self.center = CGPointMake(self.center.x, centerY);
+    
+}
+
+-(void)drawRect:(CGRect)rect
+{
+    [circleImageView setCenter:CGPointMake(self.frame.size.width - circleImageView.frame.size.width / 2.0f - 5, self.frame.size.height / 2.0f)];
+    [lblTime setCenter:CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height / 2.0f)];
 }
 @end

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 @class ScriptCommand;
 @interface HomeCollectionViewCell : UICollectionViewCell
+-(void)inilizedView;
 -(void)setupWithScriptCommand:(ScriptCommand *)command;
 @end

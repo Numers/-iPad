@@ -247,4 +247,21 @@
         });
     }
 }
+
+//中档:0.58  高档:0.235   低档:0.89
++(CGFloat)powerFixed:(CGFloat)power;
+{
+    if (power < 0.4) {
+        return 0.235;
+    }
+    
+    if (power < 0.73) {
+        return 0.58;
+    }
+    
+    if (power < 1.0) {
+        return 0.89;
+    }
+    return 0.58;
+}
 @end
