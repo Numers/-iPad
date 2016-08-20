@@ -318,6 +318,7 @@
                 for (NSInteger i = 0; i < virtualCommand.duration; i ++) {
                     ScriptCommand *command = [[ScriptCommand alloc] init];
                     command.startRelativeTime = i;
+                    command.rfId = @"";
                     command.duration = 1;
                     command.smellName = @"间隔";
                     command.type = SpaceCommand;

@@ -10,6 +10,8 @@
 #import "RealCellView.h"
 #import "ScriptCommand.h"
 
+#import "GlobalVar.h"
+
 #define RealCellHeight 60.0f
 #define RealCellLeftMargin 10.0f
 @interface HomeCollectionViewCell()<RealCellViewProtocol,UIGestureRecognizerDelegate>
@@ -57,12 +59,7 @@
         [smellIconImageView setHidden:YES];
     }else if (command.type == VirtualCommand){
         [realCellView setHidden:YES];
-        [smellIconImageView setHidden:NO];
-        UIImage *smellImage = [UIImage imageNamed:[command.smellImage stringByReplacingOccurrencesOfString:@"Image" withString:@"IconImage"]];
-        [smellIconImageView setImage:smellImage];
-        [smellIconImageView setFrame:CGRectMake(0, 0, smellImage.size.width, smellImage.size.height)];
-        [smellIconImageView setImage:smellImage];
-        [smellIconImageView setCenter:CGPointMake(smellIconImageView.frame.size.width / 2.0f, self.frame.size.height * currentCommand.power)];
+        [smellIconImageView setHidden:YES];
     }else if (command.type == RealCommand){
         [realCellView setHidden:NO];
         [smellIconImageView setHidden:NO];
@@ -74,20 +71,25 @@
     }
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    
-}
-
 #pragma -mark RealCellViewProtocol
 -(void)addWidthWithSpaceCount:(NSInteger)spaceCount
 {
-    
+    NSLog(@"add width");
+    if (currentCommand && currentCommand.type == RealCommand) {
+        if ([_delegate respondsToSelector:@selector(willAddWidthWithCommand:)]) {
+            [_delegate willAddWidthWithCommand:currentCommand];
+        }
+    }
 }
 
 -(void)minusWidthWithSpaceCount:(NSInteger)spaceCount
 {
-    
+    NSLog(@"minus width");
+    if (currentCommand && currentCommand.type == RealCommand) {
+        if ([_delegate respondsToSelector:@selector(willMinusWidthWithCommand:)]) {
+            [_delegate willMinusWidthWithCommand:currentCommand];
+        }
+    }
 }
 
 -(void)drawRect:(CGRect)rect

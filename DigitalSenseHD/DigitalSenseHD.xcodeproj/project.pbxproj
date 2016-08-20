@@ -32,6 +32,19 @@
 		8462EB3D1D5D80A100897F92 /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462EB3C1D5D80A100897F92 /* UIColor+HexString.m */; };
 		8462EB411D5DAED700897F92 /* CustomLewReorderableLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462EB401D5DAED700897F92 /* CustomLewReorderableLayout.m */; };
 		847090DE1D5C2C43009DCD46 /* SmellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847090DD1D5C2C43009DCD46 /* SmellView.m */; };
+		847219A71D68074500DE4E56 /* UICircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219A61D68074500DE4E56 /* UICircleButton.m */; };
+		847219AB1D6839CF00DE4E56 /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219AA1D6839CF00DE4E56 /* PlayViewController.m */; };
+		847219B01D683ED200DE4E56 /* RelativeTimeScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219AD1D683ED200DE4E56 /* RelativeTimeScript.m */; };
+		847219B11D683ED200DE4E56 /* Script.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219AF1D683ED200DE4E56 /* Script.m */; };
+		847219BE1D6843BE00DE4E56 /* UINavigationController+WXSTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219B41D6843BE00DE4E56 /* UINavigationController+WXSTransition.m */; };
+		847219BF1D6843BE00DE4E56 /* UIViewController+WXSTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219B61D6843BE00DE4E56 /* UIViewController+WXSTransition.m */; };
+		847219C01D6843BE00DE4E56 /* WXSPercentDrivenInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219B81D6843BE00DE4E56 /* WXSPercentDrivenInteractiveTransition.m */; };
+		847219C11D6843BE00DE4E56 /* WXSTransitionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219BA1D6843BE00DE4E56 /* WXSTransitionManager.m */; };
+		847219C21D6843BE00DE4E56 /* WXSTransitionProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219BC1D6843BE00DE4E56 /* WXSTransitionProperty.m */; };
+		847219CE1D684E5500DE4E56 /* BluetoothMacManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219C51D684E5500DE4E56 /* BluetoothMacManager.m */; };
+		847219CF1D684E5500DE4E56 /* BluetoothProcessManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219C71D684E5500DE4E56 /* BluetoothProcessManager.m */; };
+		847219D01D684E5500DE4E56 /* DataAnalizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219CA1D684E5500DE4E56 /* DataAnalizer.m */; };
+		847219D11D684E5500DE4E56 /* ScriptExecuteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219CD1D684E5500DE4E56 /* ScriptExecuteManager.m */; };
 		84752D921D5F052000127812 /* GraduatedLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84752D911D5F052000127812 /* GraduatedLineView.m */; };
 		847D2E291D5C59A600DBC24C /* Smell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D2E281D5C59A600DBC24C /* Smell.m */; };
 		847D2E2C1D5C5FBC00DBC24C /* SmellFakeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D2E2B1D5C5FBC00DBC24C /* SmellFakeView.m */; };
@@ -90,6 +103,33 @@
 		8462EB401D5DAED700897F92 /* CustomLewReorderableLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLewReorderableLayout.m; sourceTree = "<group>"; };
 		847090DC1D5C2C43009DCD46 /* SmellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmellView.h; sourceTree = "<group>"; };
 		847090DD1D5C2C43009DCD46 /* SmellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmellView.m; sourceTree = "<group>"; };
+		847219A51D68074500DE4E56 /* UICircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICircleButton.h; sourceTree = "<group>"; };
+		847219A61D68074500DE4E56 /* UICircleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICircleButton.m; sourceTree = "<group>"; };
+		847219A91D6839CF00DE4E56 /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
+		847219AA1D6839CF00DE4E56 /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
+		847219AC1D683ED200DE4E56 /* RelativeTimeScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelativeTimeScript.h; sourceTree = "<group>"; };
+		847219AD1D683ED200DE4E56 /* RelativeTimeScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelativeTimeScript.m; sourceTree = "<group>"; };
+		847219AE1D683ED200DE4E56 /* Script.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Script.h; sourceTree = "<group>"; };
+		847219AF1D683ED200DE4E56 /* Script.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Script.m; sourceTree = "<group>"; };
+		847219B31D6843BE00DE4E56 /* UINavigationController+WXSTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+WXSTransition.h"; sourceTree = "<group>"; };
+		847219B41D6843BE00DE4E56 /* UINavigationController+WXSTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+WXSTransition.m"; sourceTree = "<group>"; };
+		847219B51D6843BE00DE4E56 /* UIViewController+WXSTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WXSTransition.h"; sourceTree = "<group>"; };
+		847219B61D6843BE00DE4E56 /* UIViewController+WXSTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WXSTransition.m"; sourceTree = "<group>"; };
+		847219B71D6843BE00DE4E56 /* WXSPercentDrivenInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSPercentDrivenInteractiveTransition.h; sourceTree = "<group>"; };
+		847219B81D6843BE00DE4E56 /* WXSPercentDrivenInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXSPercentDrivenInteractiveTransition.m; sourceTree = "<group>"; };
+		847219B91D6843BE00DE4E56 /* WXSTransitionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSTransitionManager.h; sourceTree = "<group>"; };
+		847219BA1D6843BE00DE4E56 /* WXSTransitionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXSTransitionManager.m; sourceTree = "<group>"; };
+		847219BB1D6843BE00DE4E56 /* WXSTransitionProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSTransitionProperty.h; sourceTree = "<group>"; };
+		847219BC1D6843BE00DE4E56 /* WXSTransitionProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXSTransitionProperty.m; sourceTree = "<group>"; };
+		847219BD1D6843BE00DE4E56 /* WXSTypedefConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSTypedefConfig.h; sourceTree = "<group>"; };
+		847219C41D684E5500DE4E56 /* BluetoothMacManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothMacManager.h; sourceTree = "<group>"; };
+		847219C51D684E5500DE4E56 /* BluetoothMacManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothMacManager.m; sourceTree = "<group>"; };
+		847219C61D684E5500DE4E56 /* BluetoothProcessManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothProcessManager.h; sourceTree = "<group>"; };
+		847219C71D684E5500DE4E56 /* BluetoothProcessManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothProcessManager.m; sourceTree = "<group>"; };
+		847219C91D684E5500DE4E56 /* DataAnalizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataAnalizer.h; sourceTree = "<group>"; };
+		847219CA1D684E5500DE4E56 /* DataAnalizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataAnalizer.m; sourceTree = "<group>"; };
+		847219CC1D684E5500DE4E56 /* ScriptExecuteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptExecuteManager.h; sourceTree = "<group>"; };
+		847219CD1D684E5500DE4E56 /* ScriptExecuteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScriptExecuteManager.m; sourceTree = "<group>"; };
 		84752D901D5F052000127812 /* GraduatedLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraduatedLineView.h; sourceTree = "<group>"; };
 		84752D911D5F052000127812 /* GraduatedLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraduatedLineView.m; sourceTree = "<group>"; };
 		847D2E271D5C59A600DBC24C /* Smell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Smell.h; sourceTree = "<group>"; };
@@ -186,6 +226,7 @@
 		8419333F1D5B27BC00E8E9EE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				847219A81D6839BD00DE4E56 /* PlayViewController */,
 				8419335A1D5B27F500E8E9EE /* HomeViewController */,
 			);
 			path = Controller;
@@ -194,6 +235,8 @@
 		841933401D5B27BC00E8E9EE /* CustomManager */ = {
 			isa = PBXGroup;
 			children = (
+				847219C31D684E5500DE4E56 /* Bluetooth */,
+				847219CB1D684E5500DE4E56 /* Script */,
 				8407720C1D61BF9200A51654 /* CollectionViewOperationManager */,
 			);
 			path = CustomManager;
@@ -202,6 +245,10 @@
 		841933411D5B27BC00E8E9EE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				847219AC1D683ED200DE4E56 /* RelativeTimeScript.h */,
+				847219AD1D683ED200DE4E56 /* RelativeTimeScript.m */,
+				847219AE1D683ED200DE4E56 /* Script.h */,
+				847219AF1D683ED200DE4E56 /* Script.m */,
 				847D2E271D5C59A600DBC24C /* Smell.h */,
 				847D2E281D5C59A600DBC24C /* Smell.m */,
 				8462EB231D5D73F700897F92 /* ScriptCommand.h */,
@@ -299,6 +346,7 @@
 		8462EB391D5D80A100897F92 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				847219B21D6843BE00DE4E56 /* WXSTransition */,
 				842D8C6C1D66B29800DE6EBB /* UIView+Boom */,
 				8462EB3A1D5D80A100897F92 /* UIColor+HexString */,
 			);
@@ -332,8 +380,67 @@
 				847D2E2B1D5C5FBC00DBC24C /* SmellFakeView.m */,
 				84752D901D5F052000127812 /* GraduatedLineView.h */,
 				84752D911D5F052000127812 /* GraduatedLineView.m */,
+				847219A51D68074500DE4E56 /* UICircleButton.h */,
+				847219A61D68074500DE4E56 /* UICircleButton.m */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		847219A81D6839BD00DE4E56 /* PlayViewController */ = {
+			isa = PBXGroup;
+			children = (
+				847219A91D6839CF00DE4E56 /* PlayViewController.h */,
+				847219AA1D6839CF00DE4E56 /* PlayViewController.m */,
+			);
+			path = PlayViewController;
+			sourceTree = "<group>";
+		};
+		847219B21D6843BE00DE4E56 /* WXSTransition */ = {
+			isa = PBXGroup;
+			children = (
+				847219B31D6843BE00DE4E56 /* UINavigationController+WXSTransition.h */,
+				847219B41D6843BE00DE4E56 /* UINavigationController+WXSTransition.m */,
+				847219B51D6843BE00DE4E56 /* UIViewController+WXSTransition.h */,
+				847219B61D6843BE00DE4E56 /* UIViewController+WXSTransition.m */,
+				847219B71D6843BE00DE4E56 /* WXSPercentDrivenInteractiveTransition.h */,
+				847219B81D6843BE00DE4E56 /* WXSPercentDrivenInteractiveTransition.m */,
+				847219B91D6843BE00DE4E56 /* WXSTransitionManager.h */,
+				847219BA1D6843BE00DE4E56 /* WXSTransitionManager.m */,
+				847219BB1D6843BE00DE4E56 /* WXSTransitionProperty.h */,
+				847219BC1D6843BE00DE4E56 /* WXSTransitionProperty.m */,
+				847219BD1D6843BE00DE4E56 /* WXSTypedefConfig.h */,
+			);
+			path = WXSTransition;
+			sourceTree = "<group>";
+		};
+		847219C31D684E5500DE4E56 /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				847219C41D684E5500DE4E56 /* BluetoothMacManager.h */,
+				847219C51D684E5500DE4E56 /* BluetoothMacManager.m */,
+				847219C61D684E5500DE4E56 /* BluetoothProcessManager.h */,
+				847219C71D684E5500DE4E56 /* BluetoothProcessManager.m */,
+				847219C81D684E5500DE4E56 /* DataAnalizer */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		847219C81D684E5500DE4E56 /* DataAnalizer */ = {
+			isa = PBXGroup;
+			children = (
+				847219C91D684E5500DE4E56 /* DataAnalizer.h */,
+				847219CA1D684E5500DE4E56 /* DataAnalizer.m */,
+			);
+			path = DataAnalizer;
+			sourceTree = "<group>";
+		};
+		847219CB1D684E5500DE4E56 /* Script */ = {
+			isa = PBXGroup;
+			children = (
+				847219CC1D684E5500DE4E56 /* ScriptExecuteManager.h */,
+				847219CD1D684E5500DE4E56 /* ScriptExecuteManager.m */,
+			);
+			path = Script;
 			sourceTree = "<group>";
 		};
 		BC31833F3BBF3369D627671A /* Frameworks */ = {
@@ -473,25 +580,38 @@
 				847D2E291D5C59A600DBC24C /* Smell.m in Sources */,
 				847D2E2C1D5C5FBC00DBC24C /* SmellFakeView.m in Sources */,
 				841933571D5B27BC00E8E9EE /* SCNetWorkManager.m in Sources */,
+				847219C21D6843BE00DE4E56 /* WXSTransitionProperty.m in Sources */,
 				8462EB381D5D800500897F92 /* RealCellView.m in Sources */,
+				847219CF1D684E5500DE4E56 /* BluetoothProcessManager.m in Sources */,
 				842D8C6F1D66B29800DE6EBB /* UIView+Boom.m in Sources */,
 				84419D4B1D5DC2110054596B /* VirtualHomeCollectionViewCell.m in Sources */,
 				8419332A1D5B252100E8E9EE /* AppDelegate.m in Sources */,
+				847219AB1D6839CF00DE4E56 /* PlayViewController.m in Sources */,
 				847090DE1D5C2C43009DCD46 /* SmellView.m in Sources */,
 				8419335D1D5B281C00E8E9EE /* HomeViewController.m in Sources */,
 				841933641D5B2E4E00E8E9EE /* MBProgressCustomView.m in Sources */,
 				841933271D5B252100E8E9EE /* main.m in Sources */,
 				841933561D5B27BC00E8E9EE /* RFGeneralManager.m in Sources */,
+				847219D01D684E5500DE4E56 /* DataAnalizer.m in Sources */,
 				8462EB2F1D5D794800897F92 /* SpaceHomeCollectionViewCell.m in Sources */,
 				841933581D5B27BC00E8E9EE /* URLManager.m in Sources */,
 				8462EB2C1D5D788000897F92 /* HomeCollectionViewCell.m in Sources */,
+				847219D11D684E5500DE4E56 /* ScriptExecuteManager.m in Sources */,
+				847219BF1D6843BE00DE4E56 /* UIViewController+WXSTransition.m in Sources */,
 				841933591D5B27BC00E8E9EE /* AppUtils.m in Sources */,
+				847219C11D6843BE00DE4E56 /* WXSTransitionManager.m in Sources */,
 				8462EB3D1D5D80A100897F92 /* UIColor+HexString.m in Sources */,
+				847219B01D683ED200DE4E56 /* RelativeTimeScript.m in Sources */,
 				8462EB351D5D7E8F00897F92 /* RealHomeCollectionViewCell.m in Sources */,
+				847219CE1D684E5500DE4E56 /* BluetoothMacManager.m in Sources */,
 				8407720F1D61BFAA00A51654 /* CollectionViewOperationManager.m in Sources */,
+				847219B11D683ED200DE4E56 /* Script.m in Sources */,
+				847219C01D6843BE00DE4E56 /* WXSPercentDrivenInteractiveTransition.m in Sources */,
 				841933331D5B252100E8E9EE /* DigitalSenseHD.xcdatamodeld in Sources */,
 				8462EB411D5DAED700897F92 /* CustomLewReorderableLayout.m in Sources */,
 				84752D921D5F052000127812 /* GraduatedLineView.m in Sources */,
+				847219A71D68074500DE4E56 /* UICircleButton.m in Sources */,
+				847219BE1D6843BE00DE4E56 /* UINavigationController+WXSTransition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

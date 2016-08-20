@@ -45,6 +45,8 @@
  */
 +(NSInteger)floatToInt:(CGFloat)value WithMaxValue:(NSInteger)maxValue;
 
++(NSString *)switchSecondsToTime:(NSInteger)seconds;
+
 +(void)showHudProgress:(NSString *)title ForView:(UIView *)view;
 
 +(void)hidenHudProgressForView:(UIView *)view;

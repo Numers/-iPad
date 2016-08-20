@@ -173,6 +173,19 @@
     return [[NSNumber numberWithFloat:tempResult] integerValue];
 }
 
++(NSString *)switchSecondsToTime:(NSInteger)seconds
+{
+    NSInteger second = seconds % 60;
+    NSInteger minite = (seconds - second) / 60;
+    NSString *result;
+    if (minite < 10) {
+        result = [NSString stringWithFormat:@"%02ld:%02ld",minite,second];
+    }else{
+        result = [NSString stringWithFormat:@"%ld:%02ld",minite,second];
+    }
+    return result;
+}
+
 
 + (BOOL)isNullStr:(NSString *)str
 {

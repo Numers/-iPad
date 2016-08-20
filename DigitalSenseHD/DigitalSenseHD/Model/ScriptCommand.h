@@ -11,7 +11,7 @@ typedef enum {
     SpaceCommand = 1,
     VirtualCommand,
     RealCommand
-}ScriptType;
+}ScriptCommandType;
 @interface ScriptCommand : NSObject
 @property(nonatomic) NSInteger startRelativeTime;
 @property(nonatomic, copy) NSString *rfId;
@@ -22,7 +22,7 @@ typedef enum {
 @property(nonatomic, copy) NSString *color;
 @property(nonatomic, copy) NSString *smellImage;
 
-@property(nonatomic) ScriptType type;
+@property(nonatomic) ScriptCommandType type;
 
 @property(nonatomic) CGFloat power;
 @end

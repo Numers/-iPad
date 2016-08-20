@@ -11,20 +11,25 @@
 #import "SmellFakeView.h"
 #import "GraduatedLineView.h"
 #import "Smell.h"
+#import "RelativeTimeScript.h"
 
 #import "CustomLewReorderableLayout.h"
 #import "ScriptCommand.h"
 #import "GlobalVar.h"
 
 #import "HomeCollectionViewCell.h"
+#import "PlayViewController.h"
 
 #import "CollectionViewOperationManager.h"
+#import "BluetoothProcessManager.h"
+
+#import "UINavigationController+WXSTransition.h"
 
 #define HomeCollectionViewCellIdentify @"HomeCollectionViewCellIdentify"
 //#define SpaceCellIdentify @"SpaceHomeCellIdentify"
 //#define VirtualCellIdentify @"VirtualHomeCellIdentify"
 //#define RealCellIdentify @"RealHomeCellIdentify"
-@interface HomeViewController ()<SmellViewProtocol,CustomLewReorderableLayoutDataSource,CustomLewReorderableLayoutDelegate>
+@interface HomeViewController ()<SmellViewProtocol,CustomLewReorderableLayoutDataSource,CustomLewReorderableLayoutDelegate,HomeCollectionViewCellProtocol>
 {
     NSArray *smellList;
     
@@ -47,6 +52,7 @@
 @property(nonatomic, strong) IBOutlet UILabel *lblTime;
 @property(nonatomic, strong) IBOutlet UIView *bottomBackView;
 @property(nonatomic, strong) IBOutlet UIButton *btnShareOrDelete;
+@property(nonatomic, strong) IBOutlet UIProgressView *progressView;
 @end
 
 @implementation HomeViewController
@@ -69,7 +75,6 @@
     
     [_collectionView setBackgroundColor:[UIColor clearColor]];
     [_collectionView setContentInset:UIEdgeInsetsMake(0, 10, 0, 10)];
-//    [_collectionView setBackgroundView:[UIView new]];
     lineView = [[GraduatedLineView alloc] init];
     [_collectionView addSubview:lineView];
     [_collectionView sendSubviewToBack:lineView];
@@ -135,6 +140,7 @@
     for (NSInteger i = 0; i < 60; i++) {
         ScriptCommand *command = [[ScriptCommand alloc] init];
         command.startRelativeTime = i;
+        command.rfId = @"";
         command.duration = 1;
         command.smellName = @"间隔";
         command.type = SpaceCommand;
@@ -147,6 +153,8 @@
     swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGesture)];
     swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight | UISwipeGestureRecognizerDirectionLeft;
     [self.bottomBackView addGestureRecognizer:swipeGestureRecognizer];
+    
+    [[BluetoothProcessManager defatultManager] registerNotify];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -165,6 +173,32 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma -mark notification
+-(void)smellFakeViewCenterChanged:(NSNotification *)notify
+{
+    NSDictionary *dic = [notify userInfo];
+    if (dic) {
+        CGFloat centerX = [[dic objectForKey:@"centerX"] floatValue];
+        CGFloat centerY = [[dic objectForKey:@"centerY"] floatValue];
+        if (centerX > 0 || centerY > 0) {
+            CGPoint backCenter = [_collectionView convertPoint:CGPointMake(centerX, centerY) toView:[UIApplication sharedApplication].keyWindow];
+            if (smellFakeView.originalPositionY > 0) {
+                CGFloat temp = backCenter.y - smellFakeView.originalPositionY;
+                [smellFakeView setToBackViewCenter:CGPointMake(backCenter.x, smellFakeView.originalCenter.y + temp)];
+            }else{
+                [smellFakeView setToBackViewCenter:backCenter];
+            }
+            
+            if (operationManager) {
+                CustomLewReorderableLayout *layout = (CustomLewReorderableLayout *)[self.collectionView collectionViewLayout];
+                [layout setCellFakeIndexPath:operationManager.insertIndexPath];
+            }
+        }else{
+            operationManager = nil;
+        }
+    }
 }
 
 #pragma -mark GestureRecognizer
@@ -241,32 +275,281 @@
         [self selectSmellListWithIndex:0];
     }
 }
-#pragma -mark notification
--(void)smellFakeViewCenterChanged:(NSNotification *)notify
+
+-(ScriptCommand *)searchFirstSpaceAfterIndex:(NSInteger)index
 {
-    NSDictionary *dic = [notify userInfo];
-    if (dic) {
-        CGFloat centerX = [[dic objectForKey:@"centerX"] floatValue];
-        CGFloat centerY = [[dic objectForKey:@"centerY"] floatValue];
-        if (centerX > 0 || centerY > 0) {
-            CGPoint backCenter = [_collectionView convertPoint:CGPointMake(centerX, centerY) toView:[UIApplication sharedApplication].keyWindow];
-            if (smellFakeView.originalPositionY > 0) {
-                CGFloat temp = backCenter.y - smellFakeView.originalPositionY;
-                [smellFakeView setToBackViewCenter:CGPointMake(backCenter.x, smellFakeView.originalCenter.y + temp)];
-            }else{
-                [smellFakeView setToBackViewCenter:backCenter];
+    ScriptCommand *command = nil;
+    if ((index + 1) < commandList.count) {
+        for (NSInteger i = index+1; i < commandList.count; i++) {
+            ScriptCommand *tempCommand = [commandList objectAtIndex:i];
+            if (tempCommand.type == SpaceCommand) {
+                command = tempCommand;
+                break;
             }
-            
-            if (operationManager) {
-                CustomLewReorderableLayout *layout = (CustomLewReorderableLayout *)[self.collectionView collectionViewLayout];
-                [layout setCellFakeIndexPath:operationManager.insertIndexPath];
-            }
-        }else{
-            operationManager = nil;
         }
     }
+    return command;
 }
 
+-(NSInteger)doWithScriptCommandList:(NSArray *)scriptCommandList
+{
+    if (scriptCommandList.count == 0) {
+        return 0;
+    }
+    
+    ScriptCommand *previousCommand = nil;
+    for (ScriptCommand *command in scriptCommandList) {
+        if (previousCommand == nil) {
+            command.startRelativeTime = 0;
+        }else{
+            command.startRelativeTime = previousCommand.startRelativeTime + previousCommand.duration;
+        }
+        //组成command命令
+        if (![AppUtils isNullStr:command.rfId]) {
+            CGFloat power =  command.power * 10;
+            NSInteger iPower = [AppUtils floatToInt:power WithMaxValue:10];
+            NSString *commandStr = [NSString stringWithFormat:@"F266%@%04lX%02lX55",command.rfId,(long)command.duration,(long)iPower];
+            command.command = commandStr;
+        }else{
+            command.command = @"";
+        }
+        previousCommand = command;
+    }
+    
+    NSInteger allTime = 0;
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.type == %d",RealCommand];
+    NSArray *filterArr = [commandList filteredArrayUsingPredicate:predicate];
+    if (filterArr && filterArr.count > 0) {
+        ScriptCommand *lastRealCommand = [filterArr lastObject];
+        allTime = lastRealCommand.startRelativeTime + lastRealCommand.duration;
+    }else{
+        allTime = 0;
+    }
+    return allTime;
+}
+
+-(RelativeTimeScript *)dowithCacheDataFromLocal
+{
+    RelativeTimeScript *script = nil;
+    NSString *macAddress = [[NSUserDefaults standardUserDefaults] objectForKey:KMY_BlutoothMacAddress_Key];
+    if (macAddress) {
+        NSString *jsonStr = [[NSUserDefaults standardUserDefaults] objectForKey:macAddress];
+        if (jsonStr == nil) {
+            return nil;
+        }
+        NSData *jsonStrData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *error;
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonStrData options:kNilOptions error:&error];
+        if (error == nil) {
+            script = [[RelativeTimeScript alloc] init];
+            script.scriptId = [dic objectForKey:@"scriptId"];
+            script.scriptName = [dic objectForKey:@"scriptName"];
+            script.sceneName = [dic objectForKey:@"sceneName"];
+            script.scriptTime = [[dic objectForKey:@"scriptTime"] integerValue];
+            script.isLoop = [[dic objectForKey:@"isLoop"] boolValue];
+            script.state = (ScriptState)[[dic objectForKey:@"state"] integerValue];
+            script.type = (ScriptType)[[dic objectForKey:@"type"] integerValue];
+            NSString *scriptCommand = [dic objectForKey:@"scriptCommand"];
+            if (scriptCommand) {
+                NSError *error;
+                NSArray *commandArray = [NSJSONSerialization JSONObjectWithData:[scriptCommand dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+                if (error == nil) {
+                    for (NSDictionary *commandDic in commandArray) {
+                        ScriptCommand *command = [[ScriptCommand alloc] init];
+                        command.startRelativeTime = [[commandDic objectForKey:@"startRelativeTime"] integerValue];
+                        command.rfId = [commandDic objectForKey:@"rfid"];
+                        command.smellName = [commandDic objectForKey:@"smellName"];
+                        command.duration = [[commandDic objectForKey:@"duration"] integerValue];
+                        command.command = [commandDic objectForKey:@"command"];
+                        command.desc = [commandDic objectForKey:@"description"];
+                        command.color = [commandDic objectForKey:@"color"];
+                        command.power = [[commandDic objectForKey:@"power"] floatValue];
+                        [script.scriptCommandList addObject:command];
+                    }
+                }
+            }
+        }
+        
+    }
+    return script;
+}
+
+-(NSString *)commandStringWithCommandList:(NSArray *)subCommandList
+{
+    NSString *jsonStr = nil;
+    if (subCommandList && subCommandList.count > 0) {
+        NSMutableArray *commandDicArray = [[NSMutableArray alloc] init];
+        for (ScriptCommand *command in subCommandList) {
+            NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+            [dic setObject:@(command.startRelativeTime) forKey:@"startRelativeTime"];
+            if (command.rfId) {
+                [dic setObject:command.rfId forKey:@"rfid"];
+            }
+            
+            if (command.smellName) {
+                [dic setObject:command.smellName forKey:@"smellName"];
+            }
+            
+            [dic setObject:@(command.duration) forKey:@"duration"];
+            
+            if (command.command) {
+                [dic setObject:command.command forKey:@"command"];
+            }
+            
+            if (command.desc) {
+                [dic setObject:command.desc forKey:@"description"];
+            }
+            
+            if (command.color) {
+                [dic setObject:command.color forKey:@"color"];
+            }
+            
+            [dic setObject:@(command.power) forKey:@"power"];
+            [commandDicArray addObject:dic];
+        }
+        NSError *error;
+        NSData *jsonStrData = [NSJSONSerialization dataWithJSONObject:commandDicArray options:NSJSONWritingPrettyPrinted error:&error];
+        if (error == nil) {
+            jsonStr = [[NSString alloc] initWithData:jsonStrData encoding:NSUTF8StringEncoding];
+        }
+        
+    }
+    return jsonStr;
+}
+
+-(NSString *)jsonStrWithRelativeTimeScript:(RelativeTimeScript *)script
+{
+    if (script == nil) {
+        return nil;
+    }
+    NSString *jsonStr = nil;
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:script.scriptId forKey:@"scriptId"];
+    [dic setObject:script.scriptName forKey:@"scriptName"];
+    [dic setObject:script.sceneName forKey:@"sceneName"];
+    [dic setObject:@(script.scriptTime) forKey:@"scriptTime"];
+    [dic setObject:@(script.isLoop) forKey:@"isLoop"];
+    [dic setObject:@(script.state) forKey:@"state"];
+    [dic setObject:@(script.type) forKey:@"type"];
+    NSString *commandJsonStr = [self commandStringWithCommandList:script.scriptCommandList];
+    if (commandJsonStr) {
+        [dic setObject:commandJsonStr forKey:@"scriptCommand"];
+    }
+    NSError *error;
+    NSData *jsonStrData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&error];
+    if (error == nil) {
+        jsonStr = [[NSString alloc] initWithData:jsonStrData encoding:NSUTF8StringEncoding];
+        if (jsonStr) {
+            NSString *macAddress = [[NSUserDefaults standardUserDefaults] objectForKey:KMY_BlutoothMacAddress_Key];
+            if (macAddress) {
+                [[NSUserDefaults standardUserDefaults] setObject:jsonStr forKey:macAddress];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+        }
+    }
+    return jsonStr;
+}
+
+-(RelativeTimeScript *)saveLocalRelativeTimeScript
+{
+    RelativeTimeScript *script = [[RelativeTimeScript alloc] init];
+    script.scriptId = @"10000";
+    script.scriptName = @"自定义脚本";
+    script.sceneName = @"气味王国";
+    script.state =  ScriptIsNormal;
+    script.type =  ScriptIsRelativeTime;
+    script.isLoop = NO;
+    
+    script.scriptTime = [self doWithScriptCommandList:commandList];
+    script.scriptCommandList = [self generateScriptCommandList:commandList];
+    [self jsonStrWithRelativeTimeScript:script];
+    return script;
+}
+
+-(NSMutableArray *)generateScriptCommandList:(NSMutableArray *)list
+{
+    NSMutableArray *arr;
+    if (list) {
+        arr = [NSMutableArray arrayWithArray:[list copy]];
+        for (NSInteger i = arr.count - 1; i >= 0 ; i--) {
+            ScriptCommand *command = [arr objectAtIndex:i];
+            if (command.type == RealCommand) {
+                break;
+            }else{
+                [arr removeObject:command];
+            }
+        }
+    }else{
+        arr = [NSMutableArray array];
+    }
+    return arr;
+}
+
+#pragma -mark ButtonEvent
+-(IBAction)clickPlayBtn:(id)sender
+{
+    RelativeTimeScript *script = [self saveLocalRelativeTimeScript];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    PlayViewController *playVC = [storyboard instantiateViewControllerWithIdentifier:@"PlayViewIdentify"];
+    [playVC setScript:script PageSmellList:pageSmellList];
+    [self.navigationController wxs_pushViewController:playVC makeTransition:^(WXSTransitionProperty *transition) {
+        transition.animationType = WXSTransitionAnimationTypeFragmentShowFromRight;
+        transition.animationTime = 1.0f;
+        transition.backGestureEnable = NO;
+    }];
+}
+#pragma -mark HomeCollectionViewCellProtocol
+-(void)willAddWidthWithCommand:(ScriptCommand *)command
+{
+    if (command == nil || command.type != RealCommand) {
+        return;
+    }
+    NSInteger index = [commandList indexOfObject:command];
+    ScriptCommand *spaceCommand = [self searchFirstSpaceAfterIndex:index];
+    if (spaceCommand == nil) {
+        return;
+    }
+    NSInteger spaceIndex = [commandList indexOfObject:spaceCommand];
+    [_collectionView performBatchUpdates:^{
+        command.duration += 1;
+        [_collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];
+        [commandList removeObject:spaceCommand];
+        [_collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:spaceIndex inSection:0]]];
+    } completion:^(BOOL finished) {
+        NSInteger scriptTime = [self doWithScriptCommandList:commandList];
+        [_lblTime setText:[AppUtils switchSecondsToTime:scriptTime]];
+    }];
+}
+
+-(void)willMinusWidthWithCommand:(ScriptCommand *)command
+{
+    if (command == nil || command.type != RealCommand) {
+        return;
+    }
+    
+    if (command.duration == 1) {
+        return;
+    }
+    NSInteger index = [commandList indexOfObject:command];
+    ScriptCommand *spaceCommand = [[ScriptCommand alloc] init];
+    spaceCommand.startRelativeTime = 0;
+    spaceCommand.rfId = @"";
+    spaceCommand.duration = 1;
+    spaceCommand.smellName = @"间隔";
+    spaceCommand.type = SpaceCommand;
+    spaceCommand.power = [AppUtils powerFixed:(arc4random() % 100) / 100.0f];
+    
+    [_collectionView performBatchUpdates:^{
+        command.duration -= 1;
+        [_collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];
+        
+        [commandList insertObject:spaceCommand atIndex:index+1];
+        [_collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index + 1 inSection:0]]];
+    } completion:^(BOOL finished) {
+        NSInteger scriptTime = [self doWithScriptCommandList:commandList];
+        [_lblTime setText:[AppUtils switchSecondsToTime:scriptTime]];
+    }];
+}
 #pragma -mark UICollectionViewDelegate And DataSource
 - (CGFloat)scrollSpeedValueInCollectionView:(UICollectionView *)collectionView
 {
@@ -282,13 +565,16 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     HomeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HomeCollectionViewCellIdentify forIndexPath:indexPath];
-    [cell inilizedView];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        ScriptCommand *command = [commandList objectAtIndex:indexPath.item];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [cell setupWithScriptCommand:command];
-        });
-    });
+    cell.delegate = self;
+//    [cell inilizedView];
+    ScriptCommand *command = [commandList objectAtIndex:indexPath.item];
+    [cell setupWithScriptCommand:command];
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            
+//        });
+//    });
     return cell;
 }
 
@@ -324,13 +610,54 @@
         return;
     }
     if (fromIndexPath.item > toIndexPath.item) {
-        if (operationManager) {
-            [operationManager moveLeftOperation:toIndexPath];
-        }
+//        if (operationManager) {
+//            [operationManager moveLeftOperation:toIndexPath];
+//        }
+        
+        [collectionView performBatchUpdates:^{
+            [collectionView moveItemAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
+            [commandList removeObjectAtIndex:fromIndexPath.item];
+            [commandList insertObject:command atIndex:toIndexPath.item];
+            
+            CustomLewReorderableLayout *layout = (CustomLewReorderableLayout *)[collectionView collectionViewLayout];
+            [layout setCellFakeIndexPath:toIndexPath];
+        } completion:^(BOOL finished) {
+            UICollectionViewCell *insertCell = [_collectionView cellForItemAtIndexPath:toIndexPath];
+            CGPoint center = CGPointMake(insertCell.center.x, insertCell.frame.size.height * [AppUtils powerFixed:command.power]);
+            CGPoint backCenter = [collectionView convertPoint:center toView:[UIApplication sharedApplication].keyWindow];
+            if (smellFakeView.originalPositionY > 0) {
+                CGFloat temp = backCenter.y - smellFakeView.originalPositionY;
+                [smellFakeView setToBackViewCenter:CGPointMake(backCenter.x, smellFakeView.originalCenter.y + temp)];
+            }else{
+                [smellFakeView setToBackViewCenter:backCenter];
+            }
+
+        }];
     }else{
-        if (operationManager) {
-            [operationManager moveRightOperation:toIndexPath];
+        ScriptCommand *spaceCommand = [self searchFirstSpaceAfterIndex:fromIndexPath.item];
+        if (spaceCommand) {
+            NSInteger spaceIndex = [commandList indexOfObject:spaceCommand];
+            [collectionView performBatchUpdates:^{
+                [collectionView moveItemAtIndexPath:[NSIndexPath indexPathForItem:spaceIndex inSection:0] toIndexPath:fromIndexPath];
+                [commandList removeObjectAtIndex:spaceIndex];
+                [commandList insertObject:spaceCommand atIndex:fromIndexPath.item];
+                CustomLewReorderableLayout *layout = (CustomLewReorderableLayout *)[collectionView collectionViewLayout];
+                [layout setCellFakeIndexPath:[NSIndexPath indexPathForItem:fromIndexPath.item + 1 inSection:0]];
+            } completion:^(BOOL finished) {
+                UICollectionViewCell *insertCell = [_collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:fromIndexPath.item + 1 inSection:0]];
+                CGPoint center = CGPointMake(insertCell.center.x, insertCell.frame.size.height * [AppUtils powerFixed:command.power]);
+                CGPoint backCenter = [collectionView convertPoint:center toView:[UIApplication sharedApplication].keyWindow];
+                if (smellFakeView.originalPositionY > 0) {
+                    CGFloat temp = backCenter.y - smellFakeView.originalPositionY;
+                    [smellFakeView setToBackViewCenter:CGPointMake(backCenter.x, smellFakeView.originalCenter.y + temp)];
+                }else{
+                    [smellFakeView setToBackViewCenter:backCenter];
+                }
+            }];
         }
+//        if (operationManager) {
+//            [operationManager moveRightOperation:toIndexPath];
+//        }
     }
 }
 
@@ -390,6 +717,9 @@
         if (operationManager) {
             operationManager = nil;
         }
+        
+        NSInteger scriptTime = [self doWithScriptCommandList:commandList];
+        [_lblTime setText:[AppUtils switchSecondsToTime:scriptTime]];
     });
 }
 
@@ -483,6 +813,9 @@
             [self changeVirtualCommandToRealCommand];
             
             originCommandList = [commandList copy];
+            
+            NSInteger scriptTime = [self doWithScriptCommandList:commandList];
+            [_lblTime setText:[AppUtils switchSecondsToTime:scriptTime]];
         }];
     }
 }
@@ -531,6 +864,7 @@
                 if (operationManager) {
                     [smellFakeView setToBackViewCenter:smellFakeView.originalCenter];
                     operationManager = nil;
+                    
                     commandList = [NSMutableArray arrayWithArray:[originCommandList copy]];
                     [_collectionView reloadData];
                 }
