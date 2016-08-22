@@ -75,6 +75,7 @@
     
     if (_longPress == nil) {
         _longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTouch:)];
+        [_longPress setMinimumPressDuration:0.1];
         [self addGestureRecognizer:_longPress];
     }
 }

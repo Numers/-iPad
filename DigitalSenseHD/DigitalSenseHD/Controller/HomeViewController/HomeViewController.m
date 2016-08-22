@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "SmellView.h"
 #import "SmellFakeView.h"
+#import "ZDProgressView.h"
 #import "GraduatedLineView.h"
 #import "Smell.h"
 #import "RelativeTimeScript.h"
@@ -18,7 +19,8 @@
 #import "GlobalVar.h"
 
 #import "HomeCollectionViewCell.h"
-#import "PlayViewController.h"
+//#import "PlayViewController.h"
+#import "FlipPlayViewController.h"
 
 #import "CollectionViewOperationManager.h"
 #import "BluetoothProcessManager.h"
@@ -52,7 +54,7 @@
 @property(nonatomic, strong) IBOutlet UILabel *lblTime;
 @property(nonatomic, strong) IBOutlet UIView *bottomBackView;
 @property(nonatomic, strong) IBOutlet UIButton *btnShareOrDelete;
-@property(nonatomic, strong) IBOutlet UIProgressView *progressView;
+@property(nonatomic, strong) IBOutlet ZDProgressView *progressView;
 @end
 
 @implementation HomeViewController
@@ -65,6 +67,12 @@
     [self.lblTime setText:@"00:00"];
     [self.lblTime setFont:[UIFont fontWithName:@"DFPHaiBaoW12-GB" size:32.0f]];
     [self.lblTime setTextColor:[UIColor whiteColor]];
+    
+    [self.progressView setNoColor:[UIColor colorWithRed:0.514 green:0.388 blue:0.196 alpha:1.000]];
+    [self.progressView setPrsColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"ProgressTrackImage"]]];
+    [self.progressView setBorderColor:[UIColor colorWithRed:0.875 green:0.843 blue:0.451 alpha:1.000]];
+    [self.progressView setBorderWidth:0.5f];
+    [self.progressView setProgress:0.3f];
     
     [self.navigationController setNavigationBarHidden:YES];
     UIImage *backgroundImage = [UIImage imageNamed:@"BackgroundImage"];
@@ -490,13 +498,22 @@
 {
     RelativeTimeScript *script = [self saveLocalRelativeTimeScript];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    PlayViewController *playVC = [storyboard instantiateViewControllerWithIdentifier:@"PlayViewIdentify"];
+//    PlayViewController *playVC = [storyboard instantiateViewControllerWithIdentifier:@"PlayViewIdentify"];
+//    [playVC setScript:script PageSmellList:pageSmellList];
+//    [self.navigationController wxs_pushViewController:playVC makeTransition:^(WXSTransitionProperty *transition) {
+//        transition.animationType = WXSTransitionAnimationTypeFragmentShowFromRight;
+//        transition.animationTime = 1.0f;
+//        transition.backGestureEnable = NO;
+//    }];
+    
+    FlipPlayViewController *playVC = [storyboard instantiateViewControllerWithIdentifier:@"FlipPlayViewIdentify"];
     [playVC setScript:script PageSmellList:pageSmellList];
     [self.navigationController wxs_pushViewController:playVC makeTransition:^(WXSTransitionProperty *transition) {
         transition.animationType = WXSTransitionAnimationTypeFragmentShowFromRight;
         transition.animationTime = 1.0f;
         transition.backGestureEnable = NO;
     }];
+
 }
 #pragma -mark HomeCollectionViewCellProtocol
 -(void)willAddWidthWithCommand:(ScriptCommand *)command
@@ -865,8 +882,23 @@
                     [smellFakeView setToBackViewCenter:smellFakeView.originalCenter];
                     operationManager = nil;
                     
-                    commandList = [NSMutableArray arrayWithArray:[originCommandList copy]];
-                    [_collectionView reloadData];
+                    ScriptCommand *virtualCommand = [self searchVirtualCommand];
+                    if (virtualCommand) {
+                        [_collectionView performBatchUpdates:^{
+                            NSInteger index = [commandList indexOfObject:virtualCommand];
+                            [_collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];
+                            commandList = [NSMutableArray arrayWithArray:[originCommandList copy]];
+                            
+                            NSMutableArray *indexPathArr = [NSMutableArray array];
+                            for (NSInteger i = index; i < index + virtualCommand.duration; i ++ ) {
+                                [indexPathArr addObject:[NSIndexPath indexPathForItem:i inSection:0]];
+                            }
+                            [_collectionView insertItemsAtIndexPaths:indexPathArr];
+                        } completion:^(BOOL finished) {
+                            
+                        }];
+                    }
+                    
                 }
             }
         }

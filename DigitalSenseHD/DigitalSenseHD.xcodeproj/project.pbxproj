@@ -23,14 +23,17 @@
 		841933631D5B2E4E00E8E9EE /* load_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 841933601D5B2E4E00E8E9EE /* load_circle.png */; };
 		841933641D5B2E4E00E8E9EE /* MBProgressCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 841933621D5B2E4E00E8E9EE /* MBProgressCustomView.m */; };
 		842D8C6F1D66B29800DE6EBB /* UIView+Boom.m in Sources */ = {isa = PBXBuildFile; fileRef = 842D8C6E1D66B29800DE6EBB /* UIView+Boom.m */; };
-		84419D4B1D5DC2110054596B /* VirtualHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84419D4A1D5DC2110054596B /* VirtualHomeCollectionViewCell.m */; };
 		8462EB251D5D73F700897F92 /* ScriptCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462EB241D5D73F700897F92 /* ScriptCommand.m */; };
 		8462EB2C1D5D788000897F92 /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462EB2B1D5D788000897F92 /* HomeCollectionViewCell.m */; };
-		8462EB2F1D5D794800897F92 /* SpaceHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462EB2E1D5D794800897F92 /* SpaceHomeCollectionViewCell.m */; };
-		8462EB351D5D7E8F00897F92 /* RealHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462EB341D5D7E8F00897F92 /* RealHomeCollectionViewCell.m */; };
 		8462EB381D5D800500897F92 /* RealCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462EB371D5D800500897F92 /* RealCellView.m */; };
 		8462EB3D1D5D80A100897F92 /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462EB3C1D5D80A100897F92 /* UIColor+HexString.m */; };
 		8462EB411D5DAED700897F92 /* CustomLewReorderableLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462EB401D5DAED700897F92 /* CustomLewReorderableLayout.m */; };
+		8467F91A1D6AB29E00FEF47A /* ZDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467F9191D6AB29E00FEF47A /* ZDProgressView.m */; };
+		8467F91E1D6ACBD200FEF47A /* FlipPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467F91D1D6ACBD200FEF47A /* FlipPlayViewController.m */; };
+		8467F9221D6AD03600FEF47A /* FlipPlayBackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467F9211D6AD03600FEF47A /* FlipPlayBackView.m */; };
+		8467F9251D6AD04600FEF47A /* FlipPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467F9241D6AD04600FEF47A /* FlipPlayView.m */; };
+		8467F9281D6AD59A00FEF47A /* FlipContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467F9271D6AD59A00FEF47A /* FlipContentView.m */; };
+		8467F92C1D6AF48800FEF47A /* CAShapeLayer+FlipBackViewMask.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467F92B1D6AF48800FEF47A /* CAShapeLayer+FlipBackViewMask.m */; };
 		847090DE1D5C2C43009DCD46 /* SmellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847090DD1D5C2C43009DCD46 /* SmellView.m */; };
 		847219A71D68074500DE4E56 /* UICircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219A61D68074500DE4E56 /* UICircleButton.m */; };
 		847219AB1D6839CF00DE4E56 /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219AA1D6839CF00DE4E56 /* PlayViewController.m */; };
@@ -85,22 +88,28 @@
 		841933621D5B2E4E00E8E9EE /* MBProgressCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressCustomView.m; sourceTree = "<group>"; };
 		842D8C6D1D66B29800DE6EBB /* UIView+Boom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Boom.h"; sourceTree = "<group>"; };
 		842D8C6E1D66B29800DE6EBB /* UIView+Boom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Boom.m"; sourceTree = "<group>"; };
-		84419D491D5DC2110054596B /* VirtualHomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualHomeCollectionViewCell.h; sourceTree = "<group>"; };
-		84419D4A1D5DC2110054596B /* VirtualHomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirtualHomeCollectionViewCell.m; sourceTree = "<group>"; };
 		8462EB231D5D73F700897F92 /* ScriptCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptCommand.h; sourceTree = "<group>"; };
 		8462EB241D5D73F700897F92 /* ScriptCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScriptCommand.m; sourceTree = "<group>"; };
 		8462EB2A1D5D788000897F92 /* HomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCollectionViewCell.h; sourceTree = "<group>"; };
 		8462EB2B1D5D788000897F92 /* HomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionViewCell.m; sourceTree = "<group>"; };
-		8462EB2D1D5D794800897F92 /* SpaceHomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceHomeCollectionViewCell.h; sourceTree = "<group>"; };
-		8462EB2E1D5D794800897F92 /* SpaceHomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceHomeCollectionViewCell.m; sourceTree = "<group>"; };
-		8462EB331D5D7E8F00897F92 /* RealHomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealHomeCollectionViewCell.h; sourceTree = "<group>"; };
-		8462EB341D5D7E8F00897F92 /* RealHomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealHomeCollectionViewCell.m; sourceTree = "<group>"; };
 		8462EB361D5D800500897F92 /* RealCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealCellView.h; sourceTree = "<group>"; };
 		8462EB371D5D800500897F92 /* RealCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealCellView.m; sourceTree = "<group>"; };
 		8462EB3B1D5D80A100897F92 /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
 		8462EB3C1D5D80A100897F92 /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
 		8462EB3F1D5DAED700897F92 /* CustomLewReorderableLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLewReorderableLayout.h; sourceTree = "<group>"; };
 		8462EB401D5DAED700897F92 /* CustomLewReorderableLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLewReorderableLayout.m; sourceTree = "<group>"; };
+		8467F9181D6AB29E00FEF47A /* ZDProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDProgressView.h; sourceTree = "<group>"; };
+		8467F9191D6AB29E00FEF47A /* ZDProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDProgressView.m; sourceTree = "<group>"; };
+		8467F91C1D6ACBD200FEF47A /* FlipPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipPlayViewController.h; sourceTree = "<group>"; };
+		8467F91D1D6ACBD200FEF47A /* FlipPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipPlayViewController.m; sourceTree = "<group>"; };
+		8467F9201D6AD03600FEF47A /* FlipPlayBackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipPlayBackView.h; sourceTree = "<group>"; };
+		8467F9211D6AD03600FEF47A /* FlipPlayBackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipPlayBackView.m; sourceTree = "<group>"; };
+		8467F9231D6AD04600FEF47A /* FlipPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipPlayView.h; sourceTree = "<group>"; };
+		8467F9241D6AD04600FEF47A /* FlipPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipPlayView.m; sourceTree = "<group>"; };
+		8467F9261D6AD59A00FEF47A /* FlipContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipContentView.h; sourceTree = "<group>"; };
+		8467F9271D6AD59A00FEF47A /* FlipContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipContentView.m; sourceTree = "<group>"; };
+		8467F92A1D6AF48800FEF47A /* CAShapeLayer+FlipBackViewMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAShapeLayer+FlipBackViewMask.h"; sourceTree = "<group>"; };
+		8467F92B1D6AF48800FEF47A /* CAShapeLayer+FlipBackViewMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAShapeLayer+FlipBackViewMask.m"; sourceTree = "<group>"; };
 		847090DC1D5C2C43009DCD46 /* SmellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmellView.h; sourceTree = "<group>"; };
 		847090DD1D5C2C43009DCD46 /* SmellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmellView.m; sourceTree = "<group>"; };
 		847219A51D68074500DE4E56 /* UICircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICircleButton.h; sourceTree = "<group>"; };
@@ -226,6 +235,7 @@
 		8419333F1D5B27BC00E8E9EE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8467F91B1D6ACBC300FEF47A /* FlipPlayViewController */,
 				847219A81D6839BD00DE4E56 /* PlayViewController */,
 				8419335A1D5B27F500E8E9EE /* HomeViewController */,
 			);
@@ -331,14 +341,8 @@
 			children = (
 				8462EB2A1D5D788000897F92 /* HomeCollectionViewCell.h */,
 				8462EB2B1D5D788000897F92 /* HomeCollectionViewCell.m */,
-				8462EB2D1D5D794800897F92 /* SpaceHomeCollectionViewCell.h */,
-				8462EB2E1D5D794800897F92 /* SpaceHomeCollectionViewCell.m */,
-				8462EB331D5D7E8F00897F92 /* RealHomeCollectionViewCell.h */,
-				8462EB341D5D7E8F00897F92 /* RealHomeCollectionViewCell.m */,
 				8462EB361D5D800500897F92 /* RealCellView.h */,
 				8462EB371D5D800500897F92 /* RealCellView.m */,
-				84419D491D5DC2110054596B /* VirtualHomeCollectionViewCell.h */,
-				84419D4A1D5DC2110054596B /* VirtualHomeCollectionViewCell.m */,
 			);
 			path = HomeCollectionViewCell;
 			sourceTree = "<group>";
@@ -346,6 +350,7 @@
 		8462EB391D5D80A100897F92 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				8467F9291D6AF45D00FEF47A /* CAShapeLayer+FlipBackViewMask */,
 				847219B21D6843BE00DE4E56 /* WXSTransition */,
 				842D8C6C1D66B29800DE6EBB /* UIView+Boom */,
 				8462EB3A1D5D80A100897F92 /* UIColor+HexString */,
@@ -371,9 +376,43 @@
 			path = CustomLewReorderableLayout;
 			sourceTree = "<group>";
 		};
+		8467F91B1D6ACBC300FEF47A /* FlipPlayViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8467F91C1D6ACBD200FEF47A /* FlipPlayViewController.h */,
+				8467F91D1D6ACBD200FEF47A /* FlipPlayViewController.m */,
+			);
+			path = FlipPlayViewController;
+			sourceTree = "<group>";
+		};
+		8467F91F1D6AD01100FEF47A /* FlipPlayView */ = {
+			isa = PBXGroup;
+			children = (
+				8467F9201D6AD03600FEF47A /* FlipPlayBackView.h */,
+				8467F9211D6AD03600FEF47A /* FlipPlayBackView.m */,
+				8467F9231D6AD04600FEF47A /* FlipPlayView.h */,
+				8467F9241D6AD04600FEF47A /* FlipPlayView.m */,
+				8467F9261D6AD59A00FEF47A /* FlipContentView.h */,
+				8467F9271D6AD59A00FEF47A /* FlipContentView.m */,
+			);
+			path = FlipPlayView;
+			sourceTree = "<group>";
+		};
+		8467F9291D6AF45D00FEF47A /* CAShapeLayer+FlipBackViewMask */ = {
+			isa = PBXGroup;
+			children = (
+				8467F92A1D6AF48800FEF47A /* CAShapeLayer+FlipBackViewMask.h */,
+				8467F92B1D6AF48800FEF47A /* CAShapeLayer+FlipBackViewMask.m */,
+			);
+			path = "CAShapeLayer+FlipBackViewMask";
+			sourceTree = "<group>";
+		};
 		847090D81D5C2C0C009DCD46 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				8467F91F1D6AD01100FEF47A /* FlipPlayView */,
+				8467F9181D6AB29E00FEF47A /* ZDProgressView.h */,
+				8467F9191D6AB29E00FEF47A /* ZDProgressView.m */,
 				847090DC1D5C2C43009DCD46 /* SmellView.h */,
 				847090DD1D5C2C43009DCD46 /* SmellView.m */,
 				847D2E2A1D5C5FBC00DBC24C /* SmellFakeView.h */,
@@ -579,12 +618,15 @@
 				8462EB251D5D73F700897F92 /* ScriptCommand.m in Sources */,
 				847D2E291D5C59A600DBC24C /* Smell.m in Sources */,
 				847D2E2C1D5C5FBC00DBC24C /* SmellFakeView.m in Sources */,
+				8467F91A1D6AB29E00FEF47A /* ZDProgressView.m in Sources */,
 				841933571D5B27BC00E8E9EE /* SCNetWorkManager.m in Sources */,
+				8467F9281D6AD59A00FEF47A /* FlipContentView.m in Sources */,
 				847219C21D6843BE00DE4E56 /* WXSTransitionProperty.m in Sources */,
+				8467F91E1D6ACBD200FEF47A /* FlipPlayViewController.m in Sources */,
 				8462EB381D5D800500897F92 /* RealCellView.m in Sources */,
+				8467F92C1D6AF48800FEF47A /* CAShapeLayer+FlipBackViewMask.m in Sources */,
 				847219CF1D684E5500DE4E56 /* BluetoothProcessManager.m in Sources */,
 				842D8C6F1D66B29800DE6EBB /* UIView+Boom.m in Sources */,
-				84419D4B1D5DC2110054596B /* VirtualHomeCollectionViewCell.m in Sources */,
 				8419332A1D5B252100E8E9EE /* AppDelegate.m in Sources */,
 				847219AB1D6839CF00DE4E56 /* PlayViewController.m in Sources */,
 				847090DE1D5C2C43009DCD46 /* SmellView.m in Sources */,
@@ -593,7 +635,7 @@
 				841933271D5B252100E8E9EE /* main.m in Sources */,
 				841933561D5B27BC00E8E9EE /* RFGeneralManager.m in Sources */,
 				847219D01D684E5500DE4E56 /* DataAnalizer.m in Sources */,
-				8462EB2F1D5D794800897F92 /* SpaceHomeCollectionViewCell.m in Sources */,
+				8467F9221D6AD03600FEF47A /* FlipPlayBackView.m in Sources */,
 				841933581D5B27BC00E8E9EE /* URLManager.m in Sources */,
 				8462EB2C1D5D788000897F92 /* HomeCollectionViewCell.m in Sources */,
 				847219D11D684E5500DE4E56 /* ScriptExecuteManager.m in Sources */,
@@ -602,9 +644,9 @@
 				847219C11D6843BE00DE4E56 /* WXSTransitionManager.m in Sources */,
 				8462EB3D1D5D80A100897F92 /* UIColor+HexString.m in Sources */,
 				847219B01D683ED200DE4E56 /* RelativeTimeScript.m in Sources */,
-				8462EB351D5D7E8F00897F92 /* RealHomeCollectionViewCell.m in Sources */,
 				847219CE1D684E5500DE4E56 /* BluetoothMacManager.m in Sources */,
 				8407720F1D61BFAA00A51654 /* CollectionViewOperationManager.m in Sources */,
+				8467F9251D6AD04600FEF47A /* FlipPlayView.m in Sources */,
 				847219B11D683ED200DE4E56 /* Script.m in Sources */,
 				847219C01D6843BE00DE4E56 /* WXSPercentDrivenInteractiveTransition.m in Sources */,
 				841933331D5B252100E8E9EE /* DigitalSenseHD.xcdatamodeld in Sources */,

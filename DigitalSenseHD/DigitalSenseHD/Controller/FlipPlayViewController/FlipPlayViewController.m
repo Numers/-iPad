@@ -1,17 +1,17 @@
 //
-//  PlayViewController.m
+//  FlipPlayViewController.m
 //  DigitalSenseHD
 //
-//  Created by baolicheng on 16/8/20.
+//  Created by baolicheng on 16/8/22.
 //  Copyright © 2016年 RenRenFenQi. All rights reserved.
 //
 
-#import "PlayViewController.h"
+#import "FlipPlayViewController.h"
 #import "RelativeTimeScript.h"
 
-#import "HomeCollectionViewCell.h"
 #import "GraduatedLineView.h"
 #import "SmellView.h"
+#import "FlipPlayBackView.h"
 #import "ZDProgressView.h"
 #import "Smell.h"
 
@@ -20,8 +20,9 @@
 #import "ScriptExecuteManager.h"
 #import "BluetoothMacManager.h"
 
-#define PlayViewCollectionViewCellIdentify @"PlayViewCollectionViewCellIdentify"
-@interface PlayViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+#import "CAShapeLayer+FlipBackViewMask.h"
+
+@interface FlipPlayViewController ()
 {
     RelativeTimeScript *currentScript;
     GraduatedLineView *lineView;
@@ -37,23 +38,25 @@
     BOOL isLoop;
     BOOL needLoop;
 }
-@property(nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property(nonatomic, strong) IBOutlet FlipPlayBackView *flipPlayBackView;
 @property(nonatomic, strong) IBOutlet UILabel *lblTime;
 @property(nonatomic, strong) IBOutlet UIView *bottomBackView;
 @property(nonatomic, strong) IBOutlet UIButton *btnShareOrDelete;
 @property(nonatomic, strong) IBOutlet ZDProgressView *progressView;
 @end
 
-@implementation PlayViewController
+@implementation FlipPlayViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    //fontName:DFPHaiBaoW12   DFWaWaSC-W5  ||  familyName:Wawati SC     DFPHaiBaoW12-GB
     [self.lblTime setText:@"00:00"];
     [self.lblTime setFont:[UIFont fontWithName:@"DFPHaiBaoW12-GB" size:32.0f]];
     [self.lblTime setTextColor:[UIColor whiteColor]];
+    
+    [_flipPlayBackView setBackgroundColor:[UIColor clearColor]];
+    CAShapeLayer *layer = [CAShapeLayer createMaskLayerWithView:_flipPlayBackView];
+    _flipPlayBackView.layer.mask = layer;
     
     [self.navigationController setNavigationBarHidden:YES];
     UIImage *backgroundImage = [UIImage imageNamed:@"BackgroundImage"];
@@ -64,14 +67,7 @@
     [self.progressView setBorderColor:[UIColor colorWithRed:0.875 green:0.843 blue:0.451 alpha:1.000]];
     [self.progressView setBorderWidth:0.5f];
     [self.progressView setProgress:0.3f];
-    
-    [_collectionView setBackgroundColor:[UIColor clearColor]];
-    [_collectionView setContentInset:UIEdgeInsetsMake(0, 10, 0, 10)];
-    lineView = [[GraduatedLineView alloc] init];
-    [_collectionView addSubview:lineView];
-    [_collectionView sendSubviewToBack:lineView];
-    
-    [_collectionView registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:PlayViewCollectionViewCellIdentify];
+
     
     [self selectSmellListWithIndex:0];
     [self setIsShare:YES];
@@ -102,7 +98,6 @@
     [UIApplication sharedApplication].idleTimerDisabled = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -172,7 +167,7 @@
     for (Smell *s in smellList) {
         SmellView *sv = [self.view viewWithTag:i];
         if (sv) {
-//            sv.delegate = self;
+            //            sv.delegate = self;
             [sv setHidden:NO];
             [sv setSmell:s];
         }
@@ -237,7 +232,9 @@
 -(void)sendScriptCommandNotify:(NSNotification *)notify
 {
     ScriptCommand *scriptCommand = [notify object];
-    NSString *desc = [NSString stringWithFormat:@"正在播放%@",scriptCommand.smellName];
+    if (![AppUtils isNullStr:scriptCommand.rfId]) {
+        [_flipPlayBackView flipWithScriptCommand:scriptCommand];
+    }
 }
 
 -(void)progressChangedNotify:(NSNotification *)notify
@@ -256,7 +253,7 @@
         NSString *desc = [NSString stringWithFormat:@"%@",[AppUtils switchSecondsToTime:[seconds integerValue]]];
         [_lblTime setText:desc];
         
-        [_collectionView setContentOffset:CGPointMake([seconds integerValue] * WidthPerSecond, 0) animated:YES];
+        
     }
 }
 #pragma -mark GestureRecognizer
@@ -273,44 +270,14 @@
         [[BluetoothMacManager defaultManager] writeCharacteristicWithCommandStr:@"F96600000000000055"];
     }
 }
-#pragma -mark CollectionViewDelegate
+/*
+#pragma mark - Navigation
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return currentScript.scriptCommandList.count;
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
-
-// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    HomeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PlayViewCollectionViewCellIdentify forIndexPath:indexPath];
-//    cell.delegate = self;
-    //    [cell inilizedView];
-    
-    
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            ScriptCommand *command = [currentScript.scriptCommandList objectAtIndex:indexPath.item];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [cell setupWithScriptCommand:command];
-            });
-        });
-    return cell;
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    ScriptCommand *command = [currentScript.scriptCommandList objectAtIndex:indexPath.item];
-    CGFloat width = command.duration * WidthPerSecond;
-    CGFloat height = collectionView.frame.size.height;
-    return CGSizeMake(width, height);
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return 0;
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 0;
-}
+*/
 
 @end

@@ -183,11 +183,11 @@ static NSInteger currentSecond = -1;
             if (![AppUtils isNullStr:commandstr]) {
                 [[BluetoothMacManager defaultManager] writeCharacteristicWithCommandStr:commandstr];
             }
-            
-            NSDictionary *dic = [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:duration] forKey:ActualTimeKey];
-            //往UI通知当前执行的命令
-            [[NSNotificationCenter defaultCenter] postNotificationName:SendScriptCommandNotification object:command userInfo:dic];
         }
+        
+        NSDictionary *dic = [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:duration] forKey:ActualTimeKey];
+        //往UI通知当前执行的命令
+        [[NSNotificationCenter defaultCenter] postNotificationName:SendScriptCommandNotification object:command userInfo:dic];
     }
 }
 /**
