@@ -18,6 +18,7 @@
 {
     RealCellView *realCellView;
     UIImageView *smellIconImageView;
+    UIImageView *dashImageView;
     
     ScriptCommand *currentCommand;
 }
@@ -35,10 +36,12 @@
         smellIconImageView = [[UIImageView alloc] init];
         [self addSubview:smellIconImageView];
         
+        dashImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"DashLineImage"]];
+        [self addSubview:dashImageView];
+        
 //        [self sendSubviewToBack:realCellView];
         
-        [realCellView setHidden:YES];
-        [smellIconImageView setHidden:YES];
+        [self inilizedView];
     }
     return self;
 }
@@ -48,6 +51,7 @@
     currentCommand = nil;
     [realCellView setHidden:YES];
     [smellIconImageView setHidden:YES];
+    [dashImageView setHidden:YES];
 }
 
 -(void)setupWithScriptCommand:(ScriptCommand *)command
@@ -57,12 +61,15 @@
     if (command.type == SpaceCommand) {
         [realCellView setHidden:YES];
         [smellIconImageView setHidden:YES];
+        [dashImageView setHidden:YES];
     }else if (command.type == VirtualCommand){
         [realCellView setHidden:YES];
         [smellIconImageView setHidden:YES];
+        [dashImageView setHidden:NO];
     }else if (command.type == RealCommand){
         [realCellView setHidden:NO];
         [smellIconImageView setHidden:NO];
+        [dashImageView setHidden:YES];
         UIImage *smellImage = [UIImage imageNamed:[command.smellImage stringByReplacingOccurrencesOfString:@"Image" withString:@"IconImage"]];
         [smellIconImageView setImage:smellImage];
         [smellIconImageView setFrame:CGRectMake(0, 0, smellImage.size.width, smellImage.size.height)];
@@ -95,8 +102,9 @@
 -(void)drawRect:(CGRect)rect
 {
     if (currentCommand && currentCommand.type == RealCommand) {
-        [smellIconImageView setCenter:CGPointMake(smellIconImageView.frame.size.width / 2.0f, self.frame.size.height * currentCommand.power)];
+        [smellIconImageView setCenter:CGPointMake(smellIconImageView.frame.size.width / 2.0f + 1, self.frame.size.height * currentCommand.power)];
         [realCellView setFrame:CGRectMake(RealCellLeftMargin, self.frame.size.height * currentCommand.power - RealCellHeight / 2.0f, self.frame.size.width - RealCellLeftMargin, RealCellHeight)];
     }
+    [dashImageView setFrame:CGRectMake(0, 0, 1, self.frame.size.height)];
 }
 @end

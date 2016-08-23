@@ -19,11 +19,12 @@
 #import "GlobalVar.h"
 
 #import "HomeCollectionViewCell.h"
-//#import "PlayViewController.h"
+#import "PlayViewController.h"
 #import "FlipPlayViewController.h"
 
 #import "CollectionViewOperationManager.h"
 #import "BluetoothProcessManager.h"
+#import "ShareManage.h"
 
 #import "UINavigationController+WXSTransition.h"
 
@@ -515,6 +516,13 @@
     }];
 
 }
+
+-(IBAction)clickShareBtn:(id)sender
+{
+    if (isShare) {
+        [[ShareManage GetInstance] shareVideoToWeixinPlatform:0 themeUrl:@"http://www.qiweiwangguo.com/" thumbnail:[UIImage imageNamed:@"ShareThumbnailImage"] title:@"气味王国" descript:@"气味王国test"];
+    }
+}
 #pragma -mark HomeCollectionViewCellProtocol
 -(void)willAddWidthWithCommand:(ScriptCommand *)command
 {
@@ -611,6 +619,11 @@
     return 0;
 }
 
+- (CGFloat)reorderingItemAlpha:(UICollectionView * )collectionview inSection:(NSInteger)section
+{
+    return 1.0f;
+}
+
 - (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
@@ -622,6 +635,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath
 {
+//    NSLog(@"%d,%d",fromIndexPath.item,toIndexPath.item);
     ScriptCommand *command = [commandList objectAtIndex:fromIndexPath.item];
     if (command && command.type != VirtualCommand) {
         return;

@@ -7,8 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "WXApi.h"
+#import "GlobalVar.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<WXApiDelegate>
 
 @end
 
@@ -17,6 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [WXApi registerApp:WeixinKey];
     return YES;
 }
 
@@ -43,6 +46,20 @@
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
+
+#pragma mark - add URL回调播放界面
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+// this happens while we are running ( in the background, or from within our own app )
+// only valid if GuoZhongBao-Info.plist specifies a protocol to handle
+- (BOOL)application:(UIApplication*)application openURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation
+{
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
 
 #pragma mark - Core Data stack
 

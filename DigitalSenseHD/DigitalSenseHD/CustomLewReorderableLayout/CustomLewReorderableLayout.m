@@ -331,6 +331,7 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
         [_cellFakeViewOnScreen removeFromSuperview];
         _cellFakeViewOnScreen = nil;
         
+        //临时注释
         [self invalidateLayout];
         
         if ([_delegate respondsToSelector:@selector(collectionView:layout:didEndDraggingItemAtIndexPath:)]) {
@@ -357,7 +358,7 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
         [_cellFakeViewOnScreen removeFromSuperview];
         _cellFakeViewOnScreen = nil;
     }];
-    
+    //临时注释
     [self invalidateLayout];
 }
 
@@ -410,6 +411,7 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
             
             _fakeCellCenter = self.cellFakeView.center;
             
+            //临时注释
             [self invalidateLayout];
             
 //            [_cellFakeView pushFowardView];

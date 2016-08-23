@@ -34,6 +34,15 @@
 		8467F9251D6AD04600FEF47A /* FlipPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467F9241D6AD04600FEF47A /* FlipPlayView.m */; };
 		8467F9281D6AD59A00FEF47A /* FlipContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467F9271D6AD59A00FEF47A /* FlipContentView.m */; };
 		8467F92C1D6AF48800FEF47A /* CAShapeLayer+FlipBackViewMask.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467F92B1D6AF48800FEF47A /* CAShapeLayer+FlipBackViewMask.m */; };
+		84691D361D6BEF05002F836C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84691D351D6BEF05002F836C /* SystemConfiguration.framework */; };
+		84691D381D6BEF10002F836C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 84691D371D6BEF10002F836C /* libz.tbd */; };
+		84691D3A1D6BEF1A002F836C /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 84691D391D6BEF1A002F836C /* libsqlite3.0.tbd */; };
+		84691D3C1D6BEF29002F836C /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 84691D3B1D6BEF29002F836C /* libc++.tbd */; };
+		84691D4A1D6BEF5D002F836C /* CommonTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 84691D3F1D6BEF5D002F836C /* CommonTools.m */; };
+		84691D4B1D6BEF5D002F836C /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84691D411D6BEF5D002F836C /* TencentOpenAPI.framework */; };
+		84691D4C1D6BEF5D002F836C /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84691D421D6BEF5D002F836C /* TencentOpenApi_IOS_Bundle.bundle */; };
+		84691D4D1D6BEF5D002F836C /* ShareManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84691D451D6BEF5D002F836C /* ShareManage.m */; };
+		84691D4E1D6BEF5D002F836C /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84691D471D6BEF5D002F836C /* libWeChatSDK.a */; };
 		847090DE1D5C2C43009DCD46 /* SmellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847090DD1D5C2C43009DCD46 /* SmellView.m */; };
 		847219A71D68074500DE4E56 /* UICircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219A61D68074500DE4E56 /* UICircleButton.m */; };
 		847219AB1D6839CF00DE4E56 /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219AA1D6839CF00DE4E56 /* PlayViewController.m */; };
@@ -110,6 +119,20 @@
 		8467F9271D6AD59A00FEF47A /* FlipContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipContentView.m; sourceTree = "<group>"; };
 		8467F92A1D6AF48800FEF47A /* CAShapeLayer+FlipBackViewMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAShapeLayer+FlipBackViewMask.h"; sourceTree = "<group>"; };
 		8467F92B1D6AF48800FEF47A /* CAShapeLayer+FlipBackViewMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAShapeLayer+FlipBackViewMask.m"; sourceTree = "<group>"; };
+		84691D351D6BEF05002F836C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		84691D371D6BEF10002F836C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		84691D391D6BEF1A002F836C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		84691D3B1D6BEF29002F836C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		84691D3E1D6BEF5D002F836C /* CommonTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTools.h; sourceTree = "<group>"; };
+		84691D3F1D6BEF5D002F836C /* CommonTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTools.m; sourceTree = "<group>"; };
+		84691D411D6BEF5D002F836C /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		84691D421D6BEF5D002F836C /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
+		84691D431D6BEF5D002F836C /* sdkDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdkDef.h; sourceTree = "<group>"; };
+		84691D441D6BEF5D002F836C /* ShareManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareManage.h; sourceTree = "<group>"; };
+		84691D451D6BEF5D002F836C /* ShareManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareManage.m; sourceTree = "<group>"; };
+		84691D471D6BEF5D002F836C /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		84691D481D6BEF5D002F836C /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		84691D491D6BEF5D002F836C /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		847090DC1D5C2C43009DCD46 /* SmellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmellView.h; sourceTree = "<group>"; };
 		847090DD1D5C2C43009DCD46 /* SmellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmellView.m; sourceTree = "<group>"; };
 		847219A51D68074500DE4E56 /* UICircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICircleButton.h; sourceTree = "<group>"; };
@@ -154,6 +177,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84691D4E1D6BEF5D002F836C /* libWeChatSDK.a in Frameworks */,
+				84691D3C1D6BEF29002F836C /* libc++.tbd in Frameworks */,
+				84691D4B1D6BEF5D002F836C /* TencentOpenAPI.framework in Frameworks */,
+				84691D3A1D6BEF1A002F836C /* libsqlite3.0.tbd in Frameworks */,
+				84691D381D6BEF10002F836C /* libz.tbd in Frameworks */,
+				84691D361D6BEF05002F836C /* SystemConfiguration.framework in Frameworks */,
 				11385125FBE8743EF769DFB1 /* libPods-DigitalSenseHD.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,6 +274,7 @@
 		841933401D5B27BC00E8E9EE /* CustomManager */ = {
 			isa = PBXGroup;
 			children = (
+				84691D3D1D6BEF5D002F836C /* shareManager */,
 				847219C31D684E5500DE4E56 /* Bluetooth */,
 				847219CB1D684E5500DE4E56 /* Script */,
 				8407720C1D61BF9200A51654 /* CollectionViewOperationManager */,
@@ -407,6 +437,39 @@
 			path = "CAShapeLayer+FlipBackViewMask";
 			sourceTree = "<group>";
 		};
+		84691D3D1D6BEF5D002F836C /* shareManager */ = {
+			isa = PBXGroup;
+			children = (
+				84691D3E1D6BEF5D002F836C /* CommonTools.h */,
+				84691D3F1D6BEF5D002F836C /* CommonTools.m */,
+				84691D401D6BEF5D002F836C /* QQZone */,
+				84691D431D6BEF5D002F836C /* sdkDef.h */,
+				84691D441D6BEF5D002F836C /* ShareManage.h */,
+				84691D451D6BEF5D002F836C /* ShareManage.m */,
+				84691D461D6BEF5D002F836C /* WeChat */,
+			);
+			path = shareManager;
+			sourceTree = "<group>";
+		};
+		84691D401D6BEF5D002F836C /* QQZone */ = {
+			isa = PBXGroup;
+			children = (
+				84691D411D6BEF5D002F836C /* TencentOpenAPI.framework */,
+				84691D421D6BEF5D002F836C /* TencentOpenApi_IOS_Bundle.bundle */,
+			);
+			path = QQZone;
+			sourceTree = "<group>";
+		};
+		84691D461D6BEF5D002F836C /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				84691D471D6BEF5D002F836C /* libWeChatSDK.a */,
+				84691D481D6BEF5D002F836C /* WXApi.h */,
+				84691D491D6BEF5D002F836C /* WXApiObject.h */,
+			);
+			path = WeChat;
+			sourceTree = "<group>";
+		};
 		847090D81D5C2C0C009DCD46 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -485,6 +548,10 @@
 		BC31833F3BBF3369D627671A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84691D3B1D6BEF29002F836C /* libc++.tbd */,
+				84691D391D6BEF1A002F836C /* libsqlite3.0.tbd */,
+				84691D371D6BEF10002F836C /* libz.tbd */,
+				84691D351D6BEF05002F836C /* SystemConfiguration.framework */,
 				154374B62CBFE5C82DBB6315 /* libPods-DigitalSenseHD.a */,
 			);
 			name = Frameworks;
@@ -555,6 +622,7 @@
 				841933381D5B252100E8E9EE /* LaunchScreen.storyboard in Resources */,
 				841933351D5B252100E8E9EE /* Assets.xcassets in Resources */,
 				848820911D65DAE50035BEE1 /* HuaKangHaiBao.ttf in Resources */,
+				84691D4C1D6BEF5D002F836C /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				841933301D5B252100E8E9EE /* Main.storyboard in Resources */,
 				841933631D5B2E4E00E8E9EE /* load_circle.png in Resources */,
 			);
@@ -627,6 +695,7 @@
 				8467F92C1D6AF48800FEF47A /* CAShapeLayer+FlipBackViewMask.m in Sources */,
 				847219CF1D684E5500DE4E56 /* BluetoothProcessManager.m in Sources */,
 				842D8C6F1D66B29800DE6EBB /* UIView+Boom.m in Sources */,
+				84691D4D1D6BEF5D002F836C /* ShareManage.m in Sources */,
 				8419332A1D5B252100E8E9EE /* AppDelegate.m in Sources */,
 				847219AB1D6839CF00DE4E56 /* PlayViewController.m in Sources */,
 				847090DE1D5C2C43009DCD46 /* SmellView.m in Sources */,
@@ -649,6 +718,7 @@
 				8467F9251D6AD04600FEF47A /* FlipPlayView.m in Sources */,
 				847219B11D683ED200DE4E56 /* Script.m in Sources */,
 				847219C01D6843BE00DE4E56 /* WXSPercentDrivenInteractiveTransition.m in Sources */,
+				84691D4A1D6BEF5D002F836C /* CommonTools.m in Sources */,
 				841933331D5B252100E8E9EE /* DigitalSenseHD.xcdatamodeld in Sources */,
 				8462EB411D5DAED700897F92 /* CustomLewReorderableLayout.m in Sources */,
 				84752D921D5F052000127812 /* GraduatedLineView.m in Sources */,
@@ -768,10 +838,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DigitalSenseHD/CustomManager/shareManager/QQZone",
+				);
 				GCC_PREFIX_HEADER = "DigitalSenseHD/DigitalSenseHD-Prefix.pch";
 				INFOPLIST_FILE = DigitalSenseHD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DigitalSenseHD/CustomManager/shareManager/WeChat",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.renrenCompany.DigitalSenseHD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -786,10 +865,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DigitalSenseHD/CustomManager/shareManager/QQZone",
+				);
 				GCC_PREFIX_HEADER = "DigitalSenseHD/DigitalSenseHD-Prefix.pch";
 				INFOPLIST_FILE = DigitalSenseHD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DigitalSenseHD/CustomManager/shareManager/WeChat",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.renrenCompany.DigitalSenseHD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
