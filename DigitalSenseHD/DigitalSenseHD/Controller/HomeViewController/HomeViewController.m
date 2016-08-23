@@ -635,7 +635,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath
 {
-//    NSLog(@"%d,%d",fromIndexPath.item,toIndexPath.item);
+    NSLog(@"%d,%d",fromIndexPath.item,toIndexPath.item);
     ScriptCommand *command = [commandList objectAtIndex:fromIndexPath.item];
     if (command && command.type != VirtualCommand) {
         return;
@@ -729,7 +729,9 @@
 {
     if ([collectionView pointInside:location withEvent:nil]) {
         completion(YES);
-        [self changeVirtualCommandToRealCommand];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self changeVirtualCommandToRealCommand];
+        });
     }else{
         CGPoint locationOnBtn = [collectionView convertPoint:location toView:_btnShareOrDelete];
         if ([_btnShareOrDelete pointInside:locationOnBtn withEvent:nil]) {
@@ -739,7 +741,9 @@
             completion(NO);
         }else{
             completion(YES);
-            [self changeVirtualCommandToRealCommand];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self changeVirtualCommandToRealCommand];
+            });
         }
     }
     
