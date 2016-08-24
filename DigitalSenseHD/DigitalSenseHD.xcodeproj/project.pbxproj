@@ -62,6 +62,7 @@
 		847D2E2C1D5C5FBC00DBC24C /* SmellFakeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D2E2B1D5C5FBC00DBC24C /* SmellFakeView.m */; };
 		848820911D65DAE50035BEE1 /* HuaKangHaiBao.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 848820901D65DAE50035BEE1 /* HuaKangHaiBao.ttf */; };
 		848820921D65DC320035BEE1 /* WawaSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8488208F1D65DAB30035BEE1 /* WawaSC-Regular.otf */; };
+		848FC4D41D6D72A8006D8F1F /* XTLoveHeartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 848FC4D31D6D72A8006D8F1F /* XTLoveHeartView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -170,6 +171,8 @@
 		847D2E2B1D5C5FBC00DBC24C /* SmellFakeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmellFakeView.m; sourceTree = "<group>"; };
 		8488208F1D65DAB30035BEE1 /* WawaSC-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WawaSC-Regular.otf"; sourceTree = "<group>"; };
 		848820901D65DAE50035BEE1 /* HuaKangHaiBao.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HuaKangHaiBao.ttf; sourceTree = "<group>"; };
+		848FC4D21D6D72A8006D8F1F /* XTLoveHeartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTLoveHeartView.h; sourceTree = "<group>"; };
+		848FC4D31D6D72A8006D8F1F /* XTLoveHeartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTLoveHeartView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,6 +476,7 @@
 		847090D81D5C2C0C009DCD46 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				848FC4D11D6D72A8006D8F1F /* HeartView */,
 				8467F91F1D6AD01100FEF47A /* FlipPlayView */,
 				8467F9181D6AB29E00FEF47A /* ZDProgressView.h */,
 				8467F9191D6AB29E00FEF47A /* ZDProgressView.m */,
@@ -543,6 +547,15 @@
 				847219CD1D684E5500DE4E56 /* ScriptExecuteManager.m */,
 			);
 			path = Script;
+			sourceTree = "<group>";
+		};
+		848FC4D11D6D72A8006D8F1F /* HeartView */ = {
+			isa = PBXGroup;
+			children = (
+				848FC4D21D6D72A8006D8F1F /* XTLoveHeartView.h */,
+				848FC4D31D6D72A8006D8F1F /* XTLoveHeartView.m */,
+			);
+			path = HeartView;
 			sourceTree = "<group>";
 		};
 		BC31833F3BBF3369D627671A /* Frameworks */ = {
@@ -708,6 +721,7 @@
 				841933581D5B27BC00E8E9EE /* URLManager.m in Sources */,
 				8462EB2C1D5D788000897F92 /* HomeCollectionViewCell.m in Sources */,
 				847219D11D684E5500DE4E56 /* ScriptExecuteManager.m in Sources */,
+				848FC4D41D6D72A8006D8F1F /* XTLoveHeartView.m in Sources */,
 				847219BF1D6843BE00DE4E56 /* UIViewController+WXSTransition.m in Sources */,
 				841933591D5B27BC00E8E9EE /* AppUtils.m in Sources */,
 				847219C11D6843BE00DE4E56 /* WXSTransitionManager.m in Sources */,

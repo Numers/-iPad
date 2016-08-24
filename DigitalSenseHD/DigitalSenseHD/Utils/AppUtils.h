@@ -49,7 +49,11 @@
 
 +(void)showHudProgress:(NSString *)title ForView:(UIView *)view;
 
++(void)showCustomHudProgress:(NSString *)title CustomView:(UIView *)customView ForView:(UIView *)view;
+
 +(void)hidenHudProgressForView:(UIView *)view;
+
++(void)hidenCustomHudProgressForView:(UIView *)view;
 
 +(CGFloat)powerFixed:(CGFloat)power;
 @end

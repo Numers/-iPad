@@ -24,6 +24,7 @@
 
 #import "CollectionViewOperationManager.h"
 #import "BluetoothProcessManager.h"
+#import "BluetoothMacManager.h"
 #import "ShareManage.h"
 
 #import "UINavigationController+WXSTransition.h"
@@ -32,7 +33,7 @@
 //#define SpaceCellIdentify @"SpaceHomeCellIdentify"
 //#define VirtualCellIdentify @"VirtualHomeCellIdentify"
 //#define RealCellIdentify @"RealHomeCellIdentify"
-@interface HomeViewController ()<SmellViewProtocol,CustomLewReorderableLayoutDataSource,CustomLewReorderableLayoutDelegate,HomeCollectionViewCellProtocol>
+@interface HomeViewController ()<SmellViewProtocol,CustomLewReorderableLayoutDataSource,CustomLewReorderableLayoutDelegate,HomeCollectionViewCellProtocol,UIAlertViewDelegate>
 {
     NSArray *smellList;
     
@@ -49,6 +50,9 @@
     UISwipeGestureRecognizer *swipeGestureRecognizer;
     
     BOOL isShare; //yes分享，NO删除
+    
+    NSTimer *testTimer;
+    BOOL needReconnecting;
 }
 
 @property(nonatomic, strong) IBOutlet UICollectionView *collectionView;
@@ -73,7 +77,7 @@
     [self.progressView setPrsColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"ProgressTrackImage"]]];
     [self.progressView setBorderColor:[UIColor colorWithRed:0.875 green:0.843 blue:0.451 alpha:1.000]];
     [self.progressView setBorderWidth:0.5f];
-    [self.progressView setProgress:0.3f];
+    [self.progressView setProgress:0.0f];
     
     [self.navigationController setNavigationBarHidden:YES];
     UIImage *backgroundImage = [UIImage imageNamed:@"BackgroundImage"];
@@ -94,7 +98,7 @@
 //    [_collectionView registerClass:[RealHomeCollectionViewCell class] forCellWithReuseIdentifier:RealCellIdentify];
     
     Smell *smell1 = [[Smell alloc] init];
-    smell1.smellRFID = @"00000001";
+    smell1.smellRFID = @"00000010";
     smell1.smellName = @"苹果";
     smell1.smellImage = @"AppleImage";
     smell1.smellColor = @"#037F00";
@@ -163,13 +167,20 @@
     swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight | UISwipeGestureRecognizerDirectionLeft;
     [self.bottomBackView addGestureRecognizer:swipeGestureRecognizer];
     
+    needReconnecting = YES;
     [[BluetoothProcessManager defatultManager] registerNotify];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(smellFakeViewCenterChanged:) name:FakeViewCenterChangedNotify object:nil];
+    [self registerNotifications];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)viewDidLayoutSubviews
@@ -210,12 +221,88 @@
     }
 }
 
+-(void)onStartScanBluetooth:(NSNotification *)notify
+{
+    if (testTimer) {
+        if ([testTimer isValid]) {
+            [testTimer invalidate];
+            testTimer = nil;
+        }
+    }
+}
+
+-(void)onCallbackBluetoothPowerOff:(NSNotification *)notify
+{
+    if (testTimer) {
+        if ([testTimer isValid]) {
+            [testTimer invalidate];
+            testTimer = nil;
+        }
+    }
+}
+
+-(void)onCallbackScanBluetoothTimeout:(NSNotification *)notify
+{
+    
+}
+
+-(void)onCallbackBluetoothDisconnected:(NSNotification *)notify
+{
+    if (needReconnecting) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"设备未连接" message:@"iPad/设备蓝牙已断开，请重新连接！" delegate:self cancelButtonTitle:@"继续游戏" otherButtonTitles:@"重新连接", nil];
+        [alertView show];
+    }
+}
+
+-(void)onStartConnectToBluetooth:(NSNotification *)notify
+{
+    
+}
+
+-(void)onCallbackConnectToBluetoothSuccessfully:(NSNotification *)notify
+{
+    //心跳包
+    testTimer = [NSTimer scheduledTimerWithTimeInterval:8 target:self selector:@selector(test) userInfo:nil repeats:YES];
+    [testTimer fire];
+}
+
+-(void)onCallbackConnectToBluetoothTimeout:(NSNotification *)notify
+{
+    if (needReconnecting) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"设备未连接" message:@"iPad/设备蓝牙已断开，请重新连接！" delegate:self cancelButtonTitle:@"继续游戏" otherButtonTitles:@"重新连接", nil];
+        [alertView show];
+    }
+}
 #pragma -mark GestureRecognizer
 -(void)swipeGesture
 {
     [self changeSmellList];
 }
 #pragma -mark privateFunction
+-(void)registerNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(smellFakeViewCenterChanged:) name:FakeViewCenterChangedNotify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onStartScanBluetooth:) name:OnStartScanBluetooth object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallbackBluetoothPowerOff:) name:OnCallbackBluetoothPowerOff object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallbackScanBluetoothTimeout:) name:OnCallbackScanBluetoothTimeout object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallbackBluetoothDisconnected:) name:OnCallbackBluetoothDisconnected object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onStartConnectToBluetooth:) name:OnStartConnectToBluetooth object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallbackConnectToBluetoothSuccessfully:) name:OnCallbackConnectToBluetoothSuccessfully object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallbackConnectToBluetoothTimeout:) name:OnCallbackConnectToBluetoothTimeout object:nil];
+}
+
+/**
+ *  @author RenRenFenQi, 16-07-26 10:07:04
+ *
+ *  心跳包
+ */
+-(void)test
+{
+    if ([[BluetoothMacManager defaultManager] isConnected]) {
+        [[BluetoothMacManager defaultManager] writeCharacteristicWithCommandStr:@""];
+    }
+}
+
 -(void)setIsShare:(BOOL)share
 {
     isShare = share;
@@ -926,5 +1013,16 @@
 -(void)panEnded
 {
     
+}
+
+#pragma -mark UIAlertViewDelegate
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == alertView.cancelButtonIndex) {
+        needReconnecting = NO;
+    }else{
+        needReconnecting = YES;
+        [[BluetoothProcessManager defatultManager] reconnectBluetooth];
+    }
 }
 @end

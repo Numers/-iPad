@@ -13,12 +13,14 @@
 #import "SmellView.h"
 #import "FlipPlayBackView.h"
 #import "ZDProgressView.h"
+#import "XTLoveHeartView.h"
 #import "Smell.h"
 
 #import "GlobalVar.h"
 
 #import "ScriptExecuteManager.h"
 #import "BluetoothMacManager.h"
+#import "BluetoothProcessManager.h"
 
 #import "CAShapeLayer+FlipBackViewMask.h"
 
@@ -37,6 +39,8 @@
     
     BOOL isLoop;
     BOOL needLoop;
+    
+    NSTimer *heartTimer;
 }
 @property(nonatomic, strong) IBOutlet FlipPlayBackView *flipPlayBackView;
 @property(nonatomic, strong) IBOutlet UILabel *lblTime;
@@ -89,7 +93,8 @@
 {
     [super viewDidAppear:animated];
     [UIApplication sharedApplication].idleTimerDisabled = YES;
-    [self playScript];
+    
+    [self beginPlayScript];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -132,12 +137,41 @@
     isLoop = NO;
 }
 
+-(void)beginPlayScript
+{
+    [AppUtils showCustomHudProgress:@"ready" CustomView:nil ForView:self.view];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [AppUtils showCustomHudProgress:@"go" CustomView:nil ForView:self.view];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self playScript];
+        });
+    });
+}
+
 -(void)registerNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginPalyScript:) name:PlayScriptNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playOverScript:) name:PlayOverScriptNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendScriptCommandNotify:) name:SendScriptCommandNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(progressChangedNotify:) name:PlayProgressSecondNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onStartScanBluetooth:) name:OnStartScanBluetooth object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallbackBluetoothPowerOff:) name:OnCallbackBluetoothPowerOff object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallbackScanBluetoothTimeout:) name:OnCallbackScanBluetoothTimeout object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallbackBluetoothDisconnected:) name:OnCallbackBluetoothDisconnected object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onStartConnectToBluetooth:) name:OnStartConnectToBluetooth object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallbackConnectToBluetoothSuccessfully:) name:OnCallbackConnectToBluetoothSuccessfully object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallbackConnectToBluetoothTimeout:) name:OnCallbackConnectToBluetoothTimeout object:nil];
+}
+
+-(void)generateHeartView
+{
+    XTLoveHeartView *heart = [[XTLoveHeartView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [self.view addSubview:heart];
+    [self.view bringSubviewToFront:heart];
+    CGPoint fountainSource = CGPointMake(_flipPlayBackView.frame.origin.x - 20, _flipPlayBackView.frame.origin.y);
+    heart.center = fountainSource;
+    [heart animateInView:self.view];
 }
 
 -(void)playScript
@@ -234,6 +268,20 @@
     ScriptCommand *scriptCommand = [notify object];
     if (![AppUtils isNullStr:scriptCommand.rfId]) {
         [_flipPlayBackView flipWithScriptCommand:scriptCommand];
+        
+        NSDictionary *dic = [notify userInfo];
+        NSInteger actualTime = [[dic objectForKey:ActualTimeKey] integerValue];
+        heartTimer = [NSTimer scheduledTimerWithTimeInterval:0.15 target:self selector:@selector(generateHeartView) userInfo:nil repeats:YES];
+        [heartTimer fire];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(actualTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (heartTimer) {
+                if ([heartTimer isValid]) {
+                    [heartTimer invalidate];
+                }
+            }
+        });
+
     }
 }
 
@@ -255,6 +303,47 @@
         
         
     }
+}
+
+
+-(void)onStartScanBluetooth:(NSNotification *)notify
+{
+    
+}
+
+-(void)onCallbackBluetoothPowerOff:(NSNotification *)notify
+{
+    UIImageView *customImageView = [[UIImageView alloc] initWithImage:nil];
+    [AppUtils showCustomHudProgress:@"蓝牙已关闭" CustomView:customImageView ForView:self.view];
+}
+
+-(void)onCallbackScanBluetoothTimeout:(NSNotification *)notify
+{
+    
+}
+
+-(void)onCallbackBluetoothDisconnected:(NSNotification *)notify
+{
+    UIImageView *customImageView = [[UIImageView alloc] initWithImage:nil];
+    [AppUtils showCustomHudProgress:@"设备已断开" CustomView:customImageView ForView:self.view];
+}
+
+-(void)onStartConnectToBluetooth:(NSNotification *)notify
+{
+    
+}
+
+-(void)onCallbackConnectToBluetoothSuccessfully:(NSNotification *)notify
+{
+    UIImageView *customImageView = [[UIImageView alloc] initWithImage:nil];
+    [AppUtils showCustomHudProgress:@"设备已连接" CustomView:customImageView ForView:self.view];
+    
+}
+
+-(void)onCallbackConnectToBluetoothTimeout:(NSNotification *)notify
+{
+    UIImageView *customImageView = [[UIImageView alloc] initWithImage:nil];
+    [AppUtils showCustomHudProgress:@"设备未连接" CustomView:customImageView ForView:self.view];
 }
 #pragma -mark GestureRecognizer
 -(void)swipeGesture

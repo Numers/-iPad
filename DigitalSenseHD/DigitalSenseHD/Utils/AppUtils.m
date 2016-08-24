@@ -15,6 +15,7 @@
 #define MBTAG  1001
 #define AMTAG  1111
 #define MBProgressTAG 1002
+#define MBProgressCustomTag 1003
 @implementation AppUtils
 +(void)setUrlWithState:(BOOL)state
 {
@@ -260,6 +261,63 @@
         });
     }
 }
+
++(void)showCustomHudProgress:(NSString *)title CustomView:(UIView *)customView ForView:(UIView *)view
+{
+    if ([[NSThread currentThread] isMainThread]) {
+        UIWindow *appRootView = [UIApplication sharedApplication].keyWindow;
+        MBProgressHUD *HUD = (MBProgressHUD *)[appRootView viewWithTag:MBProgressCustomTag];
+        if (HUD == nil) {
+            HUD = [[MBProgressHUD alloc] initWithView:appRootView];
+            HUD.mode = MBProgressHUDModeCustomView;
+            HUD.customView = customView;
+            HUD.square = YES;
+            HUD.tag = MBProgressCustomTag;
+            [appRootView addSubview:HUD];
+        }
+        [HUD setLabelText:title];
+        [HUD show:YES];
+        HUD.removeFromSuperViewOnHide = YES; // 设置YES ，MB 再消失的时候会从super 移除
+        [HUD hide:YES afterDelay:1];
+    }else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIWindow *appRootView = [UIApplication sharedApplication].keyWindow;
+            MBProgressHUD *HUD = (MBProgressHUD *)[appRootView viewWithTag:MBProgressCustomTag];
+            if (HUD == nil) {
+                HUD = [[MBProgressHUD alloc] initWithView:appRootView];
+                HUD.mode = MBProgressHUDModeCustomView;
+                HUD.customView = customView;
+                HUD.square = YES;
+                HUD.tag = MBProgressCustomTag;
+                [appRootView addSubview:HUD];
+            }
+            [HUD setLabelText:title];
+            [HUD show:YES];
+            HUD.removeFromSuperViewOnHide = YES; // 设置YES ，MB 再消失的时候会从super 移除
+            [HUD hide:YES afterDelay:1];
+        });
+    }
+}
+
++(void)hidenCustomHudProgressForView:(UIView *)view
+{
+    if ([[NSThread currentThread] isMainThread]) {
+        UIWindow *appRootView = [UIApplication sharedApplication].keyWindow;
+        MBProgressHUD *HUD = (MBProgressHUD *)[appRootView viewWithTag:MBProgressCustomTag];
+        if (HUD != nil) {
+            [HUD hide:YES];
+        }
+    }else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIWindow *appRootView = [UIApplication sharedApplication].keyWindow;
+            MBProgressHUD *HUD = (MBProgressHUD *)[appRootView viewWithTag:MBProgressCustomTag];
+            if (HUD != nil) {
+                [HUD hide:YES];
+            }
+        });
+    }
+}
+
 
 //中档:0.58  高档:0.235   低档:0.89
 +(CGFloat)powerFixed:(CGFloat)power;
