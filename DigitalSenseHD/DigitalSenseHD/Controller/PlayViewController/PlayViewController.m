@@ -97,7 +97,7 @@
 {
     [super viewDidAppear:animated];
     [UIApplication sharedApplication].idleTimerDisabled = YES;
-    [self playScript];
+    [self beginPlayScript];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -139,6 +139,17 @@
     
     needLoop = NO;
     isLoop = NO;
+}
+
+-(void)beginPlayScript
+{
+    [AppUtils showCustomHudProgress:@"ready" CustomView:nil ForView:self.view];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [AppUtils showCustomHudProgress:@"go" CustomView:nil ForView:self.view];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self playScript];
+        });
+    });
 }
 
 -(void)registerNotifications
@@ -264,7 +275,7 @@
         
         NSDictionary *dic = [notify userInfo];
         NSInteger actualTime = [[dic objectForKey:ActualTimeKey] integerValue];
-        heartTimer = [NSTimer scheduledTimerWithTimeInterval:0.15 target:self selector:@selector(generateHeartView) userInfo:nil repeats:YES];
+        heartTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(generateHeartView) userInfo:nil repeats:YES];
         [heartTimer fire];
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(actualTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

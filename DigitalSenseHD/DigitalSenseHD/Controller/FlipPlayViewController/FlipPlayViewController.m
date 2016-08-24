@@ -271,7 +271,8 @@
         
         NSDictionary *dic = [notify userInfo];
         NSInteger actualTime = [[dic objectForKey:ActualTimeKey] integerValue];
-        heartTimer = [NSTimer scheduledTimerWithTimeInterval:0.15 target:self selector:@selector(generateHeartView) userInfo:nil repeats:YES];
+
+        heartTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(generateHeartView) userInfo:nil repeats:YES];
         [heartTimer fire];
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(actualTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

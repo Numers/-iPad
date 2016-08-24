@@ -568,7 +568,7 @@
     if (list) {
         arr = [NSMutableArray arrayWithArray:[list copy]];
         for (NSInteger i = arr.count - 1; i >= 0 ; i--) {
-            ScriptCommand *command = [arr objectAtIndex:i];
+            ScriptCommand *command = [arr lastObject];
             if (command.type == RealCommand) {
                 break;
             }else{
@@ -616,6 +616,10 @@
     if (command == nil || command.type != RealCommand) {
         return;
     }
+    
+    if (command.duration >= 5) {
+        return;
+    }
     NSInteger index = [commandList indexOfObject:command];
     ScriptCommand *spaceCommand = [self searchFirstSpaceAfterIndex:index];
     if (spaceCommand == nil) {
@@ -639,7 +643,7 @@
         return;
     }
     
-    if (command.duration == 1) {
+    if (command.duration <= 2) {
         return;
     }
     NSInteger index = [commandList indexOfObject:command];
