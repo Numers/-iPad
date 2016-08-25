@@ -15,7 +15,6 @@
 
 @interface RealCellView()<UICircleButtonProtocol>
 {
-    UIImageView *circleImageView;
     UILabel *lblTime;
     UICircleButton *btnCircle;
 }
@@ -27,11 +26,10 @@
     if (self) {
         [self.layer setCornerRadius:30.0f];
         [self.layer setMasksToBounds:YES];
-        circleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PullBtn"]];
-        [self addSubview:circleImageView];
         
-        btnCircle = [[UICircleButton alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-        [btnCircle setBackgroundColor:[UIColor clearColor]];
+        UIImage *pullImage = [UIImage imageNamed:@"PullBtn"];
+        btnCircle = [[UICircleButton alloc] initWithFrame:CGRectMake(0, 0, pullImage.size.width, pullImage.size.height)];
+        [btnCircle setImage:pullImage forState:UIControlStateNormal];
         btnCircle.delegate = self;
         [self addSubview:btnCircle];
         
@@ -42,6 +40,7 @@
     }
     return self;
 }
+
 
 -(void)setScriptCommand:(ScriptCommand *)command
 {
@@ -76,10 +75,23 @@
     }
 }
 
+-(void)beginTrack
+{
+    if ([_delegate respondsToSelector:@selector(beginTrackCell)]) {
+        [_delegate beginTrackCell];
+    }
+}
+
+-(void)endTrack
+{
+    if ([_delegate respondsToSelector:@selector(endTrackCell)]) {
+        [_delegate endTrackCell];
+    }
+}
+
 -(void)drawRect:(CGRect)rect
 {
-    [circleImageView setCenter:CGPointMake(self.frame.size.width - circleImageView.frame.size.width / 2.0f - 5, self.frame.size.height / 2.0f)];
-    [btnCircle setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    [btnCircle setCenter:CGPointMake(self.frame.size.width - btnCircle.frame.size.width / 2.0f - 5, self.frame.size.height / 2.0f)];
     [lblTime setCenter:CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height / 2.0f)];
 }
 @end

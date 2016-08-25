@@ -30,9 +30,6 @@
 #import "UINavigationController+WXSTransition.h"
 
 #define HomeCollectionViewCellIdentify @"HomeCollectionViewCellIdentify"
-//#define SpaceCellIdentify @"SpaceHomeCellIdentify"
-//#define VirtualCellIdentify @"VirtualHomeCellIdentify"
-//#define RealCellIdentify @"RealHomeCellIdentify"
 @interface HomeViewController ()<SmellViewProtocol,CustomLewReorderableLayoutDataSource,CustomLewReorderableLayoutDelegate,HomeCollectionViewCellProtocol,UIAlertViewDelegate>
 {
     NSArray *smellList;
@@ -93,9 +90,6 @@
     [_collectionView sendSubviewToBack:lineView];
     
     [_collectionView registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:HomeCollectionViewCellIdentify];
-//    [_collectionView registerClass:[SpaceHomeCollectionViewCell class] forCellWithReuseIdentifier:SpaceCellIdentify];
-//    [_collectionView registerClass:[VirtualHomeCollectionViewCell class] forCellWithReuseIdentifier:VirtualCellIdentify];
-//    [_collectionView registerClass:[RealHomeCollectionViewCell class] forCellWithReuseIdentifier:RealCellIdentify];
     
     Smell *smell1 = [[Smell alloc] init];
     smell1.smellRFID = @"00000010";
@@ -249,6 +243,7 @@
 -(void)onCallbackBluetoothDisconnected:(NSNotification *)notify
 {
     if (needReconnecting) {
+        [self longTouchEnded];
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"设备未连接" message:@"iPad/设备蓝牙已断开，请重新连接！" delegate:self cancelButtonTitle:@"继续游戏" otherButtonTitles:@"重新连接", nil];
         [alertView show];
     }
@@ -269,6 +264,7 @@
 -(void)onCallbackConnectToBluetoothTimeout:(NSNotification *)notify
 {
     if (needReconnecting) {
+        [self longTouchEnded];
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"设备未连接" message:@"iPad/设备蓝牙已断开，请重新连接！" delegate:self cancelButtonTitle:@"继续游戏" otherButtonTitles:@"重新连接", nil];
         [alertView show];
     }
@@ -666,6 +662,16 @@
         [_lblTime setText:[AppUtils switchSecondsToTime:scriptTime]];
     }];
 }
+
+-(void)willDisableScrollView
+{
+    [_collectionView setScrollEnabled:NO];
+}
+
+-(void)willEnableScrollView
+{
+    [_collectionView setScrollEnabled:YES];
+}
 #pragma -mark UICollectionViewDelegate And DataSource
 - (CGFloat)scrollSpeedValueInCollectionView:(UICollectionView *)collectionView
 {
@@ -726,7 +732,6 @@
 
 - (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath
 {
-    NSLog(@"%d,%d",fromIndexPath.item,toIndexPath.item);
     ScriptCommand *command = [commandList objectAtIndex:fromIndexPath.item];
     if (command && command.type != VirtualCommand) {
         return;
@@ -735,7 +740,7 @@
 //        if (operationManager) {
 //            [operationManager moveLeftOperation:toIndexPath];
 //        }
-        
+        NSLog(@"go into operation by moveLeft");
         [collectionView performBatchUpdates:^{
             [collectionView moveItemAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
             [commandList removeObjectAtIndex:fromIndexPath.item];
@@ -755,7 +760,9 @@
             }
 
         }];
+        NSLog(@"go out operation by moveLeft");
     }else{
+        NSLog(@"go into operation by moveRight");
         ScriptCommand *spaceCommand = [self searchFirstSpaceAfterIndex:fromIndexPath.item];
         if (spaceCommand) {
             NSInteger spaceIndex = [commandList indexOfObject:spaceCommand];
@@ -780,6 +787,7 @@
 //        if (operationManager) {
 //            [operationManager moveRightOperation:toIndexPath];
 //        }
+        NSLog(@"go out operation by moveRight");
     }
 }
 
@@ -910,6 +918,12 @@
         operationManager = [[CollectionViewOperationManager alloc] initWithCommandArray:commandList WithInsertIndexPath:indexPath WithInsertSmell:nil];
         operationManager.collectionView = self.collectionView;
     }];
+}
+
+#pragma -mark ScrollViewDelegate
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    NSLog(@"scrollView begin dragging");
 }
 #pragma -mark SmellViewProtocol
 -(void)longTouchWithTag:(NSInteger)tag

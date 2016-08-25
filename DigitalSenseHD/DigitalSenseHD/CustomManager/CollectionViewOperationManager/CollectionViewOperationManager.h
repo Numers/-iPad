@@ -17,6 +17,7 @@
 @property(nonatomic, strong) NSIndexPath *insertIndexPath;
 @property (readwrite, nonatomic, strong) NSRecursiveLock *lock; //函数互斥锁
 @property (readwrite, nonatomic, strong) NSLock *operationLock; //操作互斥锁
+@property(readwrite, nonatomic) dispatch_queue_t barrieQueue;
 
 -(instancetype)initWithCommandArray:(NSMutableArray *)arr WithInsertIndexPath:(NSIndexPath *)indexPath WithInsertSmell:(Smell *)smell;
 -(void)insertOperation:(NSIndexPath *)indexPath;

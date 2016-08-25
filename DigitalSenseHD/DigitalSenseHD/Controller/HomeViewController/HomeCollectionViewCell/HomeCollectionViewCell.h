@@ -13,6 +13,9 @@
 -(void)willAddWidthWithCommand:(ScriptCommand *)command;
 -(void)willMinusWidthWithCommand:(ScriptCommand *)command;
 
+-(void)willDisableScrollView;
+-(void)willEnableScrollView;
+
 @end
 @interface HomeCollectionViewCell : UICollectionViewCell
 @property(nonatomic,assign) id<HomeCollectionViewCellProtocol> delegate;

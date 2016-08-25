@@ -10,7 +10,23 @@
 #import "GlobalVar.h"
 
 @implementation UICircleButton
+-(instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self addTarget:self action:@selector(touchDown) forControlEvents:UIControlEventTouchDown];
+    }
+    return self;
+}
 
+-(void)touchDown
+{
+    UIImage *pullImage = [UIImage imageNamed:@"PullBtn"];
+    [self setImage:pullImage forState:UIControlStateHighlighted];
+    if ([_delegate respondsToSelector:@selector(beginTrack)]) {
+        [_delegate beginTrack];
+    }
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -30,7 +46,7 @@
     CGPoint location = [touch locationInView:self];
     if (location.x > beginLocation.x) {
         CGFloat temp = location.x - beginLocation.x;
-        NSInteger count = temp / WidthPerSecond;
+        NSInteger count = temp / 15;
         if (count > 0) {
             beginLocation = location;
             if ([_delegate respondsToSelector:@selector(moveRightOneUnit)]) {
@@ -39,7 +55,7 @@
         }
     }else{
         CGFloat temp = beginLocation.x - location.x;
-        NSInteger count = temp / WidthPerSecond;
+        NSInteger count = temp / 15;
         if (count > 0) {
             beginLocation = location;
             if ([_delegate respondsToSelector:@selector(moveLeftOneUnit)]) {
@@ -54,10 +70,18 @@
 - (void)endTrackingWithTouch:(nullable UITouch *)touch withEvent:(nullable UIEvent *)event
 {
     NSLog(@"endTracking");
+    if ([_delegate respondsToSelector:@selector(endTrack)]) {
+        [_delegate endTrack];
+    }
 }
 
 - (void)cancelTrackingWithEvent:(nullable UIEvent *)event
 {
      NSLog(@"cancelTracking");
+    UIImage *pullImage = [UIImage imageNamed:@"PullBtn"];
+    [self setImage:pullImage forState:UIControlStateNormal];
+    if ([_delegate respondsToSelector:@selector(endTrack)]) {
+        [_delegate endTrack];
+    }
 }
 @end

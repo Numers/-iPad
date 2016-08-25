@@ -10,7 +10,7 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "DataAnalizer.h"
 
-#define ConnectTimeOut 8
+#define ConnectTimeOut 15
 #define ScanTimeOut 8
 #define kServiceUUID @"FFF0" //服务的UUID
 #define kMacServiceUUID @"180A"//获取Mac地址的UUID

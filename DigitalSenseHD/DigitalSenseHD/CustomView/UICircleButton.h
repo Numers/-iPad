@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 @protocol UICircleButtonProtocol <NSObject>
+-(void)beginTrack;
+-(void)endTrack;
 -(void)moveLeftOneUnit;
 -(void)moveRightOneUnit;
 @end

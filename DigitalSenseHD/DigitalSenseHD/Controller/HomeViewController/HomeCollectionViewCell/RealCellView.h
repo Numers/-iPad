@@ -11,6 +11,8 @@
 @protocol RealCellViewProtocol <NSObject>
 -(void)addWidthWithSpaceCount:(NSInteger)spaceCount;
 -(void)minusWidthWithSpaceCount:(NSInteger)spaceCount;
+-(void)beginTrackCell;
+-(void)endTrackCell;
 @end
 @interface RealCellView : UIView
 {

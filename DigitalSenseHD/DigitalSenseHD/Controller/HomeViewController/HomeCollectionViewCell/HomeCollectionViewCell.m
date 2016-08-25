@@ -99,6 +99,20 @@
     }
 }
 
+-(void)beginTrackCell
+{
+    if ([_delegate respondsToSelector:@selector(willDisableScrollView)]) {
+        [_delegate willDisableScrollView];
+    }
+}
+
+-(void)endTrackCell
+{
+    if ([_delegate respondsToSelector:@selector(willEnableScrollView)]) {
+        [_delegate willEnableScrollView];
+    }
+}
+
 -(void)drawRect:(CGRect)rect
 {
     if (currentCommand && currentCommand.type == RealCommand) {

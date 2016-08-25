@@ -10,6 +10,7 @@
 #import "RelativeTimeScript.h"
 
 #import "GraduatedLineView.h"
+#import "HomeCollectionViewCell.h"
 #import "SmellView.h"
 #import "FlipPlayBackView.h"
 #import "ZDProgressView.h"
@@ -24,7 +25,8 @@
 
 #import "CAShapeLayer+FlipBackViewMask.h"
 
-@interface FlipPlayViewController ()
+#define FlipPlayViewCollectionViewCellIdentify @"FlipPlayViewCollectionViewCellIdentify"
+@interface FlipPlayViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 {
     RelativeTimeScript *currentScript;
     GraduatedLineView *lineView;
@@ -43,6 +45,7 @@
     NSTimer *heartTimer;
 }
 @property(nonatomic, strong) IBOutlet FlipPlayBackView *flipPlayBackView;
+@property(nonatomic, strong) UICollectionView *collectionView;
 @property(nonatomic, strong) IBOutlet UILabel *lblTime;
 @property(nonatomic, strong) IBOutlet UIView *bottomBackView;
 @property(nonatomic, strong) IBOutlet UIButton *btnShareOrDelete;
@@ -61,6 +64,16 @@
     [_flipPlayBackView setBackgroundColor:[UIColor clearColor]];
     CAShapeLayer *layer = [CAShapeLayer createMaskLayerWithView:_flipPlayBackView];
     _flipPlayBackView.layer.mask = layer;
+    
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(736.0f, 0, currentScript.scriptTime * WidthPerSecond, 406.0f) collectionViewLayout:layout];
+    [_collectionView setBackgroundColor:[UIColor clearColor]];
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+    [_flipPlayBackView addSubview:_collectionView];
+    
+    [_collectionView registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:FlipPlayViewCollectionViewCellIdentify];
     
     [self.navigationController setNavigationBarHidden:YES];
     UIImage *backgroundImage = [UIImage imageNamed:@"BackgroundImage"];
@@ -143,7 +156,15 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [AppUtils showCustomHudProgress:@"go" CustomView:nil ForView:self.view];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self playScript];
+            CGFloat firstAnimateDuraion = _flipPlayBackView.frame.size.width / WidthPerSecond;
+            [UIView animateWithDuration:firstAnimateDuraion delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+                [_collectionView setFrame:CGRectMake(0, 0, _collectionView.frame.size.width, _collectionView.frame.size.height)];
+            } completion:^(BOOL finished) {
+                if (finished) {
+                    [self playScript];
+                }
+            }];
+            
         });
     });
 }
@@ -225,6 +246,11 @@
     if (currentScript) {
         if ([currentScript isEqual:script]) {
             [self inilizedUIView];
+            [UIView animateWithDuration:currentScript.scriptTime delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+                [_collectionView setFrame:CGRectMake(-_collectionView.frame.size.width, 0, _collectionView.frame.size.width, _collectionView.frame.size.height)];
+            } completion:^(BOOL finished) {
+                
+            }];
         }
     }
 }
@@ -267,7 +293,7 @@
 {
     ScriptCommand *scriptCommand = [notify object];
     if (![AppUtils isNullStr:scriptCommand.rfId]) {
-        [_flipPlayBackView flipWithScriptCommand:scriptCommand];
+//        [_flipPlayBackView flipWithScriptCommand:scriptCommand];
         
         NSDictionary *dic = [notify userInfo];
         NSInteger actualTime = [[dic objectForKey:ActualTimeKey] integerValue];
@@ -355,19 +381,53 @@
 #pragma -mark UIButtonEvent
 -(IBAction)clickStopBtn:(id)sender
 {
+    [_collectionView removeFromSuperview];
     if (currentScript) {
         [[ScriptExecuteManager defaultManager] cancelExecuteRelativeTimeScript:currentScript];
-        [[BluetoothMacManager defaultManager] writeCharacteristicWithCommandStr:@"F96600000000000055"];
+        if (currentScript.state == ScriptIsPlaying) {
+            [[BluetoothMacManager defaultManager] writeCharacteristicWithCommandStr:@"F96600000000000055"];
+            return;
+        }
     }
+    [self.navigationController popViewControllerAnimated:YES];
 }
-/*
-#pragma mark - Navigation
+#pragma -mark CollectionViewDelegate
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return currentScript.scriptCommandList.count;
 }
-*/
 
+// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    HomeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:FlipPlayViewCollectionViewCellIdentify forIndexPath:indexPath];
+    //    cell.delegate = self;
+    //    [cell inilizedView];
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        ScriptCommand *command = [currentScript.scriptCommandList objectAtIndex:indexPath.item];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [cell setupWithScriptCommand:command];
+        });
+    });
+    return cell;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ScriptCommand *command = [currentScript.scriptCommandList objectAtIndex:indexPath.item];
+    CGFloat width = command.duration * WidthPerSecond;
+    CGFloat height = collectionView.frame.size.height;
+    return CGSizeMake(width, height);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+    return 0;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    return 0;
+}
 @end
