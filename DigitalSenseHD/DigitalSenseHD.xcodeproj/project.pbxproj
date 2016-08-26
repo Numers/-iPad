@@ -63,6 +63,10 @@
 		848820911D65DAE50035BEE1 /* HuaKangHaiBao.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 848820901D65DAE50035BEE1 /* HuaKangHaiBao.ttf */; };
 		848820921D65DC320035BEE1 /* WawaSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8488208F1D65DAB30035BEE1 /* WawaSC-Regular.otf */; };
 		848FC4D41D6D72A8006D8F1F /* XTLoveHeartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 848FC4D31D6D72A8006D8F1F /* XTLoveHeartView.m */; };
+		84B00C2A1D701D0200516F4B /* highPower.gif in Resources */ = {isa = PBXBuildFile; fileRef = 84B00C271D701D0200516F4B /* highPower.gif */; };
+		84B00C2B1D701D0200516F4B /* lowPower.gif in Resources */ = {isa = PBXBuildFile; fileRef = 84B00C281D701D0200516F4B /* lowPower.gif */; };
+		84B00C2C1D701D0200516F4B /* normalPower.gif in Resources */ = {isa = PBXBuildFile; fileRef = 84B00C291D701D0200516F4B /* normalPower.gif */; };
+		84B00C2F1D70369E00516F4B /* FlipReadyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B00C2E1D70369E00516F4B /* FlipReadyView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -173,6 +177,11 @@
 		848820901D65DAE50035BEE1 /* HuaKangHaiBao.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HuaKangHaiBao.ttf; sourceTree = "<group>"; };
 		848FC4D21D6D72A8006D8F1F /* XTLoveHeartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTLoveHeartView.h; sourceTree = "<group>"; };
 		848FC4D31D6D72A8006D8F1F /* XTLoveHeartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTLoveHeartView.m; sourceTree = "<group>"; };
+		84B00C271D701D0200516F4B /* highPower.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = highPower.gif; sourceTree = "<group>"; };
+		84B00C281D701D0200516F4B /* lowPower.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = lowPower.gif; sourceTree = "<group>"; };
+		84B00C291D701D0200516F4B /* normalPower.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = normalPower.gif; sourceTree = "<group>"; };
+		84B00C2D1D70369E00516F4B /* FlipReadyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipReadyView.h; sourceTree = "<group>"; };
+		84B00C2E1D70369E00516F4B /* FlipReadyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipReadyView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +262,9 @@
 		841933251D5B252100E8E9EE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				84B00C271D701D0200516F4B /* highPower.gif */,
+				84B00C281D701D0200516F4B /* lowPower.gif */,
+				84B00C291D701D0200516F4B /* normalPower.gif */,
 				848820901D65DAE50035BEE1 /* HuaKangHaiBao.ttf */,
 				8488208F1D65DAB30035BEE1 /* WawaSC-Regular.otf */,
 				841933361D5B252100E8E9EE /* LaunchScreen.storyboard */,
@@ -427,6 +439,8 @@
 				8467F9241D6AD04600FEF47A /* FlipPlayView.m */,
 				8467F9261D6AD59A00FEF47A /* FlipContentView.h */,
 				8467F9271D6AD59A00FEF47A /* FlipContentView.m */,
+				84B00C2D1D70369E00516F4B /* FlipReadyView.h */,
+				84B00C2E1D70369E00516F4B /* FlipReadyView.m */,
 			);
 			path = FlipPlayView;
 			sourceTree = "<group>";
@@ -635,8 +649,11 @@
 				841933381D5B252100E8E9EE /* LaunchScreen.storyboard in Resources */,
 				841933351D5B252100E8E9EE /* Assets.xcassets in Resources */,
 				848820911D65DAE50035BEE1 /* HuaKangHaiBao.ttf in Resources */,
+				84B00C2B1D701D0200516F4B /* lowPower.gif in Resources */,
 				84691D4C1D6BEF5D002F836C /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				841933301D5B252100E8E9EE /* Main.storyboard in Resources */,
+				84B00C2C1D701D0200516F4B /* normalPower.gif in Resources */,
+				84B00C2A1D701D0200516F4B /* highPower.gif in Resources */,
 				841933631D5B2E4E00E8E9EE /* load_circle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -717,6 +734,7 @@
 				841933271D5B252100E8E9EE /* main.m in Sources */,
 				841933561D5B27BC00E8E9EE /* RFGeneralManager.m in Sources */,
 				847219D01D684E5500DE4E56 /* DataAnalizer.m in Sources */,
+				84B00C2F1D70369E00516F4B /* FlipReadyView.m in Sources */,
 				8467F9221D6AD03600FEF47A /* FlipPlayBackView.m in Sources */,
 				841933581D5B27BC00E8E9EE /* URLManager.m in Sources */,
 				8462EB2C1D5D788000897F92 /* HomeCollectionViewCell.m in Sources */,

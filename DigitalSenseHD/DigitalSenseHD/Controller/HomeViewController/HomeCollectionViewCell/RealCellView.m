@@ -17,6 +17,7 @@
 {
     UILabel *lblTime;
     UICircleButton *btnCircle;
+    UIImageView *dashRectImageView;
 }
 @end
 @implementation RealCellView
@@ -26,6 +27,9 @@
     if (self) {
         [self.layer setCornerRadius:30.0f];
         [self.layer setMasksToBounds:YES];
+        
+        dashRectImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"DashRectLineImage"]];
+        [self addSubview:dashRectImageView];
         
         UIImage *pullImage = [UIImage imageNamed:@"PullBtn"];
         btnCircle = [[UICircleButton alloc] initWithFrame:CGRectMake(0, 0, pullImage.size.width, pullImage.size.height)];
@@ -42,14 +46,28 @@
 }
 
 
--(void)setScriptCommand:(ScriptCommand *)command
+-(void)setScriptCommand:(ScriptCommand *)command isShowCircleButton:(BOOL)isShow
 {
+    currentCommand = command;
     if (command.type == RealCommand) {
-        currentCommand = command;
+        [lblTime setHidden:NO];
+        [btnCircle setHidden:!isShow];
+        [dashRectImageView setHidden:YES];
         [lblTime setText:[NSString stringWithFormat:@"%lds",command.duration]];
         [lblTime sizeToFit];
         [self setBackgroundColor:[UIColor colorFromHexString:command.color]];
         [self setNeedsDisplay];
+    }else if(command.type == VirtualCommand){
+        [lblTime setHidden:YES];
+        [btnCircle setHidden:YES];
+        [dashRectImageView setHidden:NO];
+        [self setBackgroundColor:[UIColor clearColor]];
+        [self setNeedsDisplay];
+    }else if (command.type == SpaceCommand){
+        [lblTime setHidden:YES];
+        [btnCircle setHidden:YES];
+        [dashRectImageView setHidden:YES];
+        [self setBackgroundColor:[UIColor clearColor]];
     }
 }
 
@@ -91,6 +109,7 @@
 
 -(void)drawRect:(CGRect)rect
 {
+    [dashRectImageView setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [btnCircle setCenter:CGPointMake(self.frame.size.width - btnCircle.frame.size.width / 2.0f - 5, self.frame.size.height / 2.0f)];
     [lblTime setCenter:CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height / 2.0f)];
 }

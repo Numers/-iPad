@@ -54,7 +54,7 @@
     [dashImageView setHidden:YES];
 }
 
--(void)setupWithScriptCommand:(ScriptCommand *)command
+-(void)setupWithScriptCommand:(ScriptCommand *)command isShowCircleButton:(BOOL)isShow
 {
     currentCommand = command;
     currentCommand.power = [AppUtils powerFixed:command.power];
@@ -63,9 +63,11 @@
         [smellIconImageView setHidden:YES];
         [dashImageView setHidden:YES];
     }else if (command.type == VirtualCommand){
-        [realCellView setHidden:YES];
+        [realCellView setHidden:NO];
         [smellIconImageView setHidden:YES];
         [dashImageView setHidden:NO];
+        [realCellView setScriptCommand:command isShowCircleButton:isShow];
+        [self setNeedsDisplay];
     }else if (command.type == RealCommand){
         [realCellView setHidden:NO];
         [smellIconImageView setHidden:NO];
@@ -73,7 +75,7 @@
         UIImage *smellImage = [UIImage imageNamed:[command.smellImage stringByReplacingOccurrencesOfString:@"Image" withString:@"IconImage"]];
         [smellIconImageView setImage:smellImage];
         [smellIconImageView setFrame:CGRectMake(0, 0, smellImage.size.width, smellImage.size.height)];
-        [realCellView setScriptCommand:command];
+        [realCellView setScriptCommand:command isShowCircleButton:isShow];
         [self setNeedsDisplay];
     }
 }
@@ -115,7 +117,7 @@
 
 -(void)drawRect:(CGRect)rect
 {
-    if (currentCommand && currentCommand.type == RealCommand) {
+    if (currentCommand) {
         [smellIconImageView setCenter:CGPointMake(smellIconImageView.frame.size.width / 2.0f + 1, self.frame.size.height * currentCommand.power)];
         [realCellView setFrame:CGRectMake(RealCellLeftMargin, self.frame.size.height * currentCommand.power - RealCellHeight / 2.0f, self.frame.size.width - RealCellLeftMargin, RealCellHeight)];
     }

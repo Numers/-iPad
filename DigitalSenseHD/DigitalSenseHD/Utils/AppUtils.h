@@ -56,4 +56,5 @@
 +(void)hidenCustomHudProgressForView:(UIView *)view;
 
 +(CGFloat)powerFixed:(CGFloat)power;
++(NSString *)imageNameWithPower:(CGFloat)power;
 @end

@@ -12,7 +12,7 @@
 @interface FlipContentView()
 {
     UILabel *lblTime;
-    UIImageView *circleImageView;
+//    UIImageView *circleImageView;
 }
 @end
 @implementation FlipContentView
@@ -24,8 +24,8 @@
         [self.layer setCornerRadius:30.0f];
         [self.layer setMasksToBounds:YES];
         
-        circleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PullBtn"]];
-        [self addSubview:circleImageView];
+//        circleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PullBtn"]];
+//        [self addSubview:circleImageView];
         
         lblTime = [[UILabel alloc] init];
         [lblTime setTextColor:[UIColor whiteColor]];
@@ -44,7 +44,7 @@
 
 -(void)drawRect:(CGRect)rect
 {
-    [circleImageView setCenter:CGPointMake(self.frame.size.width - circleImageView.frame.size.width / 2.0f - 5, self.frame.size.height / 2.0f)];
+//    [circleImageView setCenter:CGPointMake(self.frame.size.width - circleImageView.frame.size.width / 2.0f - 5, self.frame.size.height / 2.0f)];
     [lblTime setCenter:CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height / 2.0f)];
 }
 @end

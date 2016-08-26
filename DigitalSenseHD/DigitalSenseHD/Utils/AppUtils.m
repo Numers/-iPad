@@ -335,4 +335,20 @@
     }
     return 0.58;
 }
+
++(NSString *)imageNameWithPower:(CGFloat)power
+{
+    if (power < 0.4) {
+        return @"highPower";
+    }
+    
+    if (power < 0.73) {
+        return @"normalPower";
+    }
+    
+    if (power < 1.0) {
+        return @"lowPower";
+    }
+    return nil;
+}
 @end

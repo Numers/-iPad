@@ -9,12 +9,10 @@
 #import "FlipPlayViewController.h"
 #import "RelativeTimeScript.h"
 
-#import "GraduatedLineView.h"
 #import "HomeCollectionViewCell.h"
 #import "SmellView.h"
 #import "FlipPlayBackView.h"
-#import "ZDProgressView.h"
-#import "XTLoveHeartView.h"
+#import "FlipReadyView.h"
 #import "Smell.h"
 
 #import "GlobalVar.h"
@@ -24,12 +22,14 @@
 #import "BluetoothProcessManager.h"
 
 #import "CAShapeLayer+FlipBackViewMask.h"
+#import "UIImage+GIF.h"
 
 #define FlipPlayViewCollectionViewCellIdentify @"FlipPlayViewCollectionViewCellIdentify"
+
 @interface FlipPlayViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 {
     RelativeTimeScript *currentScript;
-    GraduatedLineView *lineView;
+    FlipReadyView *flipReadyView;
     
     UISwipeGestureRecognizer *swipeGestureRecognizer;
     BOOL isShare; //yes分享，NO删除
@@ -42,14 +42,21 @@
     BOOL isLoop;
     BOOL needLoop;
     
-    NSTimer *heartTimer;
+    NSLock *lock;//icon设置线程互斥锁
+    NSLock *eruptLock;//气味发散图片设置互斥锁
+    NSInteger lowPowerScriptCommandCount;
+    NSInteger normalPowerScriptCommandCount;
+    NSInteger highPowerScriptCommandCount;
+    NSInteger eruptImageSetCount;
 }
+@property(nonatomic, strong) IBOutlet UIImageView *highPowerIconImageView;
+@property(nonatomic, strong) IBOutlet UIImageView *normalPowerIconImageView;
+@property(nonatomic, strong) IBOutlet UIImageView *lowPowerIconImageView;
 @property(nonatomic, strong) IBOutlet FlipPlayBackView *flipPlayBackView;
 @property(nonatomic, strong) UICollectionView *collectionView;
+@property(nonatomic, strong) UIImageView *smellEruptImageView;
 @property(nonatomic, strong) IBOutlet UILabel *lblTime;
 @property(nonatomic, strong) IBOutlet UIView *bottomBackView;
-@property(nonatomic, strong) IBOutlet UIButton *btnShareOrDelete;
-@property(nonatomic, strong) IBOutlet ZDProgressView *progressView;
 @end
 
 @implementation FlipPlayViewController
@@ -75,23 +82,23 @@
     
     [_collectionView registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:FlipPlayViewCollectionViewCellIdentify];
     
-    [self.navigationController setNavigationBarHidden:YES];
-    UIImage *backgroundImage = [UIImage imageNamed:@"BackgroundImage"];
-    self.view.layer.contents = (id)backgroundImage.CGImage;
+    _smellEruptImageView = [[UIImageView alloc] initWithFrame:CGRectMake(255, 105, 100, 110)];
+    [_smellEruptImageView setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:_smellEruptImageView];
     
-    [self.progressView setNoColor:[UIColor colorWithRed:0.514 green:0.388 blue:0.196 alpha:1.000]];
-    [self.progressView setPrsColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"ProgressTrackImage"]]];
-    [self.progressView setBorderColor:[UIColor colorWithRed:0.875 green:0.843 blue:0.451 alpha:1.000]];
-    [self.progressView setBorderWidth:0.5f];
-    [self.progressView setProgress:0.3f];
+    [self.navigationController setNavigationBarHidden:YES];
+    UIImage *backgroundImage = [UIImage imageNamed:@"PlayView_BackgroundImage"];
+    self.view.layer.contents = (id)backgroundImage.CGImage;
 
     
     [self selectSmellListWithIndex:0];
-    [self setIsShare:YES];
     
     swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGesture)];
     swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight | UISwipeGestureRecognizerDirectionLeft;
     [self.bottomBackView addGestureRecognizer:swipeGestureRecognizer];
+    
+    lock = [[NSLock alloc] init];
+    eruptLock = [[NSLock alloc] init];
     
     [self inilizedUIView];
 }
@@ -123,16 +130,6 @@
 }
 
 #pragma -mark Public Functions
--(void)setIsShare:(BOOL)share
-{
-    isShare = share;
-    if (share) {
-        [_btnShareOrDelete setImage:[UIImage imageNamed:@"ShareBtn"] forState:UIControlStateNormal];
-    }else{
-        [_btnShareOrDelete setImage:[UIImage imageNamed:@"DeleteBtn"] forState:UIControlStateNormal];
-    }
-}
-
 -(void)setScript:(RelativeTimeScript *)relativeScript PageSmellList:(NSArray *)list
 {
     currentScript = relativeScript;
@@ -144,29 +141,32 @@
 {
     
     [_lblTime setText:@"00:00"];
-    [_progressView setProgress:0.0f];
     
     needLoop = NO;
     isLoop = NO;
+    lowPowerScriptCommandCount = 0;
+    normalPowerScriptCommandCount = 0;
+    highPowerScriptCommandCount = 0;
+    eruptImageSetCount = 0;
 }
 
 -(void)beginPlayScript
 {
-    [AppUtils showCustomHudProgress:@"ready" CustomView:nil ForView:self.view];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [AppUtils showCustomHudProgress:@"go" CustomView:nil ForView:self.view];
+    flipReadyView = [[FlipReadyView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [flipReadyView showInView:self.view completion:^(BOOL isFinished) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            CGFloat firstAnimateDuraion = _flipPlayBackView.frame.size.width / WidthPerSecond;
-            [UIView animateWithDuration:firstAnimateDuraion delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-                [_collectionView setFrame:CGRectMake(0, 0, _collectionView.frame.size.width, _collectionView.frame.size.height)];
-            } completion:^(BOOL finished) {
-                if (finished) {
-                    [self playScript];
-                }
+            [flipReadyView hidden:^(BOOL isFinished) {
+                CGFloat firstAnimateDuraion = _flipPlayBackView.frame.size.width / WidthPerSecond;
+                [UIView animateWithDuration:firstAnimateDuraion delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+                    [_collectionView setFrame:CGRectMake(0, 0, _collectionView.frame.size.width, _collectionView.frame.size.height)];
+                } completion:^(BOOL finished) {
+                    if (finished) {
+                        [self playScript];
+                    }
+                }];
             }];
-            
         });
-    });
+    }];
 }
 
 -(void)registerNotifications
@@ -183,16 +183,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onStartConnectToBluetooth:) name:OnStartConnectToBluetooth object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallbackConnectToBluetoothSuccessfully:) name:OnCallbackConnectToBluetoothSuccessfully object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallbackConnectToBluetoothTimeout:) name:OnCallbackConnectToBluetoothTimeout object:nil];
-}
-
--(void)generateHeartView
-{
-    XTLoveHeartView *heart = [[XTLoveHeartView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
-    [self.view addSubview:heart];
-    [self.view bringSubviewToFront:heart];
-    CGPoint fountainSource = CGPointMake(_flipPlayBackView.frame.origin.x - 20, _flipPlayBackView.frame.origin.y);
-    heart.center = fountainSource;
-    [heart animateInView:self.view];
 }
 
 -(void)playScript
@@ -245,7 +235,7 @@
     RelativeTimeScript *script = [notify object];
     if (currentScript) {
         if ([currentScript isEqual:script]) {
-            [self inilizedUIView];
+//            [self inilizedUIView];
             [UIView animateWithDuration:currentScript.scriptTime delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
                 [_collectionView setFrame:CGRectMake(-_collectionView.frame.size.width, 0, _collectionView.frame.size.width, _collectionView.frame.size.height)];
             } completion:^(BOOL finished) {
@@ -293,38 +283,96 @@
 {
     ScriptCommand *scriptCommand = [notify object];
     if (![AppUtils isNullStr:scriptCommand.rfId]) {
-//        [_flipPlayBackView flipWithScriptCommand:scriptCommand];
-        
         NSDictionary *dic = [notify userInfo];
         NSInteger actualTime = [[dic objectForKey:ActualTimeKey] integerValue];
-
-        heartTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(generateHeartView) userInfo:nil repeats:YES];
-        [heartTimer fire];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(actualTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            if (heartTimer) {
-                if ([heartTimer isValid]) {
-                    [heartTimer invalidate];
-                }
-            }
-        });
-
+        NSString *gifName = [AppUtils imageNameWithPower:scriptCommand.power];
+        UIImage *smellImage = [UIImage imageNamed:[scriptCommand.smellImage stringByReplacingOccurrencesOfString:@"Image" withString:@"IconImage"]];
+        UIImage *smellGifImage = [UIImage sd_animatedGIFNamed:gifName];
+        [self setEruptImage:smellGifImage];
+        if ([gifName isEqualToString:@"highPower"]) {
+            [self setIconImage:smellImage WithGifName:@"highPower"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(actualTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self setIconImage:nil WithGifName:@"highPower"];
+                [self setEruptImage:nil];
+            });
+        }else if ([gifName isEqualToString:@"normalPower"]){
+            [self setIconImage:smellImage WithGifName:@"normalPower"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(actualTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self setIconImage:nil WithGifName:@"normalPower"];
+                [self setEruptImage:nil];
+            });
+        }else if ([gifName isEqualToString:@"lowPower"]){
+            [self setIconImage:smellImage WithGifName:@"lowPower"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(actualTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self setIconImage:nil WithGifName:@"lowPower"];
+                [self setEruptImage:nil];
+            });
+        }
     }
+}
+
+-(void)setEruptImage:(UIImage *)eruptImage
+{
+    [eruptLock lock];
+    if (eruptImage) {
+        [_smellEruptImageView setImage:eruptImage];
+        eruptImageSetCount++;
+    }else{
+        if (eruptImageSetCount == 1) {
+            eruptImageSetCount--;
+            [_smellEruptImageView setImage:nil];
+        }else{
+            eruptImageSetCount--;
+        }
+    }
+    [eruptLock unlock];
+}
+
+-(void)setIconImage:(UIImage *)iconImage WithGifName:(NSString *)gifName
+{
+    [lock lock];
+    if (iconImage) {
+        if ([gifName isEqualToString:@"highPower"]) {
+            [_highPowerIconImageView setImage:iconImage];
+            highPowerScriptCommandCount++;
+        }else if ([gifName isEqualToString:@"normalPower"]){
+            [_normalPowerIconImageView setImage:iconImage];
+            normalPowerScriptCommandCount++;
+        }else if ([gifName isEqualToString:@"lowPower"]){
+            [_lowPowerIconImageView setImage:iconImage];
+            lowPowerScriptCommandCount++;
+        }
+    }else{
+        if ([gifName isEqualToString:@"highPower"]) {
+            if (highPowerScriptCommandCount == 1) {
+                highPowerScriptCommandCount--;
+                [_highPowerIconImageView setImage:nil];
+            }else{
+                highPowerScriptCommandCount--;
+            }
+        }else if ([gifName isEqualToString:@"normalPower"]){
+            if (normalPowerScriptCommandCount == 1) {
+                normalPowerScriptCommandCount--;
+                [_normalPowerIconImageView setImage:nil];
+            }else{
+                normalPowerScriptCommandCount--;
+            }
+        }else if ([gifName isEqualToString:@"lowPower"]){
+            if (lowPowerScriptCommandCount == 1) {
+                lowPowerScriptCommandCount--;
+                [_lowPowerIconImageView setImage:nil];
+            }else{
+                lowPowerScriptCommandCount--;
+            }
+        }
+    }
+    [lock unlock];
 }
 
 -(void)progressChangedNotify:(NSNotification *)notify
 {
     NSNumber *seconds = [notify object];
     if (currentScript) {
-        CGFloat progress;
-        if (currentScript.scriptTime == 0) {
-            progress = 0.0f;
-        }else{
-            progress = 1.0f * [seconds integerValue] / currentScript.scriptTime;
-        }
-        
-        [_progressView setProgress:progress];
-        
         NSString *desc = [NSString stringWithFormat:@"%@",[AppUtils switchSecondsToTime:[seconds integerValue]]];
         [_lblTime setText:desc];
         
@@ -340,7 +388,7 @@
 
 -(void)onCallbackBluetoothPowerOff:(NSNotification *)notify
 {
-    UIImageView *customImageView = [[UIImageView alloc] initWithImage:nil];
+    UIImageView *customImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SadFaceImage"]];
     [AppUtils showCustomHudProgress:@"蓝牙已关闭" CustomView:customImageView ForView:self.view];
 }
 
@@ -351,7 +399,7 @@
 
 -(void)onCallbackBluetoothDisconnected:(NSNotification *)notify
 {
-    UIImageView *customImageView = [[UIImageView alloc] initWithImage:nil];
+    UIImageView *customImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SadFaceImage"]];
     [AppUtils showCustomHudProgress:@"设备已断开" CustomView:customImageView ForView:self.view];
 }
 
@@ -362,14 +410,14 @@
 
 -(void)onCallbackConnectToBluetoothSuccessfully:(NSNotification *)notify
 {
-    UIImageView *customImageView = [[UIImageView alloc] initWithImage:nil];
+    UIImageView *customImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SmileFaceImage"]];
     [AppUtils showCustomHudProgress:@"设备已连接" CustomView:customImageView ForView:self.view];
     
 }
 
 -(void)onCallbackConnectToBluetoothTimeout:(NSNotification *)notify
 {
-    UIImageView *customImageView = [[UIImageView alloc] initWithImage:nil];
+    UIImageView *customImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SadFaceImage"]];
     [AppUtils showCustomHudProgress:@"设备未连接" CustomView:customImageView ForView:self.view];
 }
 #pragma -mark GestureRecognizer
@@ -409,7 +457,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         ScriptCommand *command = [currentScript.scriptCommandList objectAtIndex:indexPath.item];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [cell setupWithScriptCommand:command];
+            [cell setupWithScriptCommand:command isShowCircleButton:NO];
         });
     });
     return cell;

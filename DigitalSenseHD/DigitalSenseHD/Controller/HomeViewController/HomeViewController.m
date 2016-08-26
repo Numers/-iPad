@@ -690,7 +690,7 @@
     cell.delegate = self;
 //    [cell inilizedView];
     ScriptCommand *command = [commandList objectAtIndex:indexPath.item];
-    [cell setupWithScriptCommand:command];
+    [cell setupWithScriptCommand:command isShowCircleButton:YES];
 //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //        
 //        dispatch_async(dispatch_get_main_queue(), ^{
@@ -830,6 +830,7 @@
         completion(YES);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self changeVirtualCommandToRealCommand];
+            originCommandList = [commandList copy];
         });
     }else{
         CGPoint locationOnBtn = [collectionView convertPoint:location toView:_btnShareOrDelete];
@@ -837,11 +838,13 @@
             if (operationManager) {
                 [operationManager deleteOperation:indexPath];
             }
+            originCommandList = [commandList copy];
             completion(NO);
         }else{
             completion(YES);
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self changeVirtualCommandToRealCommand];
+                originCommandList = [commandList copy];
             });
         }
     }
@@ -1009,14 +1012,20 @@
                     if (virtualCommand) {
                         [_collectionView performBatchUpdates:^{
                             NSInteger index = [commandList indexOfObject:virtualCommand];
+                            [commandList removeObject:virtualCommand];
                             [_collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];
-                            commandList = [NSMutableArray arrayWithArray:[originCommandList copy]];
                             
-                            NSMutableArray *indexPathArr = [NSMutableArray array];
                             for (NSInteger i = index; i < index + virtualCommand.duration; i ++ ) {
-                                [indexPathArr addObject:[NSIndexPath indexPathForItem:i inSection:0]];
+                                ScriptCommand *spaceCommand = [[ScriptCommand alloc] init];
+                                spaceCommand.startRelativeTime = 0;
+                                spaceCommand.rfId = @"";
+                                spaceCommand.duration = 1;
+                                spaceCommand.smellName = @"间隔";
+                                spaceCommand.type = SpaceCommand;
+                                spaceCommand.power = [AppUtils powerFixed:(arc4random() % 100) / 100.0f];
+                                [commandList insertObject:spaceCommand atIndex:i];
+                                [_collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:i inSection:0]]];
                             }
-                            [_collectionView insertItemsAtIndexPaths:indexPathArr];
                         } completion:^(BOOL finished) {
                             
                         }];

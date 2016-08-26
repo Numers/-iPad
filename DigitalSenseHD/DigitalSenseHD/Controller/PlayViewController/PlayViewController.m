@@ -60,7 +60,7 @@
     [self.lblTime setTextColor:[UIColor whiteColor]];
     
     [self.navigationController setNavigationBarHidden:YES];
-    UIImage *backgroundImage = [UIImage imageNamed:@"BackgroundImage"];
+    UIImage *backgroundImage = [UIImage imageNamed:@"PlayView_BackgroundImage"];
     self.view.layer.contents = (id)backgroundImage.CGImage;
     
     [self.progressView setNoColor:[UIColor colorWithRed:0.514 green:0.388 blue:0.196 alpha:1.000]];
@@ -381,7 +381,7 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             ScriptCommand *command = [currentScript.scriptCommandList objectAtIndex:indexPath.item];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [cell setupWithScriptCommand:command];
+                [cell setupWithScriptCommand:command isShowCircleButton:NO];
             });
         });
     return cell;

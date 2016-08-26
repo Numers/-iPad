@@ -20,5 +20,5 @@
 @interface HomeCollectionViewCell : UICollectionViewCell
 @property(nonatomic,assign) id<HomeCollectionViewCellProtocol> delegate;
 -(void)inilizedView;
--(void)setupWithScriptCommand:(ScriptCommand *)command;
+-(void)setupWithScriptCommand:(ScriptCommand *)command isShowCircleButton:(BOOL)isShow;
 @end

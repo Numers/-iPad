@@ -22,6 +22,6 @@
     ScriptCommand *currentCommand;
 }
 @property(nonatomic,assign) id<RealCellViewProtocol> delegate;
--(void)setScriptCommand:(ScriptCommand *)command;
+-(void)setScriptCommand:(ScriptCommand *)command isShowCircleButton:(BOOL)isShow;
 -(void)setMaxHeight:(CGFloat)height WithMaxCenterY:(CGFloat)aCenterY WithMinCenterY:(CGFloat)iCenterY;
 @end
