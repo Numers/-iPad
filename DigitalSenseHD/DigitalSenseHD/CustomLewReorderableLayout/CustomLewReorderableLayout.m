@@ -367,6 +367,10 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
 // long press gesture
 - (void)handleLongPress:(UILongPressGestureRecognizer *)longPress {
     CGPoint location = [longPress locationInView:self.collectionView];
+    UIView *locationView = [self.collectionView hitTest:location withEvent:nil];
+    if ([locationView isKindOfClass:[UIButton class]]) {
+        return;
+    }
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:location];
     
     if (_cellFakeView != nil) {

@@ -17,6 +17,7 @@
 //打印宏定义
 #ifdef DEBUG
 #define NSLog(...) NSLog(__VA_ARGS__)
+//#define NSLog(...)
 #define debugMethod() NSLog(@"%s", __func__)
 #else
 #define NSLog(...)
