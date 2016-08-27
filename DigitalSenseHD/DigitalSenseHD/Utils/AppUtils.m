@@ -352,4 +352,20 @@
     }
     return nil;
 }
+
++(NSString *)powerLevelWithPower:(CGFloat)power
+{
+    if (power < 0.4) {
+        return @"highPower";
+    }
+    
+    if (power < 0.73) {
+        return @"normalPower";
+    }
+    
+    if (power < 1.0) {
+        return @"lowPower";
+    }
+    return @"normalPower";
+}
 @end

@@ -782,6 +782,14 @@
                                     <constraint firstAttribute="width" secondItem="d9x-bH-9PK" secondAttribute="height" multiplier="1:1" id="buV-kw-QZE"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bgn-Zb-JcK" customClass="SmokeView">
+                                <rect key="frame" x="280" y="110" width="80" height="100"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="B2b-C8-usE"/>
+                                    <constraint firstAttribute="width" constant="80" id="GtN-US-F4c"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -794,6 +802,7 @@
                             <constraint firstItem="9am-EK-cqK" firstAttribute="leading" secondItem="l9C-p9-mwg" secondAttribute="leading" constant="270" id="H1l-B4-h8O"/>
                             <constraint firstItem="njm-4M-dca" firstAttribute="centerX" secondItem="l9C-p9-mwg" secondAttribute="centerX" constant="58" id="IbX-WH-nq7"/>
                             <constraint firstItem="uZU-Qw-Ezo" firstAttribute="leading" secondItem="l9C-p9-mwg" secondAttribute="leading" id="Kc8-7X-e79"/>
+                            <constraint firstItem="Bgn-Zb-JcK" firstAttribute="top" secondItem="yKv-VW-hYs" secondAttribute="bottom" constant="90" id="OuN-Kr-wLa"/>
                             <constraint firstAttribute="trailing" secondItem="uZU-Qw-Ezo" secondAttribute="trailing" id="SrS-WY-fuQ"/>
                             <constraint firstItem="9hW-iL-byp" firstAttribute="top" secondItem="kmS-zm-8Jb" secondAttribute="bottom" constant="78" id="bh6-re-of8"/>
                             <constraint firstItem="9am-EK-cqK" firstAttribute="leading" secondItem="9hW-iL-byp" secondAttribute="trailing" constant="13" id="ifr-uy-4li"/>
@@ -801,6 +810,7 @@
                             <constraint firstItem="9am-EK-cqK" firstAttribute="leading" secondItem="d9x-bH-9PK" secondAttribute="trailing" constant="11" id="keP-m3-Zcr"/>
                             <constraint firstItem="wAV-DT-HMN" firstAttribute="centerX" secondItem="l9C-p9-mwg" secondAttribute="centerX" id="mAk-Fz-OPI"/>
                             <constraint firstAttribute="trailing" secondItem="9am-EK-cqK" secondAttribute="trailing" constant="70" id="oTB-ng-bLC"/>
+                            <constraint firstItem="Bgn-Zb-JcK" firstAttribute="leading" secondItem="l9C-p9-mwg" secondAttribute="leading" constant="280" id="rYq-1a-Owj"/>
                             <constraint firstItem="4f4-CN-huC" firstAttribute="top" secondItem="9am-EK-cqK" secondAttribute="bottom" constant="174" id="s0n-xV-aD8"/>
                             <constraint firstItem="kmS-zm-8Jb" firstAttribute="top" secondItem="yKv-VW-hYs" secondAttribute="bottom" constant="234" id="vwa-Gv-c5d"/>
                             <constraint firstItem="9am-EK-cqK" firstAttribute="top" secondItem="yKv-VW-hYs" secondAttribute="bottom" constant="168" id="y7I-cF-SgU"/>
@@ -814,6 +824,7 @@
                         <outlet property="lblTime" destination="njm-4M-dca" id="UXp-KB-FKf"/>
                         <outlet property="lowPowerIconImageView" destination="d9x-bH-9PK" id="9De-gP-7lO"/>
                         <outlet property="normalPowerIconImageView" destination="9hW-iL-byp" id="jx9-B0-67b"/>
+                        <outlet property="smokeView" destination="Bgn-Zb-JcK" id="gNR-Co-SGc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUn-LR-WC9" userLabel="First Responder" sceneMemberID="firstResponder"/>

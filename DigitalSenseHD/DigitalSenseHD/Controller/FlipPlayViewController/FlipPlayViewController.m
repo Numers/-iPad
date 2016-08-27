@@ -23,6 +23,7 @@
 
 #import "CAShapeLayer+FlipBackViewMask.h"
 #import "UIImage+GIF.h"
+#import "SmokeView.h"
 
 #define FlipPlayViewCollectionViewCellIdentify @"FlipPlayViewCollectionViewCellIdentify"
 
@@ -47,16 +48,16 @@
     NSInteger lowPowerScriptCommandCount;
     NSInteger normalPowerScriptCommandCount;
     NSInteger highPowerScriptCommandCount;
-    NSInteger eruptImageSetCount;
+    NSInteger eruptSmokeSetCount;
 }
 @property(nonatomic, strong) IBOutlet UIImageView *highPowerIconImageView;
 @property(nonatomic, strong) IBOutlet UIImageView *normalPowerIconImageView;
 @property(nonatomic, strong) IBOutlet UIImageView *lowPowerIconImageView;
 @property(nonatomic, strong) IBOutlet FlipPlayBackView *flipPlayBackView;
 @property(nonatomic, strong) UICollectionView *collectionView;
-@property(nonatomic, strong) UIImageView *smellEruptImageView;
 @property(nonatomic, strong) IBOutlet UILabel *lblTime;
 @property(nonatomic, strong) IBOutlet UIView *bottomBackView;
+@property(nonatomic, strong) IBOutlet SmokeView *smokeView;
 @end
 
 @implementation FlipPlayViewController
@@ -72,6 +73,8 @@
     CAShapeLayer *layer = [CAShapeLayer createMaskLayerWithView:_flipPlayBackView];
     _flipPlayBackView.layer.mask = layer;
     
+    [_smokeView setBackgroundColor:[UIColor clearColor]];
+    
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(736.0f, 0, currentScript.scriptTime * WidthPerSecond, 406.0f) collectionViewLayout:layout];
@@ -81,10 +84,6 @@
     [_flipPlayBackView addSubview:_collectionView];
     
     [_collectionView registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:FlipPlayViewCollectionViewCellIdentify];
-    
-    _smellEruptImageView = [[UIImageView alloc] initWithFrame:CGRectMake(255, 105, 100, 110)];
-    [_smellEruptImageView setBackgroundColor:[UIColor clearColor]];
-    [self.view addSubview:_smellEruptImageView];
     
     [self.navigationController setNavigationBarHidden:YES];
     UIImage *backgroundImage = [UIImage imageNamed:@"PlayView_BackgroundImage"];
@@ -147,7 +146,7 @@
     lowPowerScriptCommandCount = 0;
     normalPowerScriptCommandCount = 0;
     highPowerScriptCommandCount = 0;
-    eruptImageSetCount = 0;
+    eruptSmokeSetCount = 0;
 }
 
 -(void)beginPlayScript
@@ -285,44 +284,64 @@
     if (![AppUtils isNullStr:scriptCommand.rfId]) {
         NSDictionary *dic = [notify userInfo];
         NSInteger actualTime = [[dic objectForKey:ActualTimeKey] integerValue];
-        NSString *gifName = [AppUtils imageNameWithPower:scriptCommand.power];
+        NSString *powerLevel = [AppUtils powerLevelWithPower:scriptCommand.power];
         UIImage *smellImage = [UIImage imageNamed:[scriptCommand.smellImage stringByReplacingOccurrencesOfString:@"Image" withString:@"IconImage"]];
-        UIImage *smellGifImage = [UIImage sd_animatedGIFNamed:gifName];
-        [self setEruptImage:smellGifImage];
-        if ([gifName isEqualToString:@"highPower"]) {
+//        UIImage *smellGifImage = [UIImage sd_animatedGIFNamed:gifName];
+//        [self setEruptImage:smellGifImage];
+        if ([powerLevel isEqualToString:@"highPower"]) {
+            [self eruptSmokeWithDegree:0.7];
             [self setIconImage:smellImage WithGifName:@"highPower"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(actualTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self setIconImage:nil WithGifName:@"highPower"];
-                [self setEruptImage:nil];
+                [self eruptSmokeWithDegree:0.0f];
             });
-        }else if ([gifName isEqualToString:@"normalPower"]){
+        }else if ([powerLevel isEqualToString:@"normalPower"]){
+            [self eruptSmokeWithDegree:0.5];
             [self setIconImage:smellImage WithGifName:@"normalPower"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(actualTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self setIconImage:nil WithGifName:@"normalPower"];
-                [self setEruptImage:nil];
+                [self eruptSmokeWithDegree:0.0f];
             });
-        }else if ([gifName isEqualToString:@"lowPower"]){
+        }else if ([powerLevel isEqualToString:@"lowPower"]){
+            [self eruptSmokeWithDegree:0.3];
             [self setIconImage:smellImage WithGifName:@"lowPower"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(actualTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self setIconImage:nil WithGifName:@"lowPower"];
-                [self setEruptImage:nil];
+                [self eruptSmokeWithDegree:0.0f];
             });
         }
     }
 }
 
--(void)setEruptImage:(UIImage *)eruptImage
+//-(void)setEruptImage:(UIImage *)eruptImage
+//{
+//    [eruptLock lock];
+//    if (eruptImage) {
+//        [_smellEruptImageView setImage:eruptImage];
+//        eruptImageSetCount++;
+//    }else{
+//        if (eruptImageSetCount == 1) {
+//            eruptImageSetCount--;
+//            [_smellEruptImageView setImage:nil];
+//        }else{
+//            eruptImageSetCount--;
+//        }
+//    }
+//    [eruptLock unlock];
+//}
+
+-(void)eruptSmokeWithDegree:(CGFloat)degree
 {
     [eruptLock lock];
-    if (eruptImage) {
-        [_smellEruptImageView setImage:eruptImage];
-        eruptImageSetCount++;
+    if (degree > 0) {
+        [self.smokeView generateSmokeWithSmokeAmount:degree];
+        eruptSmokeSetCount++;
     }else{
-        if (eruptImageSetCount == 1) {
-            eruptImageSetCount--;
-            [_smellEruptImageView setImage:nil];
+        if (eruptSmokeSetCount == 1) {
+            eruptSmokeSetCount--;
+            [self.smokeView stopSmoke];
         }else{
-            eruptImageSetCount--;
+            eruptSmokeSetCount--;
         }
     }
     [eruptLock unlock];

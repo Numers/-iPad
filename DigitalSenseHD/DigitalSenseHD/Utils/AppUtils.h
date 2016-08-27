@@ -57,4 +57,5 @@
 
 +(CGFloat)powerFixed:(CGFloat)power;
 +(NSString *)imageNameWithPower:(CGFloat)power;
++(NSString *)powerLevelWithPower:(CGFloat)power;
 @end

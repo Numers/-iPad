@@ -64,6 +64,8 @@
 		848820911D65DAE50035BEE1 /* HuaKangHaiBao.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 848820901D65DAE50035BEE1 /* HuaKangHaiBao.ttf */; };
 		848820921D65DC320035BEE1 /* WawaSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8488208F1D65DAB30035BEE1 /* WawaSC-Regular.otf */; };
 		848FC4D41D6D72A8006D8F1F /* XTLoveHeartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 848FC4D31D6D72A8006D8F1F /* XTLoveHeartView.m */; };
+		84900CE01D715A8E0001DD2C /* SmokeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84900CDF1D715A8E0001DD2C /* SmokeView.m */; };
+		84900CE21D715CC70001DD2C /* DazSmoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 84900CE11D715CC70001DD2C /* DazSmoke.png */; };
 		84B00C2A1D701D0200516F4B /* highPower.gif in Resources */ = {isa = PBXBuildFile; fileRef = 84B00C271D701D0200516F4B /* highPower.gif */; };
 		84B00C2B1D701D0200516F4B /* lowPower.gif in Resources */ = {isa = PBXBuildFile; fileRef = 84B00C281D701D0200516F4B /* lowPower.gif */; };
 		84B00C2C1D701D0200516F4B /* normalPower.gif in Resources */ = {isa = PBXBuildFile; fileRef = 84B00C291D701D0200516F4B /* normalPower.gif */; };
@@ -180,6 +182,9 @@
 		848820901D65DAE50035BEE1 /* HuaKangHaiBao.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HuaKangHaiBao.ttf; sourceTree = "<group>"; };
 		848FC4D21D6D72A8006D8F1F /* XTLoveHeartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTLoveHeartView.h; sourceTree = "<group>"; };
 		848FC4D31D6D72A8006D8F1F /* XTLoveHeartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTLoveHeartView.m; sourceTree = "<group>"; };
+		84900CDE1D715A8E0001DD2C /* SmokeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmokeView.h; sourceTree = "<group>"; };
+		84900CDF1D715A8E0001DD2C /* SmokeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmokeView.m; sourceTree = "<group>"; };
+		84900CE11D715CC70001DD2C /* DazSmoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DazSmoke.png; sourceTree = "<group>"; };
 		84B00C271D701D0200516F4B /* highPower.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = highPower.gif; sourceTree = "<group>"; };
 		84B00C281D701D0200516F4B /* lowPower.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = lowPower.gif; sourceTree = "<group>"; };
 		84B00C291D701D0200516F4B /* normalPower.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = normalPower.gif; sourceTree = "<group>"; };
@@ -502,6 +507,7 @@
 		847090D81D5C2C0C009DCD46 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				84900CDD1D715A770001DD2C /* SmokeView */,
 				8470733A1D713CFC00940CA8 /* DashBorderView */,
 				848FC4D11D6D72A8006D8F1F /* HeartView */,
 				8467F91F1D6AD01100FEF47A /* FlipPlayView */,
@@ -583,6 +589,16 @@
 				848FC4D31D6D72A8006D8F1F /* XTLoveHeartView.m */,
 			);
 			path = HeartView;
+			sourceTree = "<group>";
+		};
+		84900CDD1D715A770001DD2C /* SmokeView */ = {
+			isa = PBXGroup;
+			children = (
+				84900CE11D715CC70001DD2C /* DazSmoke.png */,
+				84900CDE1D715A8E0001DD2C /* SmokeView.h */,
+				84900CDF1D715A8E0001DD2C /* SmokeView.m */,
+			);
+			path = SmokeView;
 			sourceTree = "<group>";
 		};
 		BC31833F3BBF3369D627671A /* Frameworks */ = {
@@ -668,6 +684,7 @@
 				84B00C2C1D701D0200516F4B /* normalPower.gif in Resources */,
 				84B00C2A1D701D0200516F4B /* highPower.gif in Resources */,
 				841933631D5B2E4E00E8E9EE /* load_circle.png in Resources */,
+				84900CE21D715CC70001DD2C /* DazSmoke.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,6 +771,7 @@
 				8462EB2C1D5D788000897F92 /* HomeCollectionViewCell.m in Sources */,
 				847219D11D684E5500DE4E56 /* ScriptExecuteManager.m in Sources */,
 				848FC4D41D6D72A8006D8F1F /* XTLoveHeartView.m in Sources */,
+				84900CE01D715A8E0001DD2C /* SmokeView.m in Sources */,
 				847219BF1D6843BE00DE4E56 /* UIViewController+WXSTransition.m in Sources */,
 				841933591D5B27BC00E8E9EE /* AppUtils.m in Sources */,
 				847219C11D6843BE00DE4E56 /* WXSTransitionManager.m in Sources */,
