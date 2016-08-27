@@ -732,6 +732,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath
 {
+    NSLog(@"%d",fromIndexPath.item);
     ScriptCommand *command = [commandList objectAtIndex:fromIndexPath.item];
     if (command && command.type != VirtualCommand) {
         return;
@@ -874,16 +875,18 @@
                 
                 UICollectionViewCell *insertCell = [_collectionView cellForItemAtIndexPath:indexPath];
                 CGPoint center = CGPointMake(insertCell.center.x, insertCell.frame.size.height * [AppUtils powerFixed:virtualCommand.power]);
-                [[NSNotificationCenter defaultCenter] postNotificationName:FakeViewCenterChangedNotify object:nil userInfo:@{@"centerX":@(center.x),@"centerY":@(center.y)}];
+                CGPoint backCenter = [_collectionView convertPoint:center toView:[UIApplication sharedApplication].keyWindow];
+                if (smellFakeView.originalPositionY > 0) {
+                    CGFloat temp = backCenter.y - smellFakeView.originalPositionY;
+                    [smellFakeView setToBackViewCenter:CGPointMake(backCenter.x, smellFakeView.originalCenter.y + temp)];
+                }else{
+                    
+                }
+
             } completion:^(BOOL finished) {
                 
             }];
         }
-    }
-    NSIndexPath *indexPath = [collectionView indexPathForItemAtPoint:location];
-    NSInteger panIndex = translation.x / WidthPerSecond;
-    if (panIndex > 0) {
-        
     }
     completion();
 }

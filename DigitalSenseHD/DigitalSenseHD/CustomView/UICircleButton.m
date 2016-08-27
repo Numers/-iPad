@@ -21,7 +21,7 @@
 
 -(void)touchDown
 {
-    UIImage *pullImage = [UIImage imageNamed:@"PullBtn"];
+    UIImage *pullImage = [UIImage imageNamed:@"PullBtnHighlight"];
     [self setImage:pullImage forState:UIControlStateHighlighted];
     if ([_delegate respondsToSelector:@selector(beginTrack)]) {
         [_delegate beginTrack];
@@ -78,7 +78,7 @@
 - (void)cancelTrackingWithEvent:(nullable UIEvent *)event
 {
      NSLog(@"cancelTracking");
-    UIImage *pullImage = [UIImage imageNamed:@"PullBtn"];
+    UIImage *pullImage = [UIImage imageNamed:@"PullBtnNormal"];
     [self setImage:pullImage forState:UIControlStateNormal];
     if ([_delegate respondsToSelector:@selector(endTrack)]) {
         [_delegate endTrack];

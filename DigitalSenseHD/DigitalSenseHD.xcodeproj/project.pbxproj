@@ -43,6 +43,7 @@
 		84691D4C1D6BEF5D002F836C /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84691D421D6BEF5D002F836C /* TencentOpenApi_IOS_Bundle.bundle */; };
 		84691D4D1D6BEF5D002F836C /* ShareManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84691D451D6BEF5D002F836C /* ShareManage.m */; };
 		84691D4E1D6BEF5D002F836C /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84691D471D6BEF5D002F836C /* libWeChatSDK.a */; };
+		8470733D1D713CFC00940CA8 /* LBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8470733C1D713CFC00940CA8 /* LBorderView.m */; };
 		847090DE1D5C2C43009DCD46 /* SmellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847090DD1D5C2C43009DCD46 /* SmellView.m */; };
 		847219A71D68074500DE4E56 /* UICircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219A61D68074500DE4E56 /* UICircleButton.m */; };
 		847219AB1D6839CF00DE4E56 /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219AA1D6839CF00DE4E56 /* PlayViewController.m */; };
@@ -138,6 +139,8 @@
 		84691D471D6BEF5D002F836C /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		84691D481D6BEF5D002F836C /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		84691D491D6BEF5D002F836C /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		8470733B1D713CFC00940CA8 /* LBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBorderView.h; sourceTree = "<group>"; };
+		8470733C1D713CFC00940CA8 /* LBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBorderView.m; sourceTree = "<group>"; };
 		847090DC1D5C2C43009DCD46 /* SmellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmellView.h; sourceTree = "<group>"; };
 		847090DD1D5C2C43009DCD46 /* SmellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmellView.m; sourceTree = "<group>"; };
 		847219A51D68074500DE4E56 /* UICircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICircleButton.h; sourceTree = "<group>"; };
@@ -487,9 +490,19 @@
 			path = WeChat;
 			sourceTree = "<group>";
 		};
+		8470733A1D713CFC00940CA8 /* DashBorderView */ = {
+			isa = PBXGroup;
+			children = (
+				8470733B1D713CFC00940CA8 /* LBorderView.h */,
+				8470733C1D713CFC00940CA8 /* LBorderView.m */,
+			);
+			path = DashBorderView;
+			sourceTree = "<group>";
+		};
 		847090D81D5C2C0C009DCD46 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				8470733A1D713CFC00940CA8 /* DashBorderView */,
 				848FC4D11D6D72A8006D8F1F /* HeartView */,
 				8467F91F1D6AD01100FEF47A /* FlipPlayView */,
 				8467F9181D6AB29E00FEF47A /* ZDProgressView.h */,
@@ -726,6 +739,7 @@
 				847219CF1D684E5500DE4E56 /* BluetoothProcessManager.m in Sources */,
 				842D8C6F1D66B29800DE6EBB /* UIView+Boom.m in Sources */,
 				84691D4D1D6BEF5D002F836C /* ShareManage.m in Sources */,
+				8470733D1D713CFC00940CA8 /* LBorderView.m in Sources */,
 				8419332A1D5B252100E8E9EE /* AppDelegate.m in Sources */,
 				847219AB1D6839CF00DE4E56 /* PlayViewController.m in Sources */,
 				847090DE1D5C2C43009DCD46 /* SmellView.m in Sources */,

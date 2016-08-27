@@ -160,18 +160,19 @@
  */
 +(NSInteger)floatToInt:(CGFloat)value WithMaxValue:(NSInteger)maxValue
 {
-    CGFloat tempResult = roundf(value);
     CGFloat temp = value / maxValue;
-    
-    if (temp > (1.0f / 3.0f) && tempResult < (maxValue * 1.0f / 3.0f)) {
-        tempResult += 1.0f;
+    if (temp < 0.4) {
+        return 9;
     }
     
-    if (temp < (2.0f / 3.0f) && tempResult > (maxValue * 2.0f / 3.0f)){
-        tempResult -= 1.0f;
+    if (temp < 0.73) {
+        return 5;
     }
     
-    return [[NSNumber numberWithFloat:tempResult] integerValue];
+    if (temp < 1.0) {
+        return 2;
+    }
+    return 5;
 }
 
 +(NSString *)switchSecondsToTime:(NSInteger)seconds

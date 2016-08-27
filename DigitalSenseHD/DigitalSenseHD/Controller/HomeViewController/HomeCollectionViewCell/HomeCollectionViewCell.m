@@ -119,7 +119,14 @@
 {
     if (currentCommand) {
         [smellIconImageView setCenter:CGPointMake(smellIconImageView.frame.size.width / 2.0f + 1, self.frame.size.height * currentCommand.power)];
-        [realCellView setFrame:CGRectMake(RealCellLeftMargin, self.frame.size.height * currentCommand.power - RealCellHeight / 2.0f, self.frame.size.width - RealCellLeftMargin, RealCellHeight)];
+        NSString *level = [AppUtils imageNameWithPower:currentCommand.power];
+        if ([level isEqualToString:@"lowPower"]) {
+            [realCellView setFrame:CGRectMake(RealCellLeftMargin, self.frame.size.height * currentCommand.power - RealCellHeight / 2.0f, self.frame.size.width - RealCellLeftMargin, RealCellHeight)];
+        }else if ([level isEqualToString:@"normalPower"]){
+            [realCellView setFrame:CGRectMake(RealCellLeftMargin, self.frame.size.height * currentCommand.power - (RealCellHeight + 8) / 2.0f, self.frame.size.width - RealCellLeftMargin, RealCellHeight + 8)];
+        }else if ([level isEqualToString:@"highPower"]){
+            [realCellView setFrame:CGRectMake(RealCellLeftMargin, self.frame.size.height * currentCommand.power - (RealCellHeight + 16)/ 2.0f, self.frame.size.width - RealCellLeftMargin, RealCellHeight + 16)];
+        }
     }
     [dashImageView setFrame:CGRectMake(0, 0, 1, self.frame.size.height)];
 }
