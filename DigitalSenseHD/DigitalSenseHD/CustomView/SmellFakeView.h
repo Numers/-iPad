@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 @class Smell;
 @interface SmellFakeView : UIView
+{
+    BOOL earthquakeRepeat;
+}
 @property(nonatomic, strong) Smell *smell;
 @property(nonatomic, strong) UIImageView *fakeImageView;
 @property(nonatomic, assign) CGPoint originalCenter;
@@ -21,5 +24,6 @@
 
 - (void)pushFowardViewWithScale:(CGFloat)scale completion:(void(^)(BOOL isFinished))completion;
 - (void)pushBackView:(void(^)(BOOL isFinished))completion;
+-(void)startEarthQuake;
 -(void)hiddenView:(void (^)(BOOL isFinished))completion;
 @end

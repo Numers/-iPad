@@ -75,6 +75,28 @@
     }];
 }
 
+-(void)startEarthQuake
+{
+    earthquakeRepeat = YES;
+    //创建动画
+    CAKeyframeAnimation * keyAnimaion = [CAKeyframeAnimation animation];
+    keyAnimaion.keyPath = @"transform.rotation";
+    keyAnimaion.values = @[@(-2 / 180.0 * M_PI),@(2 /180.0 * M_PI),@(-2/ 180.0 * M_PI)];//度数转弧度
+    keyAnimaion.delegate = self;
+    
+    keyAnimaion.removedOnCompletion = NO;
+    keyAnimaion.fillMode = kCAFillModeForwards;
+    keyAnimaion.duration = 0.15;
+    keyAnimaion.repeatCount = MAXFLOAT;
+    [self.layer addAnimation:keyAnimaion forKey:@"earthquake"];
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if (earthquakeRepeat) {
+        [self startEarthQuake];
+    }
+}
 
 - (UIImage *)getViewImage:(UIView *)view{
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, [UIScreen mainScreen].scale * 2);
@@ -87,6 +109,8 @@
 -(void)removeFromSuperview
 {
     [super removeFromSuperview];
+    earthquakeRepeat = NO;
+    [self.layer removeAnimationForKey:@"earthquake"];
     if (self.fakeImageView) {
         [self.fakeImageView removeFromSuperview];
     }

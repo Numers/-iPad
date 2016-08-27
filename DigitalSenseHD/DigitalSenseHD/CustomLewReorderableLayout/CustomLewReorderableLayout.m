@@ -110,7 +110,7 @@ typedef NS_ENUM(NSUInteger, LewScrollDirction) {
         return;
     }
     _longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleLongPress:)];
-    _longPress.minimumPressDuration = 1.0f;
+//    _longPress.minimumPressDuration = 1.0f;
     _panGesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePanGesture:)];
     _longPress.delegate = self;
     _panGesture.delegate = self;

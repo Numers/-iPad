@@ -919,6 +919,7 @@
 //            [collectionView reloadItemsAtIndexPaths:@[indexPath]];
         } completion:^(BOOL finished) {
             [self setIsShare:NO];
+            [smellFakeView startEarthQuake];
         }];
         
         operationManager = [[CollectionViewOperationManager alloc] initWithCommandArray:commandList WithInsertIndexPath:indexPath WithInsertSmell:nil];
