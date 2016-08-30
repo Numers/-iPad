@@ -17,6 +17,9 @@
 {
     CGPoint beginLocation;
     CGPoint movedLocation;
+    
+    UILongPressGestureRecognizer *_longPress;
+    CGPoint _prePoint;
 }
 @property(nonatomic, assign) id<UICircleButtonProtocol> delegate;
 @end

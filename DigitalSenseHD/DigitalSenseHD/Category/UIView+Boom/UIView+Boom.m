@@ -9,7 +9,7 @@
 
 #import "UIView+Boom.h"
 
-const static NSInteger cellCount = 17;
+const static NSInteger cellCount = 10;
 
 static NSMutableArray<CALayer *> *booms;
 
@@ -20,26 +20,32 @@ static NSMutableArray<CALayer *> *booms;
     booms = [NSMutableArray<CALayer *> array];
 }
 
--(void)boom{
-    [booms removeAllObjects];
-    for(int i = 0 ; i < cellCount ; i++){
-        for(int j = 0 ; j < cellCount ; j++){
-            CGFloat pWidth = MIN(self.frame.size.width, self.frame.size.height)/cellCount;
-            CALayer *boomCell = [CALayer layer];
-            boomCell.backgroundColor = [self getPixelColorAtLocation:CGPointMake(i*2, j*2)].CGColor;
-            boomCell.cornerRadius = pWidth/2;
-            boomCell.frame = CGRectMake(i*pWidth, j*pWidth, pWidth, pWidth);
-            [self.layer.superlayer addSublayer:boomCell];
-            [booms addObject:boomCell];
+-(void)generateData
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [booms removeAllObjects];
+        for(int i = 0 ; i < cellCount ; i++){
+            for(int j = 0 ; j < cellCount ; j++){
+                CGFloat pWidth = MIN(self.frame.size.width, self.frame.size.height)/cellCount;
+                CALayer *boomCell = [CALayer layer];
+                boomCell.backgroundColor = [self getPixelColorAtLocation:CGPointMake(i*2, j*2)].CGColor;
+                boomCell.cornerRadius = pWidth/2;
+                boomCell.frame = CGRectMake(i*pWidth, j*pWidth, pWidth, pWidth);
+                [self.layer.superlayer addSublayer:boomCell];
+                [booms addObject:boomCell];
+            }
         }
-    }
-    
-    
+    });
+}
+
+-(void)boom{
+    [self generateData];
     //粉碎动画
     [self cellAnimation];
     
     //缩放消失
-    [self scaleOpacityAnimations];
+//    [self scaleOpacityAnimations];
 }
 
 -(void)cellAnimation{
@@ -206,30 +212,35 @@ static NSMutableArray<CALayer *> *booms;
  */
 -(UIColor *)getPixelColorAtLocation:(CGPoint)point{
     
-    //拿到放大后的图片
-    CGImageRef inImage = [self scaleImageToSize:CGSizeMake(cellCount*2, cellCount*2)].CGImage;
+//    //拿到放大后的图片
+//    CGImageRef inImage = [self scaleImageToSize:CGSizeMake(cellCount*2, cellCount*2)].CGImage;
+//    
+//    //使用上面的方法(createARGBBitmapContextFromImage:)创建上下文
+//    CGContextRef cgctx = [self createARGBBitmapContextFromImage:inImage];
+//    
+//    //图片的宽高
+//    size_t w = CGImageGetWidth(inImage);
+//    size_t h = CGImageGetHeight(inImage);
+//    //rect
+//    CGRect rect = CGRectMake(0, 0, w, h);
+//    //将目标图像绘制到指定的上下文，实际为上下文内的bitmapData。
+//    CGContextDrawImage(cgctx, rect, inImage);
+//    //取色
+//    unsigned char *bitmapData = CGBitmapContextGetData(cgctx);
+//    
+//    int pixelInfo = 4*((w*round(point.y))+round(point.x));
+//    CGFloat a = bitmapData[pixelInfo]/255.0;
+//    CGFloat r = bitmapData[pixelInfo+1]/255.0;
+//    CGFloat g = bitmapData[pixelInfo+2]/255.0;
+//    CGFloat b = bitmapData[pixelInfo+3]/255.0;
+//    
+//    //释放上面的函数创建的上下文
+//    CGContextRelease(cgctx);
     
-    //使用上面的方法(createARGBBitmapContextFromImage:)创建上下文
-    CGContextRef cgctx = [self createARGBBitmapContextFromImage:inImage];
-    
-    //图片的宽高
-    size_t w = CGImageGetWidth(inImage);
-    size_t h = CGImageGetHeight(inImage);
-    //rect
-    CGRect rect = CGRectMake(0, 0, w, h);
-    //将目标图像绘制到指定的上下文，实际为上下文内的bitmapData。
-    CGContextDrawImage(cgctx, rect, inImage);
-    //取色
-    unsigned char *bitmapData = CGBitmapContextGetData(cgctx);
-    
-    int pixelInfo = 4*((w*round(point.y))+round(point.x));
-    CGFloat a = bitmapData[pixelInfo]/255.0;
-    CGFloat r = bitmapData[pixelInfo+1]/255.0;
-    CGFloat g = bitmapData[pixelInfo+2]/255.0;
-    CGFloat b = bitmapData[pixelInfo+3]/255.0;
-    
-    //释放上面的函数创建的上下文
-    CGContextRelease(cgctx);
+    CGFloat a = 1.0f;
+    CGFloat r = (random() % 255) / 255.0f;
+    CGFloat g = (random() % 255) / 255.0f;
+    CGFloat b = (random() % 255) / 255.0f;
     
     return [UIColor colorWithRed:r green:g blue:b alpha:a];
 }

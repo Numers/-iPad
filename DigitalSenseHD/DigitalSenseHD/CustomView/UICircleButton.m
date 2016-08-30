@@ -14,15 +14,26 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        UIImage *pullHighlightImage = [UIImage imageNamed:@"PullBtnHighlight"];
+        [self setImage:pullHighlightImage forState:UIControlStateHighlighted];
+        
+        UIImage *pullNormalImage = [UIImage imageNamed:@"PullBtnNormal"];
+        [self setImage:pullNormalImage forState:UIControlStateNormal];
+        
         [self addTarget:self action:@selector(touchDown) forControlEvents:UIControlEventTouchDown];
+        if (_longPress == nil) {
+            _longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTouch:)];
+            [_longPress setMinimumPressDuration:0.5];
+            [self addGestureRecognizer:_longPress];
+        }
+
     }
     return self;
 }
 
 -(void)touchDown
 {
-    UIImage *pullImage = [UIImage imageNamed:@"PullBtnHighlight"];
-    [self setImage:pullImage forState:UIControlStateHighlighted];
+    [self setHighlighted:YES];
     if ([_delegate respondsToSelector:@selector(beginTrack)]) {
         [_delegate beginTrack];
     }
@@ -70,6 +81,7 @@
 - (void)endTrackingWithTouch:(nullable UITouch *)touch withEvent:(nullable UIEvent *)event
 {
     NSLog(@"endTracking");
+    [self setHighlighted:NO];
     if ([_delegate respondsToSelector:@selector(endTrack)]) {
         [_delegate endTrack];
     }
@@ -78,10 +90,79 @@
 - (void)cancelTrackingWithEvent:(nullable UIEvent *)event
 {
      NSLog(@"cancelTracking");
-    UIImage *pullImage = [UIImage imageNamed:@"PullBtnNormal"];
-    [self setImage:pullImage forState:UIControlStateNormal];
+    [self setHighlighted:NO];
     if ([_delegate respondsToSelector:@selector(endTrack)]) {
         [_delegate endTrack];
     }
 }
+
+-(void)longTouch:(UILongPressGestureRecognizer *)longPress
+{
+    switch (longPress.state) {
+        case UIGestureRecognizerStatePossible: {
+            
+            break;
+        }
+        case UIGestureRecognizerStateBegan: {
+            [self beganTouch:longPress];
+            break;
+        }
+        case UIGestureRecognizerStateChanged: {
+            [self movedTouch:longPress];
+            break;
+        }
+        case UIGestureRecognizerStateEnded: {
+            [self endedTouch:longPress];
+            break;
+        }
+        case UIGestureRecognizerStateCancelled: {
+            
+            break;
+        }
+        case UIGestureRecognizerStateFailed: {
+            
+            break;
+        }
+    }
+}
+
+-(void)beganTouch:(UILongPressGestureRecognizer *)press
+{
+    _prePoint = [press locationInView:self];
+}
+
+-(void)movedTouch:(UILongPressGestureRecognizer *)press
+{
+    CGPoint now = [press locationInView:self];
+    if (now.x > _prePoint.x) {
+        CGFloat temp = now.x - _prePoint.x;
+        NSInteger count = temp / 15;
+        if (count > 0) {
+            _prePoint = now;
+            if ([_delegate respondsToSelector:@selector(moveRightOneUnit)]) {
+                [_delegate moveRightOneUnit];
+            }
+        }
+    }else{
+        CGFloat temp = _prePoint.x - now.x;
+        NSInteger count = temp / 15;
+        if (count > 0) {
+            _prePoint = now;
+            if ([_delegate respondsToSelector:@selector(moveLeftOneUnit)]) {
+                [_delegate moveLeftOneUnit];
+            }
+        }
+    }
+
+}
+
+-(void)endedTouch:(UILongPressGestureRecognizer *)press
+{
+    [self setHighlighted:NO];
+    _prePoint = [press locationInView:self];
+    if ([_delegate respondsToSelector:@selector(endTrack)]) {
+        [_delegate endTrack];
+    }
+}
+
 @end

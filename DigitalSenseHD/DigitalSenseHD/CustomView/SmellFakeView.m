@@ -13,7 +13,6 @@
 {
     self = [super initWithFrame:view.frame];
     if (self) {
-        self.layer.shadowColor = [UIColor blackColor].CGColor;
         self.layer.shadowOffset = CGSizeMake(0, 0);
         self.layer.shadowOpacity = 0;
         self.layer.shadowColor = [UIColor yellowColor].CGColor;
@@ -69,7 +68,7 @@
 -(void)hiddenView:(void (^)(BOOL isFinished))completion
 {
     [UIView animateWithDuration:0.3f delay:0 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionBeginFromCurrentState animations:^{
-        self.transform = CGAffineTransformMakeScale(0.1, 0.1);
+        self.transform = CGAffineTransformMakeScale(0.01, 1.0);
     } completion:^(BOOL finished) {
         completion(finished);
     }];

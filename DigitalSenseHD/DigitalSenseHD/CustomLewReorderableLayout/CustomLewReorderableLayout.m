@@ -8,7 +8,6 @@
 
 #import "CustomLewReorderableLayout.h"
 #import "SmellFakeView.h"
-#import "UIView+Boom.h"
 #import <QuartzCore/QuartzCore.h>
 typedef NS_ENUM(NSUInteger, LewScrollDirction) {
     LewScrollDirctionStay,

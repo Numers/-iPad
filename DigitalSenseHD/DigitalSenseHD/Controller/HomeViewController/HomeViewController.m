@@ -28,6 +28,7 @@
 #import "ShareManage.h"
 
 #import "UINavigationController+WXSTransition.h"
+#import "UIView+Boom.h"
 
 #define HomeCollectionViewCellIdentify @"HomeCollectionViewCellIdentify"
 @interface HomeViewController ()<SmellViewProtocol,CustomLewReorderableLayoutDataSource,CustomLewReorderableLayoutDelegate,HomeCollectionViewCellProtocol,UIAlertViewDelegate>
@@ -244,7 +245,7 @@
 {
     if (needReconnecting) {
         [self longTouchEnded];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"设备未连接" message:@"iPad/设备蓝牙已断开，请重新连接！" delegate:self cancelButtonTitle:@"继续游戏" otherButtonTitles:@"重新连接", nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"设备未连接" message:@"iPad/设备蓝牙已断开，请重新连接！" delegate:self cancelButtonTitle:@"继续编辑" otherButtonTitles:@"重新连接", nil];
         [alertView show];
     }
 }
@@ -265,7 +266,7 @@
 {
     if (needReconnecting) {
         [self longTouchEnded];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"设备未连接" message:@"iPad/设备蓝牙已断开，请重新连接！" delegate:self cancelButtonTitle:@"继续游戏" otherButtonTitles:@"重新连接", nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"设备未连接" message:@"iPad/设备蓝牙已断开，请重新连接！" delegate:self cancelButtonTitle:@"继续编辑" otherButtonTitles:@"重新连接", nil];
         [alertView show];
     }
 }
@@ -841,6 +842,9 @@
             }
             originCommandList = [commandList copy];
             completion(NO);
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [_btnShareOrDelete boom];
+            });
         }else{
             completion(YES);
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

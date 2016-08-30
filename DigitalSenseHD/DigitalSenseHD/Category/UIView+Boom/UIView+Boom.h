@@ -11,4 +11,5 @@
 @interface UIView (Boom)
 
 -(void)boom;
+-(void)generateData;
 @end
