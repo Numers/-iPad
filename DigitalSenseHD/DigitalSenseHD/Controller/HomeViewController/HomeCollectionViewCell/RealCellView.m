@@ -124,7 +124,7 @@
 -(void)drawRect:(CGRect)rect
 {
     [dashRectView setFrame:CGRectMake(2, 2, self.frame.size.width-4, self.frame.size.height-4)];
-    [btnCircle setCenter:CGPointMake(self.frame.size.width - btnCircle.frame.size.width / 2.0f - 5, self.frame.size.height / 2.0f)];
+    [btnCircle setCenter:CGPointMake(self.frame.size.width - btnCircle.frame.size.width / 2.0f, self.frame.size.height / 2.0f)];
     [lblTime setCenter:CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height / 2.0f)];
 }
 @end

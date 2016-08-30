@@ -96,49 +96,49 @@
     smell1.smellRFID = @"00000010";
     smell1.smellName = @"苹果";
     smell1.smellImage = @"AppleImage";
-    smell1.smellColor = @"#037F00";
+    smell1.smellColor = @"#d94d4d";
     
     Smell *smell2 = [[Smell alloc] init];
     smell2.smellRFID = @"00000002";
     smell2.smellName = @"香蕉";
     smell2.smellImage = @"BananaImage";
-    smell2.smellColor = @"#000000";
+    smell2.smellColor = @"#ffd200";
     
     Smell *smell3 = [[Smell alloc] init];
     smell3.smellRFID = @"00000003";
     smell3.smellName = @"猕猴桃";
     smell3.smellImage = @"KiwifruitImage";
-    smell3.smellColor = @"#000000";
+    smell3.smellColor = @"#acbf1b";
     
     Smell *smell4 = [[Smell alloc] init];
     smell4.smellRFID = @"00000004";
     smell4.smellName = @"葡萄";
     smell4.smellImage = @"GrapeImage";
-    smell4.smellColor = @"#000000";
+    smell4.smellColor = @"#8659ae";
     
     Smell *smell5 = [[Smell alloc] init];
     smell5.smellRFID = @"00000005";
     smell5.smellName = @"草莓";
     smell5.smellImage = @"StrawberryImage";
-    smell5.smellColor = @"#000000";
+    smell5.smellColor = @"#f22b2b";
     
     Smell *smell6 = [[Smell alloc] init];
     smell6.smellRFID = @"00000006";
     smell6.smellName = @"西瓜";
     smell6.smellImage = @"WatermelonImage";
-    smell6.smellColor = @"#000000";
+    smell6.smellColor = @"#57b01c";
     
     Smell *smell7 = [[Smell alloc] init];
     smell7.smellRFID = @"00000007";
     smell7.smellName = @"桔子";
     smell7.smellImage = @"OrangeImage";
-    smell7.smellColor = @"#000000";
+    smell7.smellColor = @"#ff9a01";
     
     Smell *smell8 = [[Smell alloc] init];
     smell8.smellRFID = @"00000008";
     smell8.smellName = @"芒果";
     smell8.smellImage = @"LemonImage";
-    smell8.smellColor = @"#000000";
+    smell8.smellColor = @"#f9e556";
     pageSmellList = @[@[smell1,smell2,smell3,smell4,smell5,smell6,smell7,smell8],@[smell1,smell3,smell2,smell7,smell4,smell5,smell6,smell8]];
     
     [self selectSmellListWithIndex:0];
