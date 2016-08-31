@@ -13,7 +13,6 @@
 		8419332A1D5B252100E8E9EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 841933291D5B252100E8E9EE /* AppDelegate.m */; };
 		841933301D5B252100E8E9EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8419332E1D5B252100E8E9EE /* Main.storyboard */; };
 		841933331D5B252100E8E9EE /* DigitalSenseHD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 841933311D5B252100E8E9EE /* DigitalSenseHD.xcdatamodeld */; };
-		841933351D5B252100E8E9EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841933341D5B252100E8E9EE /* Assets.xcassets */; };
 		841933381D5B252100E8E9EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841933361D5B252100E8E9EE /* LaunchScreen.storyboard */; };
 		841933561D5B27BC00E8E9EE /* RFGeneralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 841933491D5B27BC00E8E9EE /* RFGeneralManager.m */; };
 		841933571D5B27BC00E8E9EE /* SCNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8419334C1D5B27BC00E8E9EE /* SCNetWorkManager.m */; };
@@ -43,6 +42,7 @@
 		84691D4C1D6BEF5D002F836C /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84691D421D6BEF5D002F836C /* TencentOpenApi_IOS_Bundle.bundle */; };
 		84691D4D1D6BEF5D002F836C /* ShareManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84691D451D6BEF5D002F836C /* ShareManage.m */; };
 		84691D4E1D6BEF5D002F836C /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84691D471D6BEF5D002F836C /* libWeChatSDK.a */; };
+		84695F691D76DFC30083D637 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841933341D5B252100E8E9EE /* Assets.xcassets */; };
 		8470733D1D713CFC00940CA8 /* LBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8470733C1D713CFC00940CA8 /* LBorderView.m */; };
 		847090DE1D5C2C43009DCD46 /* SmellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847090DD1D5C2C43009DCD46 /* SmellView.m */; };
 		847219A71D68074500DE4E56 /* UICircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 847219A61D68074500DE4E56 /* UICircleButton.m */; };
@@ -676,7 +676,7 @@
 			files = (
 				848820921D65DC320035BEE1 /* WawaSC-Regular.otf in Resources */,
 				841933381D5B252100E8E9EE /* LaunchScreen.storyboard in Resources */,
-				841933351D5B252100E8E9EE /* Assets.xcassets in Resources */,
+				84695F691D76DFC30083D637 /* Assets.xcassets in Resources */,
 				848820911D65DAE50035BEE1 /* HuaKangHaiBao.ttf in Resources */,
 				84B00C2B1D701D0200516F4B /* lowPower.gif in Resources */,
 				84691D4C1D6BEF5D002F836C /* TencentOpenApi_IOS_Bundle.bundle in Resources */,

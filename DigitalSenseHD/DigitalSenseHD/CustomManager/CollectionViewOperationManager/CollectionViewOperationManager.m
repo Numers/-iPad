@@ -71,7 +71,7 @@
             if (indexPath && _insertSmell) {
                 ScriptCommand *virtualCommand = [[ScriptCommand alloc] init];
                 virtualCommand.rfId = _insertSmell.smellRFID;
-                virtualCommand.duration = 3;
+                virtualCommand.duration = 2;
                 virtualCommand.smellName = _insertSmell.smellName;
                 virtualCommand.color = _insertSmell.smellColor;
                 virtualCommand.smellImage = _insertSmell.smellImage;
@@ -342,10 +342,10 @@
                     command.smellName = @"间隔";
                     command.type = SpaceCommand;
                     command.power = (arc4random() % 100) / 100.0f;
-                    [_commandList addObject:command];
+                    [_commandList insertObject:command atIndex:indexPath.item];
                     
-                    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:_commandList.count - 1 inSection:0];
-                    [indexPathArr addObject:indexPath];
+                    NSIndexPath *tempIndexPath = [NSIndexPath indexPathForItem:indexPath.item + i inSection:0];
+                    [indexPathArr addObject:tempIndexPath];
                 }
                 [self.collectionView insertItemsAtIndexPaths:indexPathArr];
             } completion:^(BOOL finished) {

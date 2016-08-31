@@ -93,53 +93,102 @@
     [_collectionView registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:HomeCollectionViewCellIdentify];
     
     Smell *smell1 = [[Smell alloc] init];
-    smell1.smellRFID = @"00000010";
+    smell1.smellRFID = @"00000009";
     smell1.smellName = @"苹果";
     smell1.smellImage = @"AppleImage";
-    smell1.smellColor = @"#d94d4d";
+    smell1.smellColor = @"#bd1720";
     
     Smell *smell2 = [[Smell alloc] init];
-    smell2.smellRFID = @"00000002";
+    smell2.smellRFID = @"0000000A";
     smell2.smellName = @"香蕉";
     smell2.smellImage = @"BananaImage";
-    smell2.smellColor = @"#ffd200";
+    smell2.smellColor = @"#ecbc33";
     
     Smell *smell3 = [[Smell alloc] init];
-    smell3.smellRFID = @"00000003";
-    smell3.smellName = @"猕猴桃";
-    smell3.smellImage = @"KiwifruitImage";
-    smell3.smellColor = @"#acbf1b";
+    smell3.smellRFID = @"0000000B";
+    smell3.smellName = @"樱桃";
+    smell3.smellImage = @"CherryImage";
+    smell3.smellColor = @"#e63b45";
     
     Smell *smell4 = [[Smell alloc] init];
-    smell4.smellRFID = @"00000004";
-    smell4.smellName = @"葡萄";
-    smell4.smellImage = @"GrapeImage";
-    smell4.smellColor = @"#8659ae";
+    smell4.smellRFID = @"0000000C";
+    smell4.smellName = @"椰子";
+    smell4.smellImage = @"CoconutImage";
+    smell4.smellColor = @"#764624";
     
     Smell *smell5 = [[Smell alloc] init];
-    smell5.smellRFID = @"00000005";
-    smell5.smellName = @"草莓";
-    smell5.smellImage = @"StrawberryImage";
-    smell5.smellColor = @"#f22b2b";
+    smell5.smellRFID = @"0000000D";
+    smell5.smellName = @"榴莲";
+    smell5.smellImage = @"DurianImage";
+    smell5.smellColor = @"#b8b929";
     
     Smell *smell6 = [[Smell alloc] init];
-    smell6.smellRFID = @"00000006";
-    smell6.smellName = @"西瓜";
-    smell6.smellImage = @"WatermelonImage";
-    smell6.smellColor = @"#57b01c";
+    smell6.smellRFID = @"0000000E";
+    smell6.smellName = @"葡萄";
+    smell6.smellImage = @"GrapeImage";
+    smell6.smellColor = @"#9671b9";
     
     Smell *smell7 = [[Smell alloc] init];
-    smell7.smellRFID = @"00000007";
-    smell7.smellName = @"桔子";
-    smell7.smellImage = @"OrangeImage";
-    smell7.smellColor = @"#ff9a01";
+    smell7.smellRFID = @"0000000F";
+    smell7.smellName = @"哈密瓜";
+    smell7.smellImage = @"Hami-melonImage";
+    smell7.smellColor = @"#dde29e";
     
     Smell *smell8 = [[Smell alloc] init];
-    smell8.smellRFID = @"00000008";
-    smell8.smellName = @"芒果";
+    smell8.smellRFID = @"00000010";
+    smell8.smellName = @"柠檬";
     smell8.smellImage = @"LemonImage";
-    smell8.smellColor = @"#f9e556";
-    pageSmellList = @[@[smell1,smell2,smell3,smell4,smell5,smell6,smell7,smell8],@[smell1,smell3,smell2,smell7,smell4,smell5,smell6,smell8]];
+    smell8.smellColor = @"#fff442";
+    
+    Smell *smell9 = [[Smell alloc] init];
+    smell9.smellRFID = @"00000011";
+    smell9.smellName = @"荔枝";
+    smell9.smellImage = @"LitchiImage";
+    smell9.smellColor = @"#9f2429";
+    
+    Smell *smell10 = [[Smell alloc] init];
+    smell10.smellRFID = @"00000012";
+    smell10.smellName = @"芒果";
+    smell10.smellImage = @"MangoImage";
+    smell10.smellColor = @"#f8d25b";
+    
+    Smell *smell11 = [[Smell alloc] init];
+    smell11.smellRFID = @"00000013";
+    smell11.smellName = @"橙子";
+    smell11.smellImage = @"OrangeImage";
+    smell11.smellColor = @"#fd9927";
+    
+    Smell *smell12 = [[Smell alloc] init];
+    smell12.smellRFID = @"00000014";
+    smell12.smellName = @"木瓜";
+    smell12.smellImage = @"PapayaImage";
+    smell12.smellColor = @"#ecd347";
+    
+    Smell *smell13 = [[Smell alloc] init];
+    smell13.smellRFID = @"00000015";
+    smell13.smellName = @"梨";
+    smell13.smellImage = @"PearImage";
+    smell13.smellColor = @"#c1e245";
+    
+    Smell *smell14 = [[Smell alloc] init];
+    smell14.smellRFID = @"00000016";
+    smell14.smellName = @"菠萝";
+    smell14.smellImage = @"PineappleImage";
+    smell14.smellColor = @"#c1e245";
+    
+    Smell *smell15 = [[Smell alloc] init];
+    smell15.smellRFID = @"00000017";
+    smell15.smellName = @"草莓";
+    smell15.smellImage = @"StrawberryImage";
+    smell15.smellColor = @"#d30f1b";
+    
+    Smell *smell16 = [[Smell alloc] init];
+    smell16.smellRFID = @"000000018";
+    smell16.smellName = @"西瓜";
+    smell16.smellImage = @"WatermelonImage";
+    smell16.smellColor = @"#579d2e";
+    
+    pageSmellList = @[@[smell1,smell2,smell3,smell4,smell5,smell6,smell7,smell8],@[smell9,smell10,smell11,smell12,smell13,smell14,smell15,smell16]];
     
     [self selectSmellListWithIndex:0];
     [self setIsShare:YES];
@@ -316,10 +365,9 @@
     NSArray *filterArr = [commandList filteredArrayUsingPredicate:predicate];
     if (filterArr) {
         for (ScriptCommand *command in filterArr) {
-            NSInteger index = [commandList indexOfObject:command];
             command.type = RealCommand;
-            [_collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];
         }
+        [_collectionView reloadItemsAtIndexPaths:[_collectionView indexPathsForVisibleItems]];
     }
 }
 
@@ -762,7 +810,6 @@
             }
 
         }];
-        NSLog(@"go out operation by moveLeft");
     }else{
         NSLog(@"go into operation by moveRight");
         ScriptCommand *spaceCommand = [self searchFirstSpaceAfterIndex:fromIndexPath.item];
@@ -789,7 +836,6 @@
 //        if (operationManager) {
 //            [operationManager moveRightOperation:toIndexPath];
 //        }
-        NSLog(@"go out operation by moveRight");
     }
 }
 
@@ -832,7 +878,7 @@
         completion(YES);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self changeVirtualCommandToRealCommand];
-            originCommandList = [commandList copy];
+            originCommandList = [NSMutableArray arrayWithArray:[commandList copy]];
         });
     }else{
         CGPoint locationOnBtn = [collectionView convertPoint:location toView:_btnShareOrDelete];
@@ -840,7 +886,7 @@
             if (operationManager) {
                 [operationManager deleteOperation:indexPath];
             }
-            originCommandList = [commandList copy];
+            originCommandList = [NSMutableArray arrayWithArray:[commandList copy]];
             completion(NO);
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [_btnShareOrDelete boom];
@@ -849,7 +895,7 @@
             completion(YES);
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self changeVirtualCommandToRealCommand];
-                originCommandList = [commandList copy];
+                originCommandList = [NSMutableArray arrayWithArray:[commandList copy]];
             });
         }
     }
@@ -963,7 +1009,7 @@
             smellFakeView = nil;
             [self changeVirtualCommandToRealCommand];
             
-            originCommandList = [commandList copy];
+            originCommandList = [NSMutableArray arrayWithArray:[commandList copy]];
             
             NSInteger scriptTime = [self doWithScriptCommandList:commandList];
             [_lblTime setText:[AppUtils switchSecondsToTime:scriptTime]];
