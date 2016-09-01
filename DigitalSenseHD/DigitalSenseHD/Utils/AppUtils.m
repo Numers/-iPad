@@ -320,30 +320,30 @@
 }
 
 
-//中档:0.58  高档:0.235   低档:0.89
+//中档:0.602  高档:0.275   低档:0.895
 +(CGFloat)powerFixed:(CGFloat)power;
 {
-    if (power < 0.4) {
-        return 0.235;
+    if (power < 0.44) {
+        return 0.275;
     }
     
-    if (power < 0.73) {
-        return 0.58;
+    if (power < 0.75) {
+        return 0.602;
     }
     
     if (power < 1.0) {
-        return 0.89;
+        return 0.895;
     }
-    return 0.58;
+    return 0.602;
 }
 
 +(NSString *)imageNameWithPower:(CGFloat)power
 {
-    if (power < 0.4) {
+    if (power < 0.44) {
         return @"highPower";
     }
     
-    if (power < 0.73) {
+    if (power < 0.75) {
         return @"normalPower";
     }
     
@@ -355,11 +355,11 @@
 
 +(NSString *)powerLevelWithPower:(CGFloat)power
 {
-    if (power < 0.4) {
+    if (power < 0.44) {
         return @"highPower";
     }
     
-    if (power < 0.73) {
+    if (power < 0.75) {
         return @"normalPower";
     }
     

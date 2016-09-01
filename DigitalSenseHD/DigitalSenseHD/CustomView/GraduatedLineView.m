@@ -8,11 +8,13 @@
 
 #import "GraduatedLineView.h"
 #import "GlobalVar.h"
-#define GraduatedLineColor [UIColor colorWithRed:0.984 green:0.969 blue:0.361 alpha:1.000]
+#define Padding 10.5f
+#define GraduatedLineColor [UIColor colorWithRed:0.518 green:0.396 blue:0.196 alpha:1.000]
+#define FontColor [UIColor colorWithRed:0.984 green:0.969 blue:0.361 alpha:1.000]
 @implementation GraduatedLineView
 -(instancetype)init
 {
-    self = [super initWithFrame:CGRectMake(-10, 0, WidthPerSecond * 60 + 20, 30)];
+    self = [super initWithFrame:CGRectMake(-Padding, 0, WidthPerSecond * 60 + 2 * Padding, 75)];
     if (self) {
         [self setBackgroundColor:[UIColor clearColor]];
     }
@@ -23,32 +25,32 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-//    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetStrokeColorWithColor(context, GraduatedLineColor.CGColor);
+    
+    CGContextSetRGBFillColor (context,  0, 0, 255, 1.0);//设置填充颜色
+    
+    CGContextSetLineWidth(context, 2);
+    
+//    CGContextMoveToPoint(context, Padding, 50);
 //    
-//    CGContextSetStrokeColorWithColor(context, GraduatedLineColor.CGColor);
-//    
-//    CGContextSetRGBFillColor (context,  0, 0, 255, 1.0);//设置填充颜色
-//    
-//    CGContextSetLineWidth(context, 2);
-//    
-//    CGContextMoveToPoint(context, 10, self.frame.size.height - 20);
-//    
-//    CGContextAddLineToPoint(context, self.frame.size.width, self.frame.size.height - 20);
+//    CGContextAddLineToPoint(context, self.frame.size.width, 50);
 //    
 //    CGContextStrokePath(context);
     UIFont *font = [UIFont fontWithName:@"Wawati SC" size:13.0f];
     for (NSInteger i = 0; i <= 60; i++) {
-//        CGContextMoveToPoint(context, i * WidthPerSecond + 10, self.frame.size.height - 20);
-//        CGContextAddLineToPoint(context, i * WidthPerSecond + 10, self.frame.size.height - 25);
-//        CGContextStrokePath(context);
+        CGContextSetStrokeColorWithColor(context, GraduatedLineColor.CGColor);
+        CGContextMoveToPoint(context, i * WidthPerSecond + Padding, 0);
+        CGContextAddLineToPoint(context, i * WidthPerSecond + Padding, 48);
+        CGContextStrokePath(context);
         //fontName:DFPHaiBaoW12   DFWaWaSC-W5  ||  familyName:Wawati SC     DFPHaiBaoW12-GB
         NSString *str = [NSString stringWithFormat:@"%lds",(long)i];
         if (i == 0) {
             str = @"0";
         }
-        CGRect rect = [str boundingRectWithSize:CGSizeMake(100, 15) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font,NSForegroundColorAttributeName:GraduatedLineColor} context:nil];
-//        [str drawInRect:CGRectMake(i * WidthPerSecond + 10 - rect.size.width / 2.0f, self.frame.size.height - 15, rect.size.width, rect.size.height) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13.0f],NSForegroundColorAttributeName:GraduatedLineColor}];
-                [str drawInRect:CGRectMake(i * WidthPerSecond + 10 - rect.size.width / 2.0f, 10, rect.size.width, rect.size.height) withAttributes:@{NSFontAttributeName:font,NSForegroundColorAttributeName:GraduatedLineColor}];
+        CGRect rectSize = [str boundingRectWithSize:CGSizeMake(100, 15) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font,NSForegroundColorAttributeName:GraduatedLineColor} context:nil];
+                [str drawInRect:CGRectMake(i * WidthPerSecond + Padding - rectSize.size.width / 2.0f, 56, rectSize.size.width, rectSize.size.height) withAttributes:@{NSFontAttributeName:font,NSForegroundColorAttributeName:FontColor}];
     }
 }
 @end

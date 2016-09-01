@@ -9,5 +9,5 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface CAShapeLayer (FlipBackViewMask)
-+(instancetype)createMaskLayerWithView:(UIView *)view;
++(instancetype)createMaskLayerWithView:(UIView *)view Padding:(UIEdgeInsets)edgeInsets;
 @end

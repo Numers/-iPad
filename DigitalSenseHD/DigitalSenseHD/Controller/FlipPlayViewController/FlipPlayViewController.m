@@ -70,14 +70,14 @@
     [self.lblTime setTextColor:[UIColor whiteColor]];
     
     [_flipPlayBackView setBackgroundColor:[UIColor clearColor]];
-    CAShapeLayer *layer = [CAShapeLayer createMaskLayerWithView:_flipPlayBackView];
+    CAShapeLayer *layer = [CAShapeLayer createMaskLayerWithView:_flipPlayBackView Padding:UIEdgeInsetsMake(0, 0, 0, 0)];
     _flipPlayBackView.layer.mask = layer;
     
     [_smokeView setBackgroundColor:[UIColor clearColor]];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(736.0f, 0, currentScript.scriptTime * WidthPerSecond, 406.0f) collectionViewLayout:layout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(680.0f, 0, currentScript.scriptTime * WidthPerSecond, 429.0f) collectionViewLayout:layout];
     [_collectionView setBackgroundColor:[UIColor clearColor]];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;

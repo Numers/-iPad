@@ -75,7 +75,8 @@
     [self.progressView setPrsColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"ProgressTrackImage"]]];
     [self.progressView setBorderColor:[UIColor colorWithRed:0.875 green:0.843 blue:0.451 alpha:1.000]];
     [self.progressView setBorderWidth:0.5f];
-    [self.progressView setProgress:0.0f];
+    [self.progressView setProgress:1.0f];
+    [self.progressView setHidden:YES];
     
     [self.navigationController setNavigationBarHidden:YES];
     UIImage *backgroundImage = [UIImage imageNamed:@"BackgroundImage"];
@@ -85,7 +86,7 @@
     layout.dataSource = self;
     
     [_collectionView setBackgroundColor:[UIColor clearColor]];
-    [_collectionView setContentInset:UIEdgeInsetsMake(0, 10, 0, 10)];
+    [_collectionView setContentInset:UIEdgeInsetsMake(0, 8, 0, 8)];
     lineView = [[GraduatedLineView alloc] init];
     [_collectionView addSubview:lineView];
     [_collectionView sendSubviewToBack:lineView];
@@ -183,7 +184,7 @@
     smell15.smellColor = @"#d30f1b";
     
     Smell *smell16 = [[Smell alloc] init];
-    smell16.smellRFID = @"000000018";
+    smell16.smellRFID = @"00000018";
     smell16.smellName = @"西瓜";
     smell16.smellImage = @"WatermelonImage";
     smell16.smellColor = @"#579d2e";
@@ -942,7 +943,12 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView PanLocation:(CGPoint)location PanTranslation:(CGPoint)translation didMoveout:(void (^)(void))completion{
-    completion();
+    CGPoint locationOnBtn = [collectionView convertPoint:location toView:_btnShareOrDelete];
+    if ([_btnShareOrDelete pointInside:locationOnBtn withEvent:nil]) {
+        [_btnShareOrDelete setImage:[UIImage imageNamed:@"DeleteHighlightBtn"] forState:UIControlStateNormal];
+    }else{
+        [_btnShareOrDelete setImage:[UIImage imageNamed:@"DeleteBtn"] forState:UIControlStateNormal];
+    }
 }
 
 -(void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout longTouchCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
