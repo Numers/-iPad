@@ -790,9 +790,17 @@
                                     <constraint firstAttribute="width" constant="80" id="GtN-US-F4c"/>
                                 </constraints>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYE-uR-aCv">
+                                <rect key="frame" x="0.0" y="0.0" width="105" height="103"/>
+                                <state key="normal" image="PauseBtn"/>
+                                <connections>
+                                    <action selector="clickChangeAnimationStateBtn:" destination="H7g-CY-NcE" eventType="touchUpInside" id="Lwb-rv-eyt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ZYE-uR-aCv" firstAttribute="top" secondItem="l9C-p9-mwg" secondAttribute="top" id="1FS-89-xPs"/>
                             <constraint firstItem="mEg-jL-biE" firstAttribute="top" secondItem="wAV-DT-HMN" secondAttribute="bottom" constant="6" id="4UH-Lp-KiI"/>
                             <constraint firstItem="d9x-bH-9PK" firstAttribute="top" secondItem="9hW-iL-byp" secondAttribute="bottom" constant="77" id="6HN-ch-u4H"/>
                             <constraint firstItem="9am-EK-cqK" firstAttribute="leading" secondItem="kmS-zm-8Jb" secondAttribute="trailing" constant="15" id="C8J-I5-av1"/>
@@ -804,6 +812,7 @@
                             <constraint firstItem="uZU-Qw-Ezo" firstAttribute="leading" secondItem="l9C-p9-mwg" secondAttribute="leading" id="Kc8-7X-e79"/>
                             <constraint firstItem="Bgn-Zb-JcK" firstAttribute="top" secondItem="yKv-VW-hYs" secondAttribute="bottom" constant="90" id="OuN-Kr-wLa"/>
                             <constraint firstAttribute="trailing" secondItem="uZU-Qw-Ezo" secondAttribute="trailing" id="SrS-WY-fuQ"/>
+                            <constraint firstItem="ZYE-uR-aCv" firstAttribute="leading" secondItem="l9C-p9-mwg" secondAttribute="leading" id="T88-Qk-shC"/>
                             <constraint firstItem="9hW-iL-byp" firstAttribute="top" secondItem="kmS-zm-8Jb" secondAttribute="bottom" constant="78" id="bh6-re-of8"/>
                             <constraint firstItem="9am-EK-cqK" firstAttribute="leading" secondItem="9hW-iL-byp" secondAttribute="trailing" constant="13" id="ifr-uy-4li"/>
                             <constraint firstItem="mEg-jL-biE" firstAttribute="centerX" secondItem="wAV-DT-HMN" secondAttribute="centerX" id="jIP-Oa-J0y"/>
@@ -819,6 +828,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPadPro"/>
                     <connections>
                         <outlet property="bottomBackView" destination="uZU-Qw-Ezo" id="iBF-ld-IHi"/>
+                        <outlet property="btnAnimationChange" destination="ZYE-uR-aCv" id="sOq-sK-cPD"/>
                         <outlet property="flipPlayBackView" destination="9am-EK-cqK" id="b4E-xF-QiT"/>
                         <outlet property="highPowerIconImageView" destination="kmS-zm-8Jb" id="en0-iE-Qp8"/>
                         <outlet property="lblTime" destination="njm-4M-dca" id="UXp-KB-FKf"/>

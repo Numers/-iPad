@@ -214,6 +214,36 @@ static NSInteger currentSecond = -1;
 }
 
 /**
+ *  @author RenRenFenQi, 16-09-02 10:09:40
+ *
+ *  回复计时
+ */
+-(void)resumeTimer
+{
+    if (timer) {
+        if (![timer isValid]) {
+            return;
+        }
+        [timer setFireDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
+    }
+}
+
+/**
+ *  @author RenRenFenQi, 16-09-02 10:09:57
+ *
+ *  暂停计时
+ */
+-(void)pauseTimer
+{
+    if (timer) {
+        if (![timer isValid]) {
+            return;
+        }
+        [timer setFireDate:[NSDate distantFuture]];
+    }
+}
+
+/**
  *  @author RenRenFenQi, 16-06-17 14:06:26
  *
  *  组成相对时间播放气味指令字符串

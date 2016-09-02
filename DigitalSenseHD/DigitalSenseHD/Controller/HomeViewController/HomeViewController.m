@@ -86,7 +86,7 @@
     layout.dataSource = self;
     
     [_collectionView setBackgroundColor:[UIColor clearColor]];
-    [_collectionView setContentInset:UIEdgeInsetsMake(0, 8, 0, 8)];
+    [_collectionView setContentInset:UIEdgeInsetsMake(0, 8, 0, 10.5)];
     lineView = [[GraduatedLineView alloc] init];
     [_collectionView addSubview:lineView];
     [_collectionView sendSubviewToBack:lineView];
@@ -981,12 +981,6 @@
         operationManager = [[CollectionViewOperationManager alloc] initWithCommandArray:commandList WithInsertIndexPath:indexPath WithInsertSmell:nil];
         operationManager.collectionView = self.collectionView;
     }];
-}
-
-#pragma -mark ScrollViewDelegate
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    NSLog(@"scrollView begin dragging");
 }
 #pragma -mark SmellViewProtocol
 -(void)longTouchWithTag:(NSInteger)tag

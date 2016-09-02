@@ -48,4 +48,18 @@
  *  取消播放所有相对时间脚本
  */
 -(void)cancelAllScripts;
+
+/**
+ *  @author RenRenFenQi, 16-09-02 10:09:40
+ *
+ *  回复计时
+ */
+-(void)resumeTimer;
+
+/**
+ *  @author RenRenFenQi, 16-09-02 10:09:57
+ *
+ *  暂停计时
+ */
+-(void)pauseTimer;
 @end

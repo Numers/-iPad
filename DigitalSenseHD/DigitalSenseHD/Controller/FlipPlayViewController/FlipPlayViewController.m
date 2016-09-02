@@ -49,6 +49,9 @@
     NSInteger normalPowerScriptCommandCount;
     NSInteger highPowerScriptCommandCount;
     NSInteger eruptSmokeSetCount;
+    
+    BOOL isStopAnimation;
+    BOOL isAnimationCompletion;
 }
 @property(nonatomic, strong) IBOutlet UIImageView *highPowerIconImageView;
 @property(nonatomic, strong) IBOutlet UIImageView *normalPowerIconImageView;
@@ -58,6 +61,7 @@
 @property(nonatomic, strong) IBOutlet UILabel *lblTime;
 @property(nonatomic, strong) IBOutlet UIView *bottomBackView;
 @property(nonatomic, strong) IBOutlet SmokeView *smokeView;
+@property(nonatomic, strong) IBOutlet UIButton *btnAnimationChange;
 @end
 
 @implementation FlipPlayViewController
@@ -156,9 +160,11 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [flipReadyView hidden:^(BOOL isFinished) {
                 CGFloat firstAnimateDuraion = _flipPlayBackView.frame.size.width / WidthPerSecond;
+                [self setIsStopAnimation:NO isCompletionAnimation:NO];
                 [UIView animateWithDuration:firstAnimateDuraion delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
                     [_collectionView setFrame:CGRectMake(0, 0, _collectionView.frame.size.width, _collectionView.frame.size.height)];
                 } completion:^(BOOL finished) {
+                    [self setIsStopAnimation:YES isCompletionAnimation:NO];
                     if (finished) {
                         [self playScript];
                     }
@@ -228,6 +234,39 @@
     }
 }
 
+-(void)setIsStopAnimation:(BOOL)stop isCompletionAnimation:(BOOL)completion
+{
+    isStopAnimation = stop;
+    isAnimationCompletion = completion;
+    if (completion) {
+        [self.btnAnimationChange setImage:[UIImage imageNamed:@"PlayBtn"] forState:UIControlStateNormal];
+    }else{
+        if (stop) {
+            [self.btnAnimationChange setImage:[UIImage imageNamed:@"PlayBtn"] forState:UIControlStateNormal];
+        }else{
+            [self.btnAnimationChange setImage:[UIImage imageNamed:@"PauseBtn"] forState:UIControlStateNormal];
+        }
+    }
+}
+
+-(void)pauseAnimation
+{
+    CFTimeInterval pausedTime = [_collectionView.layer convertTime:CACurrentMediaTime() fromLayer:nil];
+    _collectionView.layer.speed = 0.0;
+    _collectionView.layer.timeOffset = pausedTime;
+}
+
+-(void)resumeAnimation
+{
+    CFTimeInterval pausedTime = [_collectionView.layer timeOffset];
+    _collectionView.layer.speed = 1.0;
+    _collectionView.layer.timeOffset = 0.0;
+    
+    _collectionView.layer.beginTime = 0.0;
+    CFTimeInterval timeSincePause = [_collectionView.layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
+    _collectionView.layer.beginTime = timeSincePause;
+}
+
 #pragma -mark Notifications
 -(void)beginPalyScript:(NSNotification *)notify
 {
@@ -235,10 +274,11 @@
     if (currentScript) {
         if ([currentScript isEqual:script]) {
 //            [self inilizedUIView];
+            [self setIsStopAnimation:NO isCompletionAnimation:NO];
             [UIView animateWithDuration:currentScript.scriptTime delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
                 [_collectionView setFrame:CGRectMake(-_collectionView.frame.size.width, 0, _collectionView.frame.size.width, _collectionView.frame.size.height)];
             } completion:^(BOOL finished) {
-                
+                [self setIsStopAnimation:YES isCompletionAnimation:YES];
             }];
         }
     }
@@ -457,6 +497,21 @@
         }
     }
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(IBAction)clickChangeAnimationStateBtn:(id)sender
+{
+    if (!isAnimationCompletion) {
+        if (isStopAnimation) {
+            [self resumeAnimation];
+            [[ScriptExecuteManager defaultManager] resumeTimer];
+            [self setIsStopAnimation:NO isCompletionAnimation:NO];
+        }else{
+            [self pauseAnimation];
+            [[ScriptExecuteManager defaultManager] pauseTimer];
+            [self setIsStopAnimation:YES isCompletionAnimation:NO];
+        }
+    }
 }
 #pragma -mark CollectionViewDelegate
 
