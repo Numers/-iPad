@@ -212,30 +212,28 @@
 +(void)showHudProgress:(NSString *)title ForView:(UIView *)view;
 {
     if ([[NSThread currentThread] isMainThread]) {
-        UIWindow *appRootView = [UIApplication sharedApplication].keyWindow;
-        MBProgressHUD *HUD = (MBProgressHUD *)[appRootView viewWithTag:MBProgressTAG];
+        MBProgressHUD *HUD = (MBProgressHUD *)[view viewWithTag:MBProgressTAG];
         if (HUD == nil) {
-            HUD = [[MBProgressHUD alloc] initWithView:appRootView];
+            HUD = [[MBProgressHUD alloc] initWithView:view];
             HUD.mode = MBProgressHUDModeCustomView;
             HUD.customView = [[MBProgressCustomView alloc] init];
             HUD.square = YES;
             HUD.tag = MBProgressTAG;
-            [appRootView addSubview:HUD];
+            [view addSubview:HUD];
         }
         [HUD setLabelText:title];
         [HUD show:YES];
         HUD.removeFromSuperViewOnHide = YES; // 设置YES ，MB 再消失的时候会从super 移除
     }else{
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIWindow *appRootView = [UIApplication sharedApplication].keyWindow;
-            MBProgressHUD *HUD = (MBProgressHUD *)[appRootView viewWithTag:MBProgressTAG];
+            MBProgressHUD *HUD = (MBProgressHUD *)[view viewWithTag:MBProgressTAG];
             if (HUD == nil) {
-                HUD = [[MBProgressHUD alloc] initWithView:appRootView];
+                HUD = [[MBProgressHUD alloc] initWithView:view];
                 HUD.mode = MBProgressHUDModeCustomView;
                 HUD.customView = [[MBProgressCustomView alloc] init];
                 HUD.square = YES;
                 HUD.tag = MBProgressTAG;
-                [appRootView addSubview:HUD];
+                [view addSubview:HUD];
             }
             [HUD setLabelText:title];
             [HUD show:YES];
@@ -247,15 +245,13 @@
 +(void)hidenHudProgressForView:(UIView *)view
 {
     if ([[NSThread currentThread] isMainThread]) {
-        UIWindow *appRootView = [UIApplication sharedApplication].keyWindow;
-        MBProgressHUD *HUD = (MBProgressHUD *)[appRootView viewWithTag:MBProgressTAG];
+        MBProgressHUD *HUD = (MBProgressHUD *)[view viewWithTag:MBProgressTAG];
         if (HUD != nil) {
             [HUD hide:YES];
         }
     }else{
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIWindow *appRootView = [UIApplication sharedApplication].keyWindow;
-            MBProgressHUD *HUD = (MBProgressHUD *)[appRootView viewWithTag:MBProgressTAG];
+            MBProgressHUD *HUD = (MBProgressHUD *)[view viewWithTag:MBProgressTAG];
             if (HUD != nil) {
                 [HUD hide:YES];
             }
@@ -266,15 +262,14 @@
 +(void)showCustomHudProgress:(NSString *)title CustomView:(UIView *)customView ForView:(UIView *)view
 {
     if ([[NSThread currentThread] isMainThread]) {
-        UIWindow *appRootView = [UIApplication sharedApplication].keyWindow;
-        MBProgressHUD *HUD = (MBProgressHUD *)[appRootView viewWithTag:MBProgressCustomTag];
+        MBProgressHUD *HUD = (MBProgressHUD *)[view viewWithTag:MBProgressCustomTag];
         if (HUD == nil) {
-            HUD = [[MBProgressHUD alloc] initWithView:appRootView];
+            HUD = [[MBProgressHUD alloc] initWithView:view];
             HUD.mode = MBProgressHUDModeCustomView;
             HUD.customView = customView;
             HUD.square = YES;
             HUD.tag = MBProgressCustomTag;
-            [appRootView addSubview:HUD];
+            [view addSubview:HUD];
         }
         [HUD setLabelText:title];
         [HUD show:YES];
@@ -282,15 +277,14 @@
         [HUD hide:YES afterDelay:1];
     }else{
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIWindow *appRootView = [UIApplication sharedApplication].keyWindow;
-            MBProgressHUD *HUD = (MBProgressHUD *)[appRootView viewWithTag:MBProgressCustomTag];
+            MBProgressHUD *HUD = (MBProgressHUD *)[view viewWithTag:MBProgressCustomTag];
             if (HUD == nil) {
-                HUD = [[MBProgressHUD alloc] initWithView:appRootView];
+                HUD = [[MBProgressHUD alloc] initWithView:view];
                 HUD.mode = MBProgressHUDModeCustomView;
                 HUD.customView = customView;
                 HUD.square = YES;
                 HUD.tag = MBProgressCustomTag;
-                [appRootView addSubview:HUD];
+                [view addSubview:HUD];
             }
             [HUD setLabelText:title];
             [HUD show:YES];
@@ -303,15 +297,13 @@
 +(void)hidenCustomHudProgressForView:(UIView *)view
 {
     if ([[NSThread currentThread] isMainThread]) {
-        UIWindow *appRootView = [UIApplication sharedApplication].keyWindow;
-        MBProgressHUD *HUD = (MBProgressHUD *)[appRootView viewWithTag:MBProgressCustomTag];
+        MBProgressHUD *HUD = (MBProgressHUD *)[view viewWithTag:MBProgressCustomTag];
         if (HUD != nil) {
             [HUD hide:YES];
         }
     }else{
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIWindow *appRootView = [UIApplication sharedApplication].keyWindow;
-            MBProgressHUD *HUD = (MBProgressHUD *)[appRootView viewWithTag:MBProgressCustomTag];
+            MBProgressHUD *HUD = (MBProgressHUD *)[view viewWithTag:MBProgressCustomTag];
             if (HUD != nil) {
                 [HUD hide:YES];
             }

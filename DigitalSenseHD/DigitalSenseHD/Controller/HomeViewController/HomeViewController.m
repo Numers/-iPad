@@ -274,10 +274,13 @@
             testTimer = nil;
         }
     }
+    
+    [AppUtils showHudProgress:@"加载中..." ForView:self.view];
 }
 
 -(void)onCallbackBluetoothPowerOff:(NSNotification *)notify
 {
+    [AppUtils hidenHudProgressForView:self.view];
     if (testTimer) {
         if ([testTimer isValid]) {
             [testTimer invalidate];
@@ -293,6 +296,7 @@
 
 -(void)onCallbackBluetoothDisconnected:(NSNotification *)notify
 {
+    [AppUtils hidenHudProgressForView:self.view];
     if (needReconnecting) {
         [self longTouchEnded];
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"设备未连接" message:@"iPad/设备蓝牙已断开，请重新连接！" delegate:self cancelButtonTitle:@"继续编辑" otherButtonTitles:@"重新连接", nil];
@@ -307,6 +311,7 @@
 
 -(void)onCallbackConnectToBluetoothSuccessfully:(NSNotification *)notify
 {
+    [AppUtils hidenHudProgressForView:self.view];
     //心跳包
     testTimer = [NSTimer scheduledTimerWithTimeInterval:8 target:self selector:@selector(test) userInfo:nil repeats:YES];
     [testTimer fire];
@@ -314,6 +319,7 @@
 
 -(void)onCallbackConnectToBluetoothTimeout:(NSNotification *)notify
 {
+    [AppUtils hidenHudProgressForView:self.view];
     if (needReconnecting) {
         [self longTouchEnded];
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"设备未连接" message:@"iPad/设备蓝牙已断开，请重新连接！" delegate:self cancelButtonTitle:@"继续编辑" otherButtonTitles:@"重新连接", nil];
@@ -631,6 +637,11 @@
 -(IBAction)clickPlayBtn:(id)sender
 {
     RelativeTimeScript *script = [self saveLocalRelativeTimeScript];
+    if (script.scriptCommandList && script.scriptCommandList.count == 0) {
+        UIImageView *customImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SadFaceImage"]];
+        [AppUtils showCustomHudProgress:@"请先编辑再播放哟" CustomView:customImageView ForView:self.view];
+        return;
+    }
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //    PlayViewController *playVC = [storyboard instantiateViewControllerWithIdentifier:@"PlayViewIdentify"];
 //    [playVC setScript:script PageSmellList:pageSmellList];
@@ -653,7 +664,7 @@
 -(IBAction)clickShareBtn:(id)sender
 {
     if (isShare) {
-        [[ShareManage GetInstance] shareVideoToWeixinPlatform:0 themeUrl:@"http://www.qiweiwangguo.com/" thumbnail:[UIImage imageNamed:@"ShareThumbnailImage"] title:@"气味王国" descript:@"气味王国test"];
+        [[ShareManage GetInstance] shareVideoToWeixinPlatform:0 themeUrl:@"http://www.qiweiwangguo.com/" thumbnail:[UIImage imageNamed:@"ShareThumbnailImage"] title:@"气味音乐-带你进入全新的嗅觉体验！" descript:@"气味音乐DIY，随心编辑，畅情感受，让一切味道尽在掌握，要不要来试试？"];
     }
 }
 #pragma -mark HomeCollectionViewCellProtocol

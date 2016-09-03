@@ -155,23 +155,45 @@
 
 -(void)beginPlayScript
 {
-    flipReadyView = [[FlipReadyView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    [flipReadyView showInView:self.view completion:^(BOOL isFinished) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [flipReadyView hidden:^(BOOL isFinished) {
-                CGFloat firstAnimateDuraion = _flipPlayBackView.frame.size.width / WidthPerSecond;
-                [self setIsStopAnimation:NO isCompletionAnimation:NO];
-                [UIView animateWithDuration:firstAnimateDuraion delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-                    [_collectionView setFrame:CGRectMake(0, 0, _collectionView.frame.size.width, _collectionView.frame.size.height)];
-                } completion:^(BOOL finished) {
-                    [self setIsStopAnimation:YES isCompletionAnimation:NO];
-                    if (finished) {
-                        [self playScript];
-                    }
-                }];
-            }];
-        });
+    if ([[BluetoothMacManager defaultManager] isPoweredOn]) {
+        if (![[BluetoothMacManager defaultManager] isConnected]) {
+            UIImageView *customImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SadFaceImage"]];
+            [AppUtils showCustomHudProgress:@"设备未连接" CustomView:customImageView ForView:self.view];
+        }
+    }else{
+        UIImageView *customImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SadFaceImage"]];
+        [AppUtils showCustomHudProgress:@"蓝牙未开启" CustomView:customImageView ForView:self.view];
+    }
+    
+    CGFloat firstAnimateDuraion = _flipPlayBackView.frame.size.width / WidthPerSecond;
+    [self setIsStopAnimation:NO isCompletionAnimation:NO];
+    [UIView animateWithDuration:firstAnimateDuraion delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        [_collectionView setFrame:CGRectMake(0, 0, _collectionView.frame.size.width, _collectionView.frame.size.height)];
+    } completion:^(BOOL finished) {
+        [self setIsStopAnimation:YES isCompletionAnimation:NO];
+        if (finished) {
+            [self playScript];
+        }
     }];
+
+    
+//    flipReadyView = [[FlipReadyView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+//    [flipReadyView showInView:self.view completion:^(BOOL isFinished) {
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [flipReadyView hidden:^(BOOL isFinished) {
+//                CGFloat firstAnimateDuraion = _flipPlayBackView.frame.size.width / WidthPerSecond;
+//                [self setIsStopAnimation:NO isCompletionAnimation:NO];
+//                [UIView animateWithDuration:firstAnimateDuraion delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+//                    [_collectionView setFrame:CGRectMake(0, 0, _collectionView.frame.size.width, _collectionView.frame.size.height)];
+//                } completion:^(BOOL finished) {
+//                    [self setIsStopAnimation:YES isCompletionAnimation:NO];
+//                    if (finished) {
+//                        [self playScript];
+//                    }
+//                }];
+//            }];
+//        });
+//    }];
 }
 
 -(void)registerNotifications
