@@ -280,6 +280,7 @@
 
 -(void)onCallbackBluetoothPowerOff:(NSNotification *)notify
 {
+    needReconnecting = YES;
     [AppUtils hidenHudProgressForView:self.view];
     if (testTimer) {
         if ([testTimer isValid]) {
@@ -636,6 +637,9 @@
 #pragma -mark ButtonEvent
 -(IBAction)clickPlayBtn:(id)sender
 {
+    if (smellFakeView) {
+        return;
+    }
     RelativeTimeScript *script = [self saveLocalRelativeTimeScript];
     if (script.scriptCommandList && script.scriptCommandList.count == 0) {
         UIImageView *customImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SadFaceImage"]];
@@ -663,6 +667,9 @@
 
 -(IBAction)clickShareBtn:(id)sender
 {
+    if (smellFakeView) {
+        return;
+    }
     if (isShare) {
         [[ShareManage GetInstance] shareVideoToWeixinPlatform:0 themeUrl:@"http://www.qiweiwangguo.com/" thumbnail:[UIImage imageNamed:@"ShareThumbnailImage"] title:@"气味音乐-带你进入全新的嗅觉体验！" descript:@"气味音乐DIY，随心编辑，畅情感受，让一切味道尽在掌握，要不要来试试？"];
     }
@@ -793,7 +800,6 @@
 
 - (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath
 {
-    NSLog(@"%d",fromIndexPath.item);
     ScriptCommand *command = [commandList objectAtIndex:fromIndexPath.item];
     if (command && command.type != VirtualCommand) {
         return;
@@ -886,6 +892,12 @@
 
 -(void)collectionView:(UICollectionView *)collectionView TouchLocation:(CGPoint)location atIndexPath:(NSIndexPath *)indexPath didEndTouch:(void (^)(BOOL isPushBack))completion
 {
+    if (smellFakeView == nil) {
+        return;
+    }
+    if (smellFakeView.originalPositionY <=0.0f) {
+        return;
+    }
     if ([collectionView pointInside:location withEvent:nil]) {
         completion(YES);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -911,6 +923,7 @@
             });
         }
     }
+    smellFakeView = nil;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self setIsShare:YES];
@@ -964,9 +977,11 @@
 
 -(void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout longTouchCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"长按第%ld行",indexPath.item);
     ScriptCommand *command = [commandList objectAtIndex:indexPath.item];
     if (command && command.type != RealCommand) {
+        return;
+    }
+    if (smellFakeView) {
         return;
     }
     smellFakeView = [[SmellFakeView alloc] initWithView:cell];
@@ -996,6 +1011,9 @@
 #pragma -mark SmellViewProtocol
 -(void)longTouchWithTag:(NSInteger)tag
 {
+    if (smellFakeView) {
+        return;
+    }
     Smell *smell = [smellList objectAtIndex:tag - 1];
     
     SmellView *sv = [self.view viewWithTag:tag];
@@ -1014,6 +1032,9 @@
 -(void)longTouchEnded
 {
     if (smellFakeView) {
+        if (smellFakeView.originalPositionY > 0) {
+            return;
+        }
         operationManager = nil;
         [smellFakeView pushBackView:^(BOOL isFinished) {
             [smellFakeView removeFromSuperview];
@@ -1040,16 +1061,22 @@
             CGPoint pointInCollectionView = [_collectionView convertPoint:smellFakeView.center fromView:[UIApplication sharedApplication].keyWindow];
             if ([self.collectionView pointInside:pointInCollectionView withEvent:nil]) {
                 NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:pointInCollectionView];
-                NSLog(@"%ld",indexPath.item);
                 ScriptCommand *virtualCommand = [commandList objectAtIndex:indexPath.item];
-                if (virtualCommand.type == VirtualCommand) {
-                    CGFloat power = pointInCollectionView.y / _collectionView.frame.size.height;
-                    virtualCommand.power = [AppUtils powerFixed:power];
-                    [_collectionView performBatchUpdates:^{
-                        [_collectionView reloadItemsAtIndexPaths:@[indexPath]];
-                    } completion:^(BOOL finished) {
-                        
-                    }];
+                if (virtualCommand) {
+                    if (virtualCommand.type == VirtualCommand) {
+                        CGFloat power = pointInCollectionView.y / _collectionView.frame.size.height;
+                        virtualCommand.power = [AppUtils powerFixed:power];
+                        HomeCollectionViewCell *cell = (HomeCollectionViewCell *)[_collectionView cellForItemAtIndexPath:indexPath];
+                        [cell setupWithScriptCommand:virtualCommand isShowCircleButton:YES];
+//                        [_collectionView reloadItemsAtIndexPaths:@[indexPath]];
+//                        [_collectionView performBatchUpdates:^{
+//                            NSLog(@"333333: %d",indexPath.item);
+//                            
+//                            NSLog(@"4444444: %d",indexPath.item);
+//                        } completion:^(BOOL finished) {
+//                            
+//                        }];
+                    }
                 }
                 
                 if (operationManager == nil) {

@@ -226,6 +226,9 @@
 
 -(void)moveRightOperaitonCollectionView:(NSIndexPath *)indexPath
 {
+    if (indexPath.item == 0) {
+        return;
+    }
     [self.lock lock];
     
     dispatch_barrier_sync(self.barrieQueue, ^{
@@ -247,23 +250,33 @@
             if (command.type == SpaceCommand) {
                 if ([self isNearFromIndexPath:indexPath toIndexPath:_insertIndexPath]) {
                     ScriptCommand *insertCommand = [_commandList objectAtIndex:_insertIndexPath.item];
-                    if ([self hasEnoughSpaceWithDuration:insertCommand.duration afterIndexPath:indexPath]) {
-                        [_collectionView performBatchUpdates:^{
-                            [self.operationLock lock];
-                            for (NSInteger i = indexPath.item; i < indexPath.item + insertCommand.duration; i++) {
-                                ScriptCommand *spaceCommand = [_commandList objectAtIndex:i];
-                                [_commandList removeObjectAtIndex:i];
-                                [_collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:i inSection:0]]];
-                                
-                                [_commandList insertObject:spaceCommand atIndex:_insertIndexPath.item];
-                                [_collectionView insertItemsAtIndexPaths:@[_insertIndexPath]];
-                            }
-                            _insertIndexPath = [NSIndexPath indexPathForItem:_insertIndexPath.item + insertCommand.duration inSection:0];
-                            [self.operationLock unlock];
-                        } completion:^(BOOL finished) {
-                            
-                        }];
-                    }
+                    [_collectionView performBatchUpdates:^{
+                        [self.operationLock lock];
+                        [_collectionView moveItemAtIndexPath:_insertIndexPath toIndexPath:indexPath];
+                        [_commandList removeObject:insertCommand];
+                        [_commandList insertObject:insertCommand atIndex:indexPath.item];
+                        _insertIndexPath = indexPath;
+                        [self.operationLock unlock];
+                    } completion:^(BOOL finished) {
+                        
+                    }];
+//                    if ([self hasEnoughSpaceWithDuration:insertCommand.duration afterIndexPath:indexPath]) {
+//                        [_collectionView performBatchUpdates:^{
+//                            [self.operationLock lock];
+//                            for (NSInteger i = indexPath.item; i < indexPath.item + insertCommand.duration; i++) {
+//                                ScriptCommand *spaceCommand = [_commandList objectAtIndex:i];
+//                                [_commandList removeObjectAtIndex:i];
+//                                [_collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:i inSection:0]]];
+//                                
+//                                [_commandList insertObject:spaceCommand atIndex:_insertIndexPath.item];
+//                                [_collectionView insertItemsAtIndexPaths:@[_insertIndexPath]];
+//                            }
+//                            _insertIndexPath = [NSIndexPath indexPathForItem:_insertIndexPath.item + insertCommand.duration inSection:0];
+//                            [self.operationLock unlock];
+//                        } completion:^(BOOL finished) {
+//                            
+//                        }];
+//                    }
                 }else{
                     ScriptCommand *insertCommand = [_commandList objectAtIndex:_insertIndexPath.item];
                     if ([self hasEnoughSpaceWithDuration:insertCommand.duration afterIndexPath:indexPath]) {

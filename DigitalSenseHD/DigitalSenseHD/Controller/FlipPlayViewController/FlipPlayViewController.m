@@ -469,8 +469,7 @@
 
 -(void)onCallbackBluetoothPowerOff:(NSNotification *)notify
 {
-    UIImageView *customImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SadFaceImage"]];
-    [AppUtils showCustomHudProgress:@"蓝牙已关闭" CustomView:customImageView ForView:self.view];
+
 }
 
 -(void)onCallbackScanBluetoothTimeout:(NSNotification *)notify
