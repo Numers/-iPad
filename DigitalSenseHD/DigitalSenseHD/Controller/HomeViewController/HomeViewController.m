@@ -300,7 +300,7 @@
     [AppUtils hidenHudProgressForView:self.view];
     if (needReconnecting) {
         [self longTouchEnded];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"设备未连接" message:@"iPad/设备蓝牙已断开，请重新连接！" delegate:self cancelButtonTitle:@"继续编辑" otherButtonTitles:@"重新连接", nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"连接提示" message:@"设备未连接，请重新连接！" delegate:self cancelButtonTitle:@"继续编辑" otherButtonTitles:@"重新连接", nil];
         [alertView show];
     }
 }
@@ -323,7 +323,7 @@
     [AppUtils hidenHudProgressForView:self.view];
     if (needReconnecting) {
         [self longTouchEnded];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"设备未连接" message:@"iPad/设备蓝牙已断开，请重新连接！" delegate:self cancelButtonTitle:@"继续编辑" otherButtonTitles:@"重新连接", nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"连接提示" message:@"设备未连接，请重新连接！" delegate:self cancelButtonTitle:@"继续编辑" otherButtonTitles:@"重新连接", nil];
         [alertView show];
     }
 }
@@ -893,6 +893,7 @@
 -(void)collectionView:(UICollectionView *)collectionView TouchLocation:(CGPoint)location atIndexPath:(NSIndexPath *)indexPath didEndTouch:(void (^)(BOOL isPushBack))completion
 {
     if (smellFakeView == nil) {
+        completion(NO);
         return;
     }
     if (smellFakeView.originalPositionY <=0.0f) {
@@ -1053,6 +1054,9 @@
 {
     @synchronized (self) {
         if (smellFakeView) {
+            if (smellFakeView.originalPositionY > 0) {
+                return;
+            }
             CGPoint center = smellFakeView.center;
             center.x += translation.x;
             center.y += translation.y;

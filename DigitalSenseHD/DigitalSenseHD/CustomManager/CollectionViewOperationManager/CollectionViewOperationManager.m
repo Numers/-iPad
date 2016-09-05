@@ -164,43 +164,74 @@
                 }else{
                     ScriptCommand *insertCommand = [_commandList objectAtIndex:_insertIndexPath.item];
                     if ([self hasEnoughSpaceWithDuration:insertCommand.duration afterIndexPath:indexPath]) {
-                        [_collectionView performBatchUpdates:^{
-                            [self.operationLock lock];
-                            //
-                            [_commandList removeObjectAtIndex:_insertIndexPath.item];
-                            [_collectionView deleteItemsAtIndexPaths:@[_insertIndexPath]];
-                            
-                            NSMutableArray *spaceArr = [NSMutableArray array];
-                            for (NSInteger i = indexPath.item; i < indexPath.item + insertCommand.duration; i++) {
-                                ScriptCommand *spaceCommand = [_commandList objectAtIndex:i];
-                                [spaceArr addObject:spaceCommand];
-                            }
-                            
-                            NSMutableArray *indexPathArr = [NSMutableArray array];
-                            for (NSInteger j = _insertIndexPath.item ; j < _insertIndexPath.item + insertCommand.duration; j ++) {
-                                [indexPathArr addObject:[NSIndexPath indexPathForItem:j inSection:0]];
-                            }
-                            
-                            [_commandList insertObjects:spaceArr atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(_insertIndexPath.item, insertCommand.duration)]];
-                            [_collectionView insertItemsAtIndexPaths:indexPathArr];
-                            
-                            
-                            
-                            
-                            //
-                            NSMutableArray *indexPathArr1 = [NSMutableArray array];
-                            for (NSInteger j = indexPath.item ; j < indexPath.item + insertCommand.duration; j ++) {
-                                [indexPathArr1 addObject:[NSIndexPath indexPathForItem:j inSection:0]];
-                            }
-                            [_commandList removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(indexPath.item, insertCommand.duration)]];
-                            [_collectionView deleteItemsAtIndexPaths:indexPathArr1];
-                            [_commandList insertObject:insertCommand atIndex:indexPath.item];
-                            [_collectionView insertItemsAtIndexPaths:@[indexPath]];
-                            _insertIndexPath = indexPath;
-                            [self.operationLock unlock];
-                        } completion:^(BOOL finished) {
-                            
-                        }];
+                        [self.operationLock lock];
+                        //
+                        
+                        NSMutableArray *spaceArr = [NSMutableArray array];
+                        for (NSInteger i = indexPath.item; i < indexPath.item + insertCommand.duration; i++) {
+                            ScriptCommand *spaceCommand = [_commandList objectAtIndex:i];
+                            [spaceArr addObject:spaceCommand];
+                        }
+                        
+                        NSMutableArray *indexPathArr = [NSMutableArray array];
+                        for (NSInteger j = _insertIndexPath.item ; j < _insertIndexPath.item + insertCommand.duration; j ++) {
+                            [indexPathArr addObject:[NSIndexPath indexPathForItem:j inSection:0]];
+                        }
+                        
+                        [_commandList removeObjectAtIndex:_insertIndexPath.item];
+                        [_collectionView deleteItemsAtIndexPaths:@[_insertIndexPath]];
+                        
+                        [_commandList insertObjects:spaceArr atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(_insertIndexPath.item, insertCommand.duration)]];
+                        [_collectionView insertItemsAtIndexPaths:indexPathArr];
+                        
+                        
+                        //
+                        NSMutableArray *indexPathArr1 = [NSMutableArray array];
+                        for (NSInteger j = indexPath.item ; j < indexPath.item + insertCommand.duration; j ++) {
+                            [indexPathArr1 addObject:[NSIndexPath indexPathForItem:j inSection:0]];
+                        }
+                        [_commandList removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(indexPath.item, insertCommand.duration)]];
+                        [_collectionView deleteItemsAtIndexPaths:indexPathArr1];
+                        [_commandList insertObject:insertCommand atIndex:indexPath.item];
+                        [_collectionView insertItemsAtIndexPaths:@[indexPath]];
+                        _insertIndexPath = indexPath;
+                        [self.operationLock unlock];
+//                        [_collectionView performBatchUpdates:^{
+//                            [self.operationLock lock];
+//                            //
+//                            
+//                            NSMutableArray *spaceArr = [NSMutableArray array];
+//                            for (NSInteger i = indexPath.item; i < indexPath.item + insertCommand.duration; i++) {
+//                                ScriptCommand *spaceCommand = [_commandList objectAtIndex:i];
+//                                [spaceArr addObject:spaceCommand];
+//                            }
+//                            
+//                            NSMutableArray *indexPathArr = [NSMutableArray array];
+//                            for (NSInteger j = _insertIndexPath.item ; j < _insertIndexPath.item + insertCommand.duration; j ++) {
+//                                [indexPathArr addObject:[NSIndexPath indexPathForItem:j inSection:0]];
+//                            }
+//                            
+//                            [_commandList removeObjectAtIndex:_insertIndexPath.item];
+//                            [_collectionView deleteItemsAtIndexPaths:@[_insertIndexPath]];
+//                            
+//                            [_commandList insertObjects:spaceArr atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(_insertIndexPath.item, insertCommand.duration)]];
+//                            [_collectionView insertItemsAtIndexPaths:indexPathArr];
+//
+//                            
+//                            //
+//                            NSMutableArray *indexPathArr1 = [NSMutableArray array];
+//                            for (NSInteger j = indexPath.item ; j < indexPath.item + insertCommand.duration; j ++) {
+//                                [indexPathArr1 addObject:[NSIndexPath indexPathForItem:j inSection:0]];
+//                            }
+//                            [_commandList removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(indexPath.item, insertCommand.duration)]];
+//                            [_collectionView deleteItemsAtIndexPaths:indexPathArr1];
+//                            [_commandList insertObject:insertCommand atIndex:indexPath.item];
+//                            [_collectionView insertItemsAtIndexPaths:@[indexPath]];
+//                            _insertIndexPath = indexPath;
+//                            [self.operationLock unlock];
+//                        } completion:^(BOOL finished) {
+//                             [_collectionView reloadItemsAtIndexPaths:[_collectionView indexPathsForVisibleItems]];
+//                        }];
                     }
                 }
             }
@@ -280,40 +311,70 @@
                 }else{
                     ScriptCommand *insertCommand = [_commandList objectAtIndex:_insertIndexPath.item];
                     if ([self hasEnoughSpaceWithDuration:insertCommand.duration afterIndexPath:indexPath]) {
-                        [_collectionView performBatchUpdates:^{
-                            [self.operationLock lock];
-                            //
-                            [_commandList removeObjectAtIndex:_insertIndexPath.item];
-                            [_collectionView deleteItemsAtIndexPaths:@[_insertIndexPath]];
-                            NSMutableArray *spaceArr = [NSMutableArray array];
-                            for (NSInteger i = indexPath.item - 1; i < indexPath.item + insertCommand.duration - 1; i++) {
-                                ScriptCommand *spaceCommand = [_commandList objectAtIndex:i];
-                                [spaceArr addObject:spaceCommand];
-                            }
-                            
-                            NSMutableArray *indexPathArr1 = [NSMutableArray array];
-                            for (NSInteger j = _insertIndexPath.item ; j < _insertIndexPath.item + insertCommand.duration; j ++) {
-                                [indexPathArr1 addObject:[NSIndexPath indexPathForItem:j inSection:0]];
-                            }
-                            [_commandList insertObjects:spaceArr atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(_insertIndexPath.item, insertCommand.duration)]];
-                            [_collectionView insertItemsAtIndexPaths:indexPathArr1];
-                            
-                            
-                            
-                            NSMutableArray *indexPathArr = [NSMutableArray array];
-                            for (NSInteger j = indexPath.item + insertCommand.duration - 1; j < indexPath.item + insertCommand.duration - 1 + insertCommand.duration; j ++) {
-                                [indexPathArr addObject:[NSIndexPath indexPathForItem:j inSection:0]];
-                            }
-                            [_commandList removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(indexPath.item + insertCommand.duration - 1, insertCommand.duration)]];
-                            [_collectionView deleteItemsAtIndexPaths:indexPathArr];
-                            [_commandList insertObject:insertCommand atIndex:indexPath.item + insertCommand.duration - 1];
-                            [_collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:indexPath.item + insertCommand.duration - 1 inSection:0]]];
-                            
-                            _insertIndexPath = [NSIndexPath indexPathForItem:indexPath.item + insertCommand.duration - 1 inSection:0];
-                            [self.operationLock unlock];
-                        } completion:^(BOOL finished) {
-                            
-                        }];
+                        [self.operationLock lock];
+                        //
+                        [_commandList removeObjectAtIndex:_insertIndexPath.item];
+                        [_collectionView deleteItemsAtIndexPaths:@[_insertIndexPath]];
+                        NSMutableArray *spaceArr = [NSMutableArray array];
+                        for (NSInteger i = indexPath.item - 1; i < indexPath.item + insertCommand.duration - 1; i++) {
+                            ScriptCommand *spaceCommand = [_commandList objectAtIndex:i];
+                            [spaceArr addObject:spaceCommand];
+                        }
+                        
+                        NSMutableArray *indexPathArr1 = [NSMutableArray array];
+                        for (NSInteger j = _insertIndexPath.item ; j < _insertIndexPath.item + insertCommand.duration; j ++) {
+                            [indexPathArr1 addObject:[NSIndexPath indexPathForItem:j inSection:0]];
+                        }
+                        [_commandList insertObjects:spaceArr atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(_insertIndexPath.item, insertCommand.duration)]];
+                        [_collectionView insertItemsAtIndexPaths:indexPathArr1];
+                        
+                        
+                        
+                        NSMutableArray *indexPathArr = [NSMutableArray array];
+                        for (NSInteger j = indexPath.item + insertCommand.duration - 1; j < indexPath.item + insertCommand.duration - 1 + insertCommand.duration; j ++) {
+                            [indexPathArr addObject:[NSIndexPath indexPathForItem:j inSection:0]];
+                        }
+                        [_commandList removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(indexPath.item + insertCommand.duration - 1, insertCommand.duration)]];
+                        [_collectionView deleteItemsAtIndexPaths:indexPathArr];
+                        [_commandList insertObject:insertCommand atIndex:indexPath.item + insertCommand.duration - 1];
+                        [_collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:indexPath.item + insertCommand.duration - 1 inSection:0]]];
+                        
+                        _insertIndexPath = [NSIndexPath indexPathForItem:indexPath.item + insertCommand.duration - 1 inSection:0];
+                        [self.operationLock unlock];
+//                        [_collectionView performBatchUpdates:^{
+//                            [self.operationLock lock];
+//                            //
+//                            [_commandList removeObjectAtIndex:_insertIndexPath.item];
+//                            [_collectionView deleteItemsAtIndexPaths:@[_insertIndexPath]];
+//                            NSMutableArray *spaceArr = [NSMutableArray array];
+//                            for (NSInteger i = indexPath.item - 1; i < indexPath.item + insertCommand.duration - 1; i++) {
+//                                ScriptCommand *spaceCommand = [_commandList objectAtIndex:i];
+//                                [spaceArr addObject:spaceCommand];
+//                            }
+//                            
+//                            NSMutableArray *indexPathArr1 = [NSMutableArray array];
+//                            for (NSInteger j = _insertIndexPath.item ; j < _insertIndexPath.item + insertCommand.duration; j ++) {
+//                                [indexPathArr1 addObject:[NSIndexPath indexPathForItem:j inSection:0]];
+//                            }
+//                            [_commandList insertObjects:spaceArr atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(_insertIndexPath.item, insertCommand.duration)]];
+//                            [_collectionView insertItemsAtIndexPaths:indexPathArr1];
+//                            
+//                            
+//                            
+//                            NSMutableArray *indexPathArr = [NSMutableArray array];
+//                            for (NSInteger j = indexPath.item + insertCommand.duration - 1; j < indexPath.item + insertCommand.duration - 1 + insertCommand.duration; j ++) {
+//                                [indexPathArr addObject:[NSIndexPath indexPathForItem:j inSection:0]];
+//                            }
+//                            [_commandList removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(indexPath.item + insertCommand.duration - 1, insertCommand.duration)]];
+//                            [_collectionView deleteItemsAtIndexPaths:indexPathArr];
+//                            [_commandList insertObject:insertCommand atIndex:indexPath.item + insertCommand.duration - 1];
+//                            [_collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:indexPath.item + insertCommand.duration - 1 inSection:0]]];
+//                            
+//                            _insertIndexPath = [NSIndexPath indexPathForItem:indexPath.item + insertCommand.duration - 1 inSection:0];
+//                            [self.operationLock unlock];
+//                        } completion:^(BOOL finished) {
+//                            [_collectionView reloadItemsAtIndexPaths:[_collectionView indexPathsForVisibleItems]];
+//                        }];
                     }
                 }
             }
