@@ -175,7 +175,7 @@
     smell14.smellRFID = @"00000016";
     smell14.smellName = @"菠萝";
     smell14.smellImage = @"PineappleImage";
-    smell14.smellColor = @"#c1e245";
+    smell14.smellColor = @"#ee9f26";
     
     Smell *smell15 = [[Smell alloc] init];
     smell15.smellRFID = @"00000017";
@@ -195,7 +195,7 @@
     [self setIsShare:YES];
     
     commandList = [NSMutableArray array];
-    for (NSInteger i = 0; i < 60; i++) {
+    for (NSInteger i = 0; i < TotalSeconds; i++) {
         ScriptCommand *command = [[ScriptCommand alloc] init];
         command.startRelativeTime = i;
         command.rfId = @"";
@@ -354,6 +354,8 @@
 {
     if ([[BluetoothMacManager defaultManager] isConnected]) {
         [[BluetoothMacManager defaultManager] writeCharacteristicWithCommandStr:@""];
+    }else{
+        [[BluetoothProcessManager defatultManager] reconnectBluetooth];
     }
 }
 

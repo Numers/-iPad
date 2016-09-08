@@ -12,7 +12,7 @@
 #define kBluetoothPowerOffNotify @"KBluetoothPowerOffNotify"
 
 #define LastConnectDeviceNameKey @"LastConnectDeviceNameKey"
-#define ConnectDeviceName @"32_Smell"
+#define ConnectDeviceName @"QB16_Smell"
 typedef enum{
     MacAddress = 0xFF,
     OpenDeviceTime = 0xFE,

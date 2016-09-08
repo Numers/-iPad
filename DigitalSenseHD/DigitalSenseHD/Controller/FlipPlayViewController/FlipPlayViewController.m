@@ -143,7 +143,7 @@
 -(void)inilizedUIView
 {
     
-    [_lblTime setText:@"00:00"];
+    [_lblTime setText:[AppUtils switchSecondsToTime:currentScript.scriptTime]];
     
     needLoop = NO;
     isLoop = NO;
@@ -454,10 +454,8 @@
 {
     NSNumber *seconds = [notify object];
     if (currentScript) {
-        NSString *desc = [NSString stringWithFormat:@"%@",[AppUtils switchSecondsToTime:[seconds integerValue]]];
+        NSString *desc = [NSString stringWithFormat:@"%@",[AppUtils switchSecondsToTime:(currentScript.scriptTime -[seconds integerValue])]];
         [_lblTime setText:desc];
-        
-        
     }
 }
 

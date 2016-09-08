@@ -747,7 +747,7 @@ static BluetoothMacManager *bluetoothMacManager;
     if ([self isConnected]) {
         return self.peripheral;
     }
-    return nil;
+    return self.peripheral;
 }
 
 /**

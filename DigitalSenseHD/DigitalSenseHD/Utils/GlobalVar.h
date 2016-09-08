@@ -13,5 +13,6 @@
 
 #define WeixinKey @"wx9b9cef418a7e0514"
 #define WidthPerSecond 65.2f
+#define TotalSeconds 60
 
 #endif /* GlobalVar_h */
