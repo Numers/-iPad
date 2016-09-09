@@ -40,6 +40,7 @@
     NSMutableArray *originCommandList;
     NSMutableArray *commandList;
     SmellFakeView *smellFakeView;
+    UIAlertView *applicationAlertView;
     
     GraduatedLineView *lineView;
     
@@ -300,8 +301,11 @@
     [AppUtils hidenHudProgressForView:self.view];
     if (needReconnecting) {
         [self longTouchEnded];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"连接提示" message:@"设备未连接，请重新连接！" delegate:self cancelButtonTitle:@"继续编辑" otherButtonTitles:@"重新连接", nil];
-        [alertView show];
+        if (applicationAlertView != nil) {
+            return;
+        }
+        applicationAlertView = [[UIAlertView alloc] initWithTitle:@"连接提示" message:@"设备未连接，请重新连接！" delegate:self cancelButtonTitle:@"继续编辑" otherButtonTitles:@"重新连接", nil];
+        [applicationAlertView show];
     }
 }
 
@@ -323,8 +327,11 @@
     [AppUtils hidenHudProgressForView:self.view];
     if (needReconnecting) {
         [self longTouchEnded];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"连接提示" message:@"设备未连接，请重新连接！" delegate:self cancelButtonTitle:@"继续编辑" otherButtonTitles:@"重新连接", nil];
-        [alertView show];
+        if (applicationAlertView != nil) {
+            return;
+        }
+        applicationAlertView = [[UIAlertView alloc] initWithTitle:@"连接提示" message:@"设备未连接，请重新连接！" delegate:self cancelButtonTitle:@"继续编辑" otherButtonTitles:@"重新连接", nil];
+        [applicationAlertView show];
     }
 }
 #pragma -mark GestureRecognizer
@@ -673,7 +680,7 @@
         return;
     }
     if (isShare) {
-        [[ShareManage GetInstance] shareVideoToWeixinPlatform:0 themeUrl:@"http://www.qiweiwangguo.com/" thumbnail:[UIImage imageNamed:@"ShareThumbnailImage"] title:@"气味音乐-带你进入全新的嗅觉体验！" descript:@"气味音乐DIY，随心编辑，畅情感受，让一切味道尽在掌握，要不要来试试？"];
+        [[ShareManage GetInstance] shareVideoToWeixinPlatform:0 themeUrl:@"http://www.qiweiwangguo.com/" thumbnail:[UIImage imageNamed:@"ShareThumbnailImage"] title:@"刚做的汉堡，快来闻闻香不香？" descript:@"丑的人还在餐厅吃汉堡，帅的人已在DIY汉堡分享味道，一起秒帅吧！"];
     }
 }
 #pragma -mark HomeCollectionViewCellProtocol
@@ -1149,5 +1156,6 @@
         needReconnecting = YES;
         [[BluetoothProcessManager defatultManager] reconnectBluetooth];
     }
+    applicationAlertView = nil;
 }
 @end

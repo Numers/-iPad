@@ -210,6 +210,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onStartConnectToBluetooth:) name:OnStartConnectToBluetooth object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallbackConnectToBluetoothSuccessfully:) name:OnCallbackConnectToBluetoothSuccessfully object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallbackConnectToBluetoothTimeout:) name:OnCallbackConnectToBluetoothTimeout object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActivity) name:UIApplicationWillResignActiveNotification object:nil];
 }
 
 -(void)playScript
@@ -290,6 +291,19 @@
 }
 
 #pragma -mark Notifications
+-(void)applicationWillResignActivity
+{
+    [_collectionView removeFromSuperview];
+    if (currentScript) {
+        [[ScriptExecuteManager defaultManager] cancelExecuteRelativeTimeScript:currentScript];
+        if (currentScript.state == ScriptIsPlaying) {
+            [[BluetoothMacManager defaultManager] writeCharacteristicWithCommandStr:@"F96600000000000055"];
+            return;
+        }
+    }
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
 -(void)beginPalyScript:(NSNotification *)notify
 {
     RelativeTimeScript *script = [notify object];
