@@ -52,6 +52,7 @@
     
     BOOL isStopAnimation;
     BOOL isAnimationCompletion;
+    BOOL needShowDisconnectInfo;
 }
 @property(nonatomic, strong) IBOutlet UIImageView *highPowerIconImageView;
 @property(nonatomic, strong) IBOutlet UIImageView *normalPowerIconImageView;
@@ -147,6 +148,7 @@
     
     needLoop = NO;
     isLoop = NO;
+    needShowDisconnectInfo = YES;
     lowPowerScriptCommandCount = 0;
     normalPowerScriptCommandCount = 0;
     highPowerScriptCommandCount = 0;
@@ -491,8 +493,11 @@
 
 -(void)onCallbackBluetoothDisconnected:(NSNotification *)notify
 {
-    UIImageView *customImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SadFaceImage"]];
-    [AppUtils showCustomHudProgress:@"设备已断开" CustomView:customImageView ForView:self.view];
+    if (needShowDisconnectInfo) {
+        UIImageView *customImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SadFaceImage"]];
+        [AppUtils showCustomHudProgress:@"设备未连接" CustomView:customImageView ForView:self.view];
+        needShowDisconnectInfo = NO;
+    }
 }
 
 -(void)onStartConnectToBluetooth:(NSNotification *)notify
@@ -504,13 +509,16 @@
 {
     UIImageView *customImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SmileFaceImage"]];
     [AppUtils showCustomHudProgress:@"设备已连接" CustomView:customImageView ForView:self.view];
-    
+    needShowDisconnectInfo = YES;
 }
 
 -(void)onCallbackConnectToBluetoothTimeout:(NSNotification *)notify
 {
-    UIImageView *customImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SadFaceImage"]];
-    [AppUtils showCustomHudProgress:@"设备未连接" CustomView:customImageView ForView:self.view];
+//    if (needShowDisconnectInfo) {
+//        UIImageView *customImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SadFaceImage"]];
+//        [AppUtils showCustomHudProgress:@"设备未连接" CustomView:customImageView ForView:self.view];
+//        needShowDisconnectInfo = NO;
+//    }
 }
 #pragma -mark GestureRecognizer
 -(void)swipeGesture

@@ -44,18 +44,18 @@
         thumbnail = [CommonTools scaleToSize:thumbnail size:CGSizeMake(150, 150)];
     }
     
-//    UIAlertView *alertView;
-//    if (![WXApi isWXAppInstalled]) {
-//        alertView = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"你的iPad 上还没有安装微信，无法使用此功能，使用微信可以方便的把你喜欢的作品分享给好友。" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
-//        [alertView show];
-//        return;
-//    }
+    UIAlertView *alertView;
+    if (![WXApi isWXAppInstalled]) {
+        alertView = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"你的iPad 上还没有安装微信，无法使用此功能，使用微信可以方便的把你喜欢的气味分享给好友。" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
+        [alertView show];
+        return;
+    }
     
-//    if (![WXApi isWXAppSupportApi]) {
-//        alertView = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"你当前的微信版本过低，无法支持此功能，请更新微信至最新版本" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
-//        [alertView show];
-//        return;
-//    }
+    if (![WXApi isWXAppSupportApi]) {
+        alertView = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"你当前的微信版本过低，无法支持此功能，请更新微信至最新版本" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
+        [alertView show];
+        return;
+    }
     
     WXMediaMessage *message = [WXMediaMessage message];
     if (scene == 0) {

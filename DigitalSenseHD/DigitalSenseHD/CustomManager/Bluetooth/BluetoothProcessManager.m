@@ -67,7 +67,7 @@
     @synchronized (self) {
         CBPeripheral *peripheral = [[BluetoothMacManager defaultManager] returnConnectedPeripheral];
         if (peripheral) {
-            if (peripheral.state == CBPeripheralStateDisconnected) {
+            if (peripheral.state != CBPeripheralStateConnected) {
                 [self connectToBluetooth:nil WithPeripheral:peripheral];
             }
         }else{

@@ -26,6 +26,7 @@
 #import "BluetoothProcessManager.h"
 #import "BluetoothMacManager.h"
 #import "ShareManage.h"
+#import "AFNetworkReachabilityManager.h"
 
 #import "UINavigationController+WXSTransition.h"
 #import "UIView+Boom.h"
@@ -52,6 +53,7 @@
     
     NSTimer *testTimer;
     BOOL needReconnecting;
+    BOOL needDisconnectAlertInfo;
 }
 
 @property(nonatomic, strong) IBOutlet UICollectionView *collectionView;
@@ -67,6 +69,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = NO;
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     //fontName:DFPHaiBaoW12   DFWaWaSC-W5  ||  familyName:Wawati SC     DFPHaiBaoW12-GB
     [self.lblTime setText:@"00:00"];
     [self.lblTime setFont:[UIFont fontWithName:@"DFPHaiBaoW12-GB" size:32.0f]];
@@ -214,6 +217,7 @@
     [self.bottomBackView addGestureRecognizer:swipeGestureRecognizer];
     
     needReconnecting = YES;
+    needDisconnectAlertInfo = YES;
     [[BluetoothProcessManager defatultManager] registerNotify];
 }
 
@@ -298,28 +302,44 @@
 
 -(void)onCallbackBluetoothDisconnected:(NSNotification *)notify
 {
-    [AppUtils hidenHudProgressForView:self.view];
-    if (needReconnecting) {
-        [self longTouchEnded];
-        if (applicationAlertView != nil) {
-            return;
+    if (needDisconnectAlertInfo) {
+        [AppUtils hidenHudProgressForView:self.view];
+        if (needReconnecting) {
+            needDisconnectAlertInfo = NO;
+            [self longTouchEnded];
+            if (applicationAlertView != nil) {
+                return;
+            }
+            applicationAlertView = [[UIAlertView alloc] initWithTitle:@"连接提示" message:@"设备未连接，请重新连接！" delegate:self cancelButtonTitle:@"继续编辑" otherButtonTitles:@"重新连接", nil];
+            [applicationAlertView show];
         }
-        applicationAlertView = [[UIAlertView alloc] initWithTitle:@"连接提示" message:@"设备未连接，请重新连接！" delegate:self cancelButtonTitle:@"继续编辑" otherButtonTitles:@"重新连接", nil];
-        [applicationAlertView show];
     }
+    
 }
 
 -(void)onStartConnectToBluetooth:(NSNotification *)notify
 {
-    
+    if (needReconnecting) {
+        if (applicationAlertView != nil) {
+            return;
+        }
+        [AppUtils showHudProgress:@"加载中..." ForView:self.view];
+    }
 }
 
 -(void)onCallbackConnectToBluetoothSuccessfully:(NSNotification *)notify
 {
     [AppUtils hidenHudProgressForView:self.view];
+    if (testTimer) {
+        if ([testTimer isValid]) {
+            [testTimer invalidate];
+            testTimer = nil;
+        }
+    }
     //心跳包
     testTimer = [NSTimer scheduledTimerWithTimeInterval:8 target:self selector:@selector(test) userInfo:nil repeats:YES];
     [testTimer fire];
+    needDisconnectAlertInfo = YES;
 }
 
 -(void)onCallbackConnectToBluetoothTimeout:(NSNotification *)notify
@@ -362,6 +382,7 @@
     if ([[BluetoothMacManager defaultManager] isConnected]) {
         [[BluetoothMacManager defaultManager] writeCharacteristicWithCommandStr:@""];
     }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:OnCallbackBluetoothDisconnected object:nil];
         [[BluetoothProcessManager defatultManager] reconnectBluetooth];
     }
 }
@@ -677,6 +698,12 @@
 -(IBAction)clickShareBtn:(id)sender
 {
     if (smellFakeView) {
+        return;
+    }
+    
+    if (![[AFNetworkReachabilityManager sharedManager] isReachable]) {
+        UIImageView *customImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SadFaceImage"]];
+        [AppUtils showCustomHudProgress:@"网络未连接" CustomView:customImageView ForView:self.view];
         return;
     }
     if (isShare) {
@@ -1135,7 +1162,7 @@
                             
                         }];
                     }
-                    
+    
                 }
             }
         }
@@ -1150,12 +1177,12 @@
 #pragma -mark UIAlertViewDelegate
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    applicationAlertView = nil;
     if (buttonIndex == alertView.cancelButtonIndex) {
         needReconnecting = NO;
     }else{
         needReconnecting = YES;
         [[BluetoothProcessManager defatultManager] reconnectBluetooth];
     }
-    applicationAlertView = nil;
 }
 @end

@@ -279,11 +279,7 @@ static BluetoothMacManager *bluetoothMacManager;
 
 -(void)writeCharacteristicWithCommand:(BluetoothCommand)command {
     // Sends data to BLE peripheral to process HID and send EHIF command to PC
-    if (!self.peripheral) {
-        return;
-    }
-    
-    if (self.peripheral.services == nil || self.peripheral.services.count == 0) {
+    if (![self isConnected]) {
         isConnected = NO;
         [self callBackDevice:NO WithCallbackType:CallbackDisconnect];
         return;
@@ -306,11 +302,7 @@ static BluetoothMacManager *bluetoothMacManager;
 
 -(void)writeCharacteristicWithRFID:(NSString *)rfId WithTimeInterval:(int)interval
 {
-    if (!self.peripheral) {
-        return;
-    }
-    
-    if (self.peripheral.services == nil || self.peripheral.services.count == 0) {
+    if (![self isConnected]) {
         isConnected = NO;
         [self callBackDevice:NO WithCallbackType:CallbackDisconnect];
         return;
@@ -340,11 +332,7 @@ static BluetoothMacManager *bluetoothMacManager;
  */
 -(void)writeCharacteristicWithCommandStr:(NSString *)commandStr
 {
-    if (!self.peripheral) {
-        return;
-    }
-    
-    if (self.peripheral.services == nil || self.peripheral.services.count == 0) {
+    if (![self isConnected]) {
         isConnected = NO;
         [self callBackDevice:NO WithCallbackType:CallbackDisconnect];
         return;
