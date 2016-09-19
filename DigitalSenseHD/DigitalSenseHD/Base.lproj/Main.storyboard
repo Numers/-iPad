@@ -661,7 +661,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9am-EK-cqK" customClass="FlipPlayBackView">
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kmS-zm-8Jb">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -738,13 +738,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUn-LR-WC9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2211" y="399"/>
+            <point key="canvasLocation" x="1359" y="299"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6Ta-mt-mNB">
             <objects>
                 <navigationController id="gt5-CV-XB1" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nXv-L8-tCX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nXv-L8-tCX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

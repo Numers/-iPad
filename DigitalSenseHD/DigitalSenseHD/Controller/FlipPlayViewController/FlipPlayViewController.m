@@ -74,9 +74,9 @@
     [self.lblTime setFont:[UIFont fontWithName:@"DFPHaiBaoW12-GB" size:32.0f]];
     [self.lblTime setTextColor:[UIColor whiteColor]];
     
-    [_flipPlayBackView setBackgroundColor:[UIColor clearColor]];
-    CAShapeLayer *layer = [CAShapeLayer createMaskLayerWithView:_flipPlayBackView Padding:UIEdgeInsetsMake(0, 0, 0, 0)];
-    _flipPlayBackView.layer.mask = layer;
+ //   [_flipPlayBackView setBackgroundColor:[UIColor redColor]];
+   // CAShapeLayer *layer = [CAShapeLayer createMaskLayerWithView:_flipPlayBackView Padding:UIEdgeInsetsMake(0, 0, 0, 0)];
+  //  _flipPlayBackView.layer.mask = layer;
     
     [_smokeView setBackgroundColor:[UIColor clearColor]];
     
@@ -131,6 +131,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    [_flipPlayBackView setBackgroundColor:[UIColor clearColor]];
+    CAShapeLayer *layer = [CAShapeLayer createMaskLayerWithView:_flipPlayBackView Padding:UIEdgeInsetsMake(0, 0, 0, 0)];
+    _flipPlayBackView.layer.mask = layer;
 }
 
 #pragma -mark Public Functions
