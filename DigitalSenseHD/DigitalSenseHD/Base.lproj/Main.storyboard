@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gt5-CV-XB1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gt5-CV-XB1">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -19,8 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bfe-Ph-jwt">
-                                <rect key="frame" x="200" y="209" width="742" height="983"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7IP-MM-4Gd" customClass="CustomLewReorderableLayout">
                                     <size key="itemSize" width="154" height="845"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -30,16 +30,12 @@
                                 <cells/>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R71-tq-IWa">
-                                <rect key="frame" x="0.0" y="1216" width="1024" height="150"/>
                                 <subviews>
                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZMo-1H-Bzj" customClass="SmellView">
-                                        <rect key="frame" x="80" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="FhX-p1-g7f">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="FhX-p1-g7f"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="FhX-p1-g7f" firstAttribute="top" secondItem="ZMo-1H-Bzj" secondAttribute="top" id="DgT-hI-EII"/>
@@ -52,13 +48,10 @@
                                         </connections>
                                     </view>
                                     <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n0p-2V-6du" customClass="SmellView">
-                                        <rect key="frame" x="173" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="IKh-0Z-fxH">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="IKh-0Z-fxH"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="IKh-0Z-fxH" secondAttribute="trailing" id="0Ga-j6-4dl"/>
@@ -71,13 +64,10 @@
                                         </connections>
                                     </view>
                                     <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o9J-8x-0FM" customClass="SmellView">
-                                        <rect key="frame" x="266" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="rRi-7J-bfv">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="rRi-7J-bfv"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="rRi-7J-bfv" secondAttribute="trailing" id="DKS-fe-01S"/>
@@ -90,13 +80,10 @@
                                         </connections>
                                     </view>
                                     <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edK-cW-Izv" customClass="SmellView">
-                                        <rect key="frame" x="359" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="loc-6d-xHa">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="loc-6d-xHa"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="loc-6d-xHa" secondAttribute="trailing" id="AUh-KR-h46"/>
@@ -109,13 +96,10 @@
                                         </connections>
                                     </view>
                                     <view tag="8" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHp-6i-tKK" customClass="SmellView">
-                                        <rect key="frame" x="866" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="MAs-Yb-VOG">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="MAs-Yb-VOG"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="MAs-Yb-VOG" secondAttribute="bottom" id="AzI-Y8-eNT"/>
@@ -128,13 +112,10 @@
                                         </connections>
                                     </view>
                                     <view tag="7" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="16z-qa-sFg" customClass="SmellView">
-                                        <rect key="frame" x="773" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="5eM-S6-a4U">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="5eM-S6-a4U"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="5eM-S6-a4U" firstAttribute="leading" secondItem="16z-qa-sFg" secondAttribute="leading" id="Pxb-nk-I1t"/>
@@ -147,13 +128,10 @@
                                         </connections>
                                     </view>
                                     <view tag="6" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns5-gF-8M5" customClass="SmellView">
-                                        <rect key="frame" x="680" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="ja5-dr-Urj">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="ja5-dr-Urj"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="ja5-dr-Urj" firstAttribute="leading" secondItem="Ns5-gF-8M5" secondAttribute="leading" id="Gz7-2Z-jNM"/>
@@ -166,13 +144,10 @@
                                         </connections>
                                     </view>
                                     <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M6a-pF-oo0" customClass="SmellView">
-                                        <rect key="frame" x="587" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="fYf-3F-ttT">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="fYf-3F-ttT"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="fYf-3F-ttT" firstAttribute="top" secondItem="M6a-pF-oo0" secondAttribute="top" id="PWN-LP-hS5"/>
@@ -185,7 +160,7 @@
                                         </connections>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="3Cy-1v-myB"/>
                                     <constraint firstAttribute="bottom" secondItem="edK-cW-Izv" secondAttribute="bottom" constant="30" id="4dP-6W-swk"/>
@@ -207,24 +182,19 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxh-4d-IWz">
-                                <rect key="frame" x="546" y="129" width="48" height="20"/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="16"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlayFontImage" translatesAutoresizingMaskIntoConstraints="NO" id="HM1-wK-I4R">
-                                <rect key="frame" x="470" y="1310" width="85" height="43"/>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlayFontImage" translatesAutoresizingMaskIntoConstraints="NO" id="HM1-wK-I4R"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fd3-Ee-Dqv">
-                                <rect key="frame" x="460" y="1201" width="105" height="103"/>
                                 <state key="normal" image="PlayBtn"/>
                                 <connections>
                                     <action selector="clickPlayBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BQA-Ww-XdR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYE-yM-BWJ">
-                                <rect key="frame" x="867" y="64" width="157" height="125"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="XYE-yM-BWJ" secondAttribute="height" multiplier="157:125" id="5h7-u3-CsX"/>
                                     <constraint firstAttribute="width" constant="157" id="mMa-1P-c5d"/>
@@ -235,14 +205,13 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mR-V8-dml" customClass="ZDProgressView">
-                                <rect key="frame" x="213" y="200" width="711" height="20"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="8Mc-U2-DGD"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="bfe-Ph-jwt" secondAttribute="trailing" constant="82" id="3x4-Rf-CTy"/>
                             <constraint firstItem="Wxh-4d-IWz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="65" id="40g-ex-qfw"/>
@@ -265,7 +234,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="snv-qW-Pqs"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPadPro"/>
                     <connections>
                         <outlet property="bottomBackView" destination="R71-tq-IWa" id="l0Y-jw-OIP"/>
                         <outlet property="btnShareOrDelete" destination="XYE-yM-BWJ" id="flU-Zb-Vrk"/>
@@ -276,7 +244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-106" y="399"/>
+            <point key="canvasLocation" x="-175" y="299"/>
         </scene>
         <!--Play View Controller-->
         <scene sceneID="TXe-Zv-UYz">
@@ -291,22 +259,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAc-03-A63">
-                                <rect key="frame" x="547" y="85" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xyj-gW-kbn">
-                                <rect key="frame" x="0.0" y="1216" width="1024" height="150"/>
                                 <subviews>
                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JpV-AU-1u5" customClass="SmellView">
-                                        <rect key="frame" x="80" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="3uU-Lf-5oR">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="3uU-Lf-5oR"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="3uU-Lf-5oR" secondAttribute="bottom" id="DbI-Ih-YJZ"/>
@@ -319,13 +282,10 @@
                                         </connections>
                                     </view>
                                     <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAf-Bn-Rj6" customClass="SmellView">
-                                        <rect key="frame" x="173" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="yJs-n0-VJ8">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="yJs-n0-VJ8"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="yJs-n0-VJ8" firstAttribute="top" secondItem="MAf-Bn-Rj6" secondAttribute="top" id="0IC-XS-EYj"/>
@@ -338,13 +298,10 @@
                                         </connections>
                                     </view>
                                     <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTC-Os-hY3" customClass="SmellView">
-                                        <rect key="frame" x="266" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="JrI-19-HLL">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="JrI-19-HLL"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="JrI-19-HLL" secondAttribute="bottom" id="YgN-BL-C04"/>
@@ -357,13 +314,10 @@
                                         </connections>
                                     </view>
                                     <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YRe-Kb-qeX" customClass="SmellView">
-                                        <rect key="frame" x="359" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="4Dm-Uk-iYP">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="4Dm-Uk-iYP"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="4Dm-Uk-iYP" firstAttribute="leading" secondItem="YRe-Kb-qeX" secondAttribute="leading" id="6BA-dU-hDk"/>
@@ -376,13 +330,10 @@
                                         </connections>
                                     </view>
                                     <view tag="8" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FJG-3H-8Le" customClass="SmellView">
-                                        <rect key="frame" x="866" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="ckg-UK-Ncd">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="ckg-UK-Ncd"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="ckg-UK-Ncd" firstAttribute="top" secondItem="FJG-3H-8Le" secondAttribute="top" id="6SV-U0-9ZI"/>
@@ -395,13 +346,10 @@
                                         </connections>
                                     </view>
                                     <view tag="7" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="olM-9a-wiE" customClass="SmellView">
-                                        <rect key="frame" x="773" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="H1f-6g-Lzi">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="H1f-6g-Lzi"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="H1f-6g-Lzi" secondAttribute="trailing" id="61k-I2-U9O"/>
@@ -414,13 +362,10 @@
                                         </connections>
                                     </view>
                                     <view tag="6" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2A-zu-RaW" customClass="SmellView">
-                                        <rect key="frame" x="680" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="XI9-lv-4gX">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="XI9-lv-4gX"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="XI9-lv-4gX" secondAttribute="bottom" id="M58-Lg-ocm"/>
@@ -433,13 +378,10 @@
                                         </connections>
                                     </view>
                                     <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lB6-ZD-3Jv" customClass="SmellView">
-                                        <rect key="frame" x="587" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="p0X-Ms-RT8">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="p0X-Ms-RT8"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="p0X-Ms-RT8" secondAttribute="bottom" id="MF1-ur-9Ve"/>
@@ -452,7 +394,7 @@
                                         </connections>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="2FV-6R-Rri"/>
                                     <constraint firstAttribute="bottom" secondItem="olM-9a-wiE" secondAttribute="bottom" constant="30" id="5Jd-7i-VeQ"/>
@@ -473,18 +415,14 @@
                                     <constraint firstAttribute="trailing" secondItem="FJG-3H-8Le" secondAttribute="trailing" constant="80" id="sQg-dq-MkP"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlayFontImage" translatesAutoresizingMaskIntoConstraints="NO" id="cYp-3W-cTg">
-                                <rect key="frame" x="470" y="1310" width="85" height="43"/>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlayFontImage" translatesAutoresizingMaskIntoConstraints="NO" id="cYp-3W-cTg"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTQ-uB-eg4">
-                                <rect key="frame" x="460" y="1201" width="105" height="103"/>
                                 <state key="normal" image="PauseBtn"/>
                                 <connections>
                                     <action selector="clickStopBtn:" destination="DBR-bg-14I" eventType="touchUpInside" id="t1P-7O-k8R"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7R-Ci-I0w">
-                                <rect key="frame" x="944" y="20" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="e7R-Ci-I0w" secondAttribute="height" multiplier="1:1" id="ONP-kF-XAM"/>
                                     <constraint firstAttribute="width" constant="80" id="tiA-6n-pDc"/>
@@ -492,15 +430,13 @@
                                 <state key="normal" image="DeleteBtn"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kuf-Zp-WCQ" customClass="ZDProgressView">
-                                <rect key="frame" x="213" y="156" width="711" height="20"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="yCu-Du-AtC"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bFK-m7-UCQ">
-                                <rect key="frame" x="200" y="165" width="734" height="1027"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jEX-dA-zE2">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -514,7 +450,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="HoE-um-9Kg" firstAttribute="top" secondItem="Xyj-gW-kbn" secondAttribute="bottom" id="0sB-Zm-t6A"/>
                             <constraint firstItem="e7R-Ci-I0w" firstAttribute="top" secondItem="ZIS-mL-6bg" secondAttribute="bottom" id="56f-pb-gGn"/>
@@ -536,7 +472,6 @@
                             <constraint firstItem="qAc-03-A63" firstAttribute="top" secondItem="ZIS-mL-6bg" secondAttribute="bottom" constant="65" id="x5Z-9T-Sfo"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPadPro"/>
                     <connections>
                         <outlet property="bottomBackView" destination="Xyj-gW-kbn" id="8z6-oq-CIr"/>
                         <outlet property="btnShareOrDelete" destination="e7R-Ci-I0w" id="dNu-o4-4wE"/>
@@ -547,7 +482,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXg-O3-TIc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1054" y="399"/>
+            <point key="canvasLocation" x="708" y="299"/>
         </scene>
         <!--Flip Play View Controller-->
         <scene sceneID="iG5-BE-cyW">
@@ -562,22 +497,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njm-4M-dca">
-                                <rect key="frame" x="547" y="85" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZU-Qw-Ezo">
-                                <rect key="frame" x="0.0" y="1216" width="1024" height="150"/>
                                 <subviews>
                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4e-ze-fGV" customClass="SmellView">
-                                        <rect key="frame" x="80" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="igH-u0-O0t">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="igH-u0-O0t"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="igH-u0-O0t" firstAttribute="leading" secondItem="u4e-ze-fGV" secondAttribute="leading" id="4Sg-ui-4eZ"/>
@@ -590,13 +520,10 @@
                                         </connections>
                                     </view>
                                     <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Wj-Ft-Xm2" customClass="SmellView">
-                                        <rect key="frame" x="173" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="aw9-mf-a6y">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="aw9-mf-a6y"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="aw9-mf-a6y" firstAttribute="leading" secondItem="0Wj-Ft-Xm2" secondAttribute="leading" id="71U-QQ-tBg"/>
@@ -609,13 +536,10 @@
                                         </connections>
                                     </view>
                                     <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aqp-wL-HO6" customClass="SmellView">
-                                        <rect key="frame" x="266" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="qbT-71-Vxj">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="qbT-71-Vxj"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="qbT-71-Vxj" firstAttribute="leading" secondItem="Aqp-wL-HO6" secondAttribute="leading" id="0ke-1P-XOo"/>
@@ -628,13 +552,10 @@
                                         </connections>
                                     </view>
                                     <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ird-4H-elb" customClass="SmellView">
-                                        <rect key="frame" x="359" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="sgo-LC-F8M">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="sgo-LC-F8M"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="sgo-LC-F8M" secondAttribute="bottom" id="8KJ-Kw-1EJ"/>
@@ -647,13 +568,10 @@
                                         </connections>
                                     </view>
                                     <view tag="8" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2e0-14-bjX" customClass="SmellView">
-                                        <rect key="frame" x="866" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="8jX-D6-578">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="8jX-D6-578"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="8jX-D6-578" secondAttribute="bottom" id="0SV-FO-lct"/>
@@ -666,13 +584,10 @@
                                         </connections>
                                     </view>
                                     <view tag="7" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRa-wE-1o8" customClass="SmellView">
-                                        <rect key="frame" x="773" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="eBq-IT-9fs">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="eBq-IT-9fs"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="eBq-IT-9fs" secondAttribute="bottom" id="37x-Cz-bac"/>
@@ -685,13 +600,10 @@
                                         </connections>
                                     </view>
                                     <view tag="6" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvu-av-jw3" customClass="SmellView">
-                                        <rect key="frame" x="680" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="GqE-fB-as0">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="GqE-fB-as0"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="GqE-fB-as0" secondAttribute="bottom" id="Efg-jC-YqQ"/>
@@ -704,13 +616,10 @@
                                         </connections>
                                     </view>
                                     <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCd-er-Rm2" customClass="SmellView">
-                                        <rect key="frame" x="587" y="42" width="78" height="78"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="HG5-Sx-zBb">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
-                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleImage" translatesAutoresizingMaskIntoConstraints="NO" id="HG5-Sx-zBb"/>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="HG5-Sx-zBb" firstAttribute="leading" secondItem="gCd-er-Rm2" secondAttribute="leading" id="FeU-7a-G34"/>
@@ -723,7 +632,7 @@
                                         </connections>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="IRa-wE-1o8" secondAttribute="bottom" constant="30" id="0Xi-WS-gNS"/>
                                     <constraint firstAttribute="height" constant="150" id="DRQ-I1-ICx"/>
@@ -744,61 +653,52 @@
                                     <constraint firstItem="Aqp-wL-HO6" firstAttribute="leading" secondItem="0Wj-Ft-Xm2" secondAttribute="trailing" constant="15" id="tJB-Y4-qh3"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlayFontImage" translatesAutoresizingMaskIntoConstraints="NO" id="mEg-jL-biE">
-                                <rect key="frame" x="470" y="1310" width="85" height="43"/>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlayFontImage" translatesAutoresizingMaskIntoConstraints="NO" id="mEg-jL-biE"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAV-DT-HMN">
-                                <rect key="frame" x="460" y="1201" width="105" height="103"/>
                                 <state key="normal" image="PauseBtn"/>
                                 <connections>
                                     <action selector="clickStopBtn:" destination="H7g-CY-NcE" eventType="touchUpInside" id="hRF-xu-BaM"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9am-EK-cqK" customClass="FlipPlayBackView">
-                                <rect key="frame" x="272" y="165" width="680" height="1027"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kmS-zm-8Jb">
-                                <rect key="frame" x="192" y="254" width="65" height="65"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="kmS-zm-8Jb" secondAttribute="height" multiplier="1:1" id="5NF-eU-1JE"/>
                                     <constraint firstAttribute="width" constant="65" id="Q4e-AX-0sb"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9hW-iL-byp">
-                                <rect key="frame" x="204" y="397" width="55" height="55"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="55" id="Dep-JV-TYN"/>
                                     <constraint firstAttribute="width" secondItem="9hW-iL-byp" secondAttribute="height" multiplier="1:1" id="cxs-lt-0dE"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d9x-bH-9PK">
-                                <rect key="frame" x="212" y="529" width="49" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="49" id="40k-TV-zxc"/>
                                     <constraint firstAttribute="width" secondItem="d9x-bH-9PK" secondAttribute="height" multiplier="1:1" id="buV-kw-QZE"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bgn-Zb-JcK" customClass="SmokeView">
-                                <rect key="frame" x="280" y="110" width="80" height="100"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="B2b-C8-usE"/>
                                     <constraint firstAttribute="width" constant="80" id="GtN-US-F4c"/>
                                 </constraints>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYE-uR-aCv">
-                                <rect key="frame" x="0.0" y="0.0" width="105" height="103"/>
                                 <state key="normal" image="PauseBtn"/>
                                 <connections>
                                     <action selector="clickChangeAnimationStateBtn:" destination="H7g-CY-NcE" eventType="touchUpInside" id="Lwb-rv-eyt"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ZYE-uR-aCv" firstAttribute="top" secondItem="l9C-p9-mwg" secondAttribute="top" id="1FS-89-xPs"/>
                             <constraint firstItem="mEg-jL-biE" firstAttribute="top" secondItem="wAV-DT-HMN" secondAttribute="bottom" constant="6" id="4UH-Lp-KiI"/>
@@ -825,7 +725,6 @@
                             <constraint firstItem="9am-EK-cqK" firstAttribute="top" secondItem="yKv-VW-hYs" secondAttribute="bottom" constant="145" id="y7I-cF-SgU"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPadPro"/>
                     <connections>
                         <outlet property="bottomBackView" destination="uZU-Qw-Ezo" id="iBF-ld-IHi"/>
                         <outlet property="btnAnimationChange" destination="ZYE-uR-aCv" id="sOq-sK-cPD"/>
@@ -845,7 +744,6 @@
         <scene sceneID="6Ta-mt-mNB">
             <objects>
                 <navigationController id="gt5-CV-XB1" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nXv-L8-tCX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

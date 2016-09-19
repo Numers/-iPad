@@ -21,7 +21,6 @@
 		8419335D1D5B281C00E8E9EE /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8419335C1D5B281C00E8E9EE /* HomeViewController.m */; };
 		84292CD81D7A799000FF3422 /* load_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 84292CD51D7A799000FF3422 /* load_circle.png */; };
 		84292CD91D7A799000FF3422 /* MBProgressCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84292CD71D7A799000FF3422 /* MBProgressCustomView.m */; };
-		84292CDB1D7A895700FF3422 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 84292CDA1D7A895700FF3422 /* LaunchImage.png */; };
 		842D8C6F1D66B29800DE6EBB /* UIView+Boom.m in Sources */ = {isa = PBXBuildFile; fileRef = 842D8C6E1D66B29800DE6EBB /* UIView+Boom.m */; };
 		8462EB251D5D73F700897F92 /* ScriptCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462EB241D5D73F700897F92 /* ScriptCommand.m */; };
 		8462EB2C1D5D788000897F92 /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462EB2B1D5D788000897F92 /* HomeCollectionViewCell.m */; };
@@ -71,6 +70,7 @@
 		84B00C2B1D701D0200516F4B /* lowPower.gif in Resources */ = {isa = PBXBuildFile; fileRef = 84B00C281D701D0200516F4B /* lowPower.gif */; };
 		84B00C2C1D701D0200516F4B /* normalPower.gif in Resources */ = {isa = PBXBuildFile; fileRef = 84B00C291D701D0200516F4B /* normalPower.gif */; };
 		84B00C2F1D70369E00516F4B /* FlipReadyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B00C2E1D70369E00516F4B /* FlipReadyView.m */; };
+		84B432FD1D8FB98D00CD5121 /* Launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B432FC1D8FB98D00CD5121 /* Launch.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,7 +104,6 @@
 		84292CD51D7A799000FF3422 /* load_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = load_circle.png; sourceTree = "<group>"; };
 		84292CD61D7A799000FF3422 /* MBProgressCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressCustomView.h; sourceTree = "<group>"; };
 		84292CD71D7A799000FF3422 /* MBProgressCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressCustomView.m; sourceTree = "<group>"; };
-		84292CDA1D7A895700FF3422 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 		842D8C6D1D66B29800DE6EBB /* UIView+Boom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Boom.h"; sourceTree = "<group>"; };
 		842D8C6E1D66B29800DE6EBB /* UIView+Boom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Boom.m"; sourceTree = "<group>"; };
 		8462EB231D5D73F700897F92 /* ScriptCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptCommand.h; sourceTree = "<group>"; };
@@ -192,6 +191,7 @@
 		84B00C291D701D0200516F4B /* normalPower.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = normalPower.gif; sourceTree = "<group>"; };
 		84B00C2D1D70369E00516F4B /* FlipReadyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipReadyView.h; sourceTree = "<group>"; };
 		84B00C2E1D70369E00516F4B /* FlipReadyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipReadyView.m; sourceTree = "<group>"; };
+		84B432FC1D8FB98D00CD5121 /* Launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launch.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,7 +272,7 @@
 		841933251D5B252100E8E9EE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				84292CDA1D7A895700FF3422 /* LaunchImage.png */,
+				84B432FC1D8FB98D00CD5121 /* Launch.png */,
 				84B00C271D701D0200516F4B /* highPower.gif */,
 				84B00C281D701D0200516F4B /* lowPower.gif */,
 				84B00C291D701D0200516F4B /* normalPower.gif */,
@@ -645,7 +645,7 @@
 		8419331A1D5B252100E8E9EE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = RenRenFenQi;
 				TargetAttributes = {
 					841933211D5B252100E8E9EE = {
@@ -677,6 +677,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B432FD1D8FB98D00CD5121 /* Launch.png in Resources */,
 				848820921D65DC320035BEE1 /* WawaSC-Regular.otf in Resources */,
 				841933381D5B252100E8E9EE /* LaunchScreen.storyboard in Resources */,
 				84695F691D76DFC30083D637 /* Assets.xcassets in Resources */,
@@ -685,7 +686,6 @@
 				84691D4C1D6BEF5D002F836C /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				841933301D5B252100E8E9EE /* Main.storyboard in Resources */,
 				84B00C2C1D701D0200516F4B /* normalPower.gif in Resources */,
-				84292CDB1D7A895700FF3422 /* LaunchImage.png in Resources */,
 				84B00C2A1D701D0200516F4B /* highPower.gif in Resources */,
 				84900CE21D715CC70001DD2C /* DazSmoke.png in Resources */,
 				84292CD81D7A799000FF3422 /* load_circle.png in Resources */,
@@ -831,8 +831,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -875,8 +877,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -906,6 +910,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = VNE3KQ6H48;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -913,7 +918,7 @@
 				);
 				GCC_PREFIX_HEADER = "DigitalSenseHD/DigitalSenseHD-Prefix.pch";
 				INFOPLIST_FILE = DigitalSenseHD/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -933,6 +938,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = VNE3KQ6H48;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -940,7 +946,7 @@
 				);
 				GCC_PREFIX_HEADER = "DigitalSenseHD/DigitalSenseHD-Prefix.pch";
 				INFOPLIST_FILE = DigitalSenseHD/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

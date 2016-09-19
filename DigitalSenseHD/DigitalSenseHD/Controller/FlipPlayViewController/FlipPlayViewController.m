@@ -335,20 +335,20 @@
                 }else{
                     currentScript = nil;
                     if([[NSThread currentThread] isMainThread]){
-                        [self.navigationController popViewControllerAnimated:YES];
+                        [self.navigationController popViewControllerAnimated:NO];
                     }else{
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            [self.navigationController popViewControllerAnimated:YES];
+                            [self.navigationController popViewControllerAnimated:NO];
                         });
                     }
                 }
             }else{
                 currentScript = nil;
                 if([[NSThread currentThread] isMainThread]){
-                    [self.navigationController popViewControllerAnimated:YES];
+                    [self.navigationController popViewControllerAnimated:NO];
                 }else{
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.navigationController popViewControllerAnimated:YES];
+                        [self.navigationController popViewControllerAnimated:NO];
                     });
                 }
             }
@@ -537,7 +537,7 @@
             return;
         }
     }
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 -(IBAction)clickChangeAnimationStateBtn:(id)sender

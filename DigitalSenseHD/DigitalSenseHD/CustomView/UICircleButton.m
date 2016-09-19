@@ -57,7 +57,7 @@
     CGPoint location = [touch locationInView:self];
     if (location.x > beginLocation.x) {
         CGFloat temp = location.x - beginLocation.x;
-        NSInteger count = temp / 25;
+        NSInteger count = temp / (WidthPerSecond * 2 / 3);
         if (count > 0) {
             beginLocation = location;
             if ([_delegate respondsToSelector:@selector(moveRightOneUnit)]) {
@@ -66,7 +66,7 @@
         }
     }else{
         CGFloat temp = beginLocation.x - location.x;
-        NSInteger count = temp / 25;
+        NSInteger count = temp / (WidthPerSecond * 2 / 3);
         if (count > 0) {
             beginLocation = location;
             if ([_delegate respondsToSelector:@selector(moveLeftOneUnit)]) {
@@ -136,7 +136,7 @@
     CGPoint now = [press locationInView:self];
     if (now.x > _prePoint.x) {
         CGFloat temp = now.x - _prePoint.x;
-        NSInteger count = temp / 25;
+        NSInteger count = temp / (WidthPerSecond * 2 / 3);
         if (count > 0) {
             _prePoint = now;
             if ([_delegate respondsToSelector:@selector(moveRightOneUnit)]) {
@@ -145,7 +145,7 @@
         }
     }else{
         CGFloat temp = _prePoint.x - now.x;
-        NSInteger count = temp / 25;
+        NSInteger count = temp / (WidthPerSecond * 2 / 3);
         if (count > 0) {
             _prePoint = now;
             if ([_delegate respondsToSelector:@selector(moveLeftOneUnit)]) {

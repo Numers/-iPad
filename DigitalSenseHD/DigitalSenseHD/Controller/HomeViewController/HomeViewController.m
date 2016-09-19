@@ -286,6 +286,7 @@
 -(void)onCallbackBluetoothPowerOff:(NSNotification *)notify
 {
     needReconnecting = YES;
+    needDisconnectAlertInfo = YES;
     [AppUtils hidenHudProgressForView:self.view];
     if (testTimer) {
         if ([testTimer isValid]) {
@@ -302,10 +303,9 @@
 
 -(void)onCallbackBluetoothDisconnected:(NSNotification *)notify
 {
+    [AppUtils hidenHudProgressForView:self.view];
     if (needDisconnectAlertInfo) {
-        [AppUtils hidenHudProgressForView:self.view];
         if (needReconnecting) {
-            needDisconnectAlertInfo = NO;
             [self longTouchEnded];
             if (applicationAlertView != nil) {
                 return;
@@ -687,11 +687,12 @@
     
     FlipPlayViewController *playVC = [storyboard instantiateViewControllerWithIdentifier:@"FlipPlayViewIdentify"];
     [playVC setScript:script PageSmellList:pageSmellList];
-    [self.navigationController wxs_pushViewController:playVC makeTransition:^(WXSTransitionProperty *transition) {
-        transition.animationType = WXSTransitionAnimationTypeFragmentShowFromRight;
-        transition.animationTime = 1.0f;
-        transition.backGestureEnable = NO;
-    }];
+    [self.navigationController pushViewController:playVC animated:NO];
+//    [self.navigationController wxs_pushViewController:playVC makeTransition:^(WXSTransitionProperty *transition) {
+//        transition.animationType = WXSTransitionAnimationTypeFragmentShowFromRight;
+//        transition.animationTime = 1.0f;
+//        transition.backGestureEnable = NO;
+//    }];
 
 }
 
@@ -707,7 +708,7 @@
         return;
     }
     if (isShare) {
-        [[ShareManage GetInstance] shareVideoToWeixinPlatform:0 themeUrl:@"http://www.qiweiwangguo.com/" thumbnail:[UIImage imageNamed:@"ShareThumbnailImage"] title:@"刚做的汉堡，快来闻闻香不香？" descript:@"丑的人还在餐厅吃汉堡，帅的人已在DIY汉堡分享味道，一起秒帅吧！"];
+        [[ShareManage GetInstance] shareVideoToWeixinPlatform:0 themeUrl:@"http://m.qiweiwangguo.com/app_share/index.html" thumbnail:[UIImage imageNamed:@"ShareThumbnailImage"] title:@"刚做的汉堡，快来闻闻香不香？" descript:@"丑的人还在餐厅吃汉堡，帅的人已在DIY汉堡分享味道，一起秒帅吧！"];
     }
 }
 #pragma -mark HomeCollectionViewCellProtocol
@@ -1180,8 +1181,10 @@
     applicationAlertView = nil;
     if (buttonIndex == alertView.cancelButtonIndex) {
         needReconnecting = NO;
+        needDisconnectAlertInfo = NO;
     }else{
         needReconnecting = YES;
+        needDisconnectAlertInfo = YES;
         [[BluetoothProcessManager defatultManager] reconnectBluetooth];
     }
 }
